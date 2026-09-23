@@ -1,0 +1,192 @@
+{
+  "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+  "zonesDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory",
+  "detailInventory": {
+    "scanMethod": "grid-3x3",
+    "targetMinDetails": 6,
+    "details": [
+      {
+        "id": "zone-r0c0",
+        "kind": "out-of-scope-scenery",
+        "description": "Fixed service structure only: truss column, walkway grating, floodlight heads. No vehicle surface in this zone.",
+        "region": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "scenery-not-modelled"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r0c0.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "zone-r0c1",
+        "kind": "geometry+linework",
+        "description": "Tank ogive nose and the start of the barrel. Two details read clearly: the nose-to-barrel transition ring, and a vertical conduit ridge running down the barrel offset from the centreline, casting its own thin shadow. The white vent-hood arm above the nose belongs to the tower and is excluded.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "silhouette+surface",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "etLOX:ogiveTransition,cableTray"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r0c1.png",
+        "confidence": 0.85
+      },
+      {
+        "id": "zone-r0c2",
+        "kind": "empty",
+        "description": "Night sky. No vehicle, no structure, no usable evidence.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "none",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "background"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r0c2.png",
+        "confidence": 0.99
+      },
+      {
+        "id": "zone-r1c0",
+        "kind": "out-of-scope-scenery",
+        "description": "Tower mid-section, orbiter access arm and service platforms. The white vertical strip at the left edge is tower plumbing, not the vehicle.",
+        "region": {
+          "x": 0.0,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "scenery-not-modelled"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r1c0.png",
+        "confidence": 0.9
+      },
+      {
+        "id": "zone-r1c1",
+        "kind": "geometry+material-boundary",
+        "description": "Densest zone. Orbiter black nose cap with a hard boundary against white; a bright window group on the crew module in two bands; a dark band sweeping aft-and-outward from the forward fuselage on both sides, symmetric about the centreline; a small dark circular port below it. Both booster nose cones are visible as a steep cap over a shallower frustum with a step between. The tank behind shows the waisted intertank band with a brighter structured surface than the barrels.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso+micro",
+        "affects": "silhouette+surface",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "tps:noseCap,leadingEdgeBand; component.localFeatures: srb:noseTwoCone, etInter:band, orb:windows"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r1c1.png",
+        "confidence": 0.7
+      },
+      {
+        "id": "zone-r1c2",
+        "kind": "geometry",
+        "description": "Starboard booster case as a clean straight cylinder with a constant diameter over this span, terminated by its nose cone at the top. Confirms the booster barrel is untapered and gives the cleanest diameter measurement in the frame.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "silhouette",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "srb:caseBarrel"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r1c2.png",
+        "confidence": 0.9
+      },
+      {
+        "id": "zone-r2c0",
+        "kind": "out-of-scope-scenery",
+        "description": "Tower base, platform deck edge and pipework. No vehicle surface.",
+        "region": {
+          "x": 0.0,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "scenery-not-modelled"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r2c0.png",
+        "confidence": 0.92
+      },
+      {
+        "id": "zone-r2c1",
+        "kind": "geometry+markings",
+        "description": "Wing planform with a visible sweep break between a shallow inboard glove and a steeper outboard panel. USA and a flag sit on the wing upper surface. The trailing edge carries a dark band split into inboard and outboard segments. A narrow bright vertical blade at the centreline is the fin seen nearly edge-on. Below it a dark aft bay contains the clustered engine nozzles and the body flap.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro+meso",
+        "affects": "silhouette+surface",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "wing:doubleDelta,elevonSplit; fin; orbEngine:cluster; material.localOverrides: markings"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r2c1.png",
+        "confidence": 0.75
+      },
+      {
+        "id": "zone-r2c2",
+        "kind": "geometry",
+        "description": "Starboard booster lower case and aft skirt. The skirt flares to a visibly larger diameter than the case barrel. A dark rectangular patch sits on the case surface partway up. The starboard wing tip crosses in front of the booster, confirming the wing extends beyond the booster outer envelope.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "silhouette+surface",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "srb:aftSkirtFlare,surfacePatch"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\detail-inventory\\zone-r2c2.png",
+        "confidence": 0.8
+      }
+    ],
+    "note": "Nine grid zones filled from the 3x3 contact sheet. Four zones carry no vehicle surface and are recorded as excluded rather than invented. The component-level inventory with fifteen entries lives in _shuttle/assessment.json and is the one the spec consumes; this grid pass is the spatial cross-check that nothing on the vehicle was missed."
+  },
+  "authoringInstruction": "Filled from direct inspection of each zone crop."
+}

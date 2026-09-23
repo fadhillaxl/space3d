@@ -1,0 +1,149 @@
+{
+  "referenceId": "discovery-ov103",
+  "regions": [
+    {
+      "componentId": "et-lox-barrel",
+      "regionId": "foam",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 300,
+        "y": 150,
+        "width": 45,
+        "height": 55
+      },
+      "family": "plastic",
+      "subtype": "generic-polymer",
+      "finish": "matte",
+      "materialSpecId": "foam-orange",
+      "note": "Verified by sampling: mean (212, 157, 93), a clear tan-orange. Sprayed insulation; nearest registry family is a matte polymer, recorded as an approximation."
+    },
+    {
+      "componentId": "srb-stbd-case",
+      "regionId": "paint",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 385,
+        "y": 400,
+        "width": 20,
+        "height": 65
+      },
+      "family": "coating",
+      "subtype": "paint-over-metal",
+      "finish": "gloss-or-satin",
+      "materialSpecId": "paint-white",
+      "note": "Verified: mean (215, 217, 210), near-neutral white."
+    },
+    {
+      "componentId": "orb-mid-fuselage",
+      "regionId": "light-insulation",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 300,
+        "y": 450,
+        "width": 40,
+        "height": 70
+      },
+      "family": "ceramic",
+      "subtype": "glazed",
+      "finish": "glossy",
+      "materialSpecId": "tile-white",
+      "note": "Verified: mean (207, 209, 203). Registry finish reads glossy; the observed response is matte and the spec keeps the observed value."
+    },
+    {
+      "componentId": "orb-fwd-fuselage",
+      "regionId": "dark-insulation",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 312,
+        "y": 292,
+        "width": 30,
+        "height": 22
+      },
+      "family": "ceramic",
+      "subtype": "glazed",
+      "finish": "glossy",
+      "materialSpecId": "tile-black",
+      "note": "Window placed by searching for pixels below luminance 55 rather than by eye; that search returned x 305 to 349, y 288 to 319 with mean (42, 37, 36)."
+    },
+    {
+      "componentId": "srb-stbd-nozzle",
+      "regionId": "nozzle-liner",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 348,
+        "y": 673,
+        "width": 16,
+        "height": 18
+      },
+      "family": "ceramic",
+      "subtype": "glazed",
+      "finish": "glossy",
+      "materialSpecId": "nozzle-liner",
+      "note": "Window placed by searching for red-dominant pixels in the aft region, which returned mean (112, 41, 48). This is the observation that retires the grey-metal guess made from the night frame."
+    },
+    {
+      "componentId": "micro-orb-insignia",
+      "regionId": "insignia",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 243,
+        "y": 592,
+        "width": 19,
+        "height": 20
+      },
+      "family": "coating",
+      "subtype": "paint-over-metal",
+      "finish": "gloss-or-satin",
+      "materialSpecId": "marking-decal",
+      "note": "NASA insignia disc. Verified: mean (49, 51, 82), clearly blue. In the night frame this glyph was unreadable."
+    },
+    {
+      "componentId": "srb-stbd-frustum",
+      "regionId": "frustum-patch",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 396,
+        "y": 286,
+        "width": 15,
+        "height": 13
+      },
+      "family": "coating",
+      "subtype": "paint-over-metal",
+      "finish": "gloss-or-satin",
+      "materialSpecId": "patch-orange",
+      "note": "Orange square patch on the booster frustum. Small crop, so a lower confidence is expected."
+    },
+    {
+      "componentId": "micro-orb-windows",
+      "regionId": "glazing",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 322,
+        "y": 303,
+        "width": 22,
+        "height": 11
+      },
+      "family": "glass",
+      "subtype": "clear",
+      "finish": "polished",
+      "materialSpecId": "glass-window",
+      "note": "Cabin window band. Only about 240 px, so this crop mixes pane and frame; low confidence is expected and the authored value is kept."
+    },
+    {
+      "componentId": "orb-engine-mount",
+      "regionId": "engine-bay",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+      "bbox": {
+        "x": 315,
+        "y": 660,
+        "width": 25,
+        "height": 30
+      },
+      "family": "metal",
+      "subtype": "steel",
+      "finish": "brushed",
+      "materialSpecId": "engine-metal",
+      "note": "This is the aft bay where the orbiter engine cluster sits, sampled at mean (67, 66, 68). The cluster itself is hidden behind the booster skirts and the platform, so the crop measures a shadowed bay, not the nozzles. Included so the material has real examined pixels rather than none; its albedo is explicitly NOT accepted as colour."
+    }
+  ]
+}

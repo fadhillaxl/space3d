@@ -1,0 +1,92 @@
+[
+ {
+  "n": 1,
+  "pos": [
+   22.0,
+   0.0,
+   0.0
+  ],
+  "layer": "et",
+  "label": "Tangki oksigen cair"
+ },
+ {
+  "n": 2,
+  "pos": [
+   8.0,
+   4.6,
+   0.0
+  ],
+  "layer": "et",
+  "label": "Intertank"
+ },
+ {
+  "n": 3,
+  "pos": [
+   -8.0,
+   -4.6,
+   0.0
+  ],
+  "layer": "et",
+  "label": "Tangki hidrogen cair"
+ },
+ {
+  "n": 4,
+  "pos": [
+   0.0,
+   0.0,
+   7.0
+  ],
+  "layer": "srb",
+  "label": "Solid Rocket Booster"
+ },
+ {
+  "n": 5,
+  "pos": [
+   -29.0,
+   0.0,
+   7.0
+  ],
+  "layer": "srb",
+  "label": "Nosel booster"
+ },
+ {
+  "n": 6,
+  "pos": [
+   16.0,
+   0.0,
+   7.0
+  ],
+  "layer": "srb",
+  "label": "Hidung booster"
+ },
+ {
+  "n": 7,
+  "pos": [
+   -4.0,
+   9.4,
+   0.0
+  ],
+  "layer": "orbiter",
+  "label": "Orbiter Discovery"
+ },
+ {
+  "n": 8,
+  "pos": [
+   -26.5,
+   6.9,
+   0.0
+  ],
+  "layer": "orbiter",
+  "label": "Tiga mesin utama"
+ },
+ {
+  "n": 9,
+  "pos": [
+   6.5,
+   6.2,
+   0.0
+  ],
+  "layer": "strut",
+  "label": "Penopang depan"
+ }
+]

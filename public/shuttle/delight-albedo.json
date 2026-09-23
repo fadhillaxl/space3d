@@ -1,0 +1,175 @@
+{
+  "illuminantEstimate": [
+    219.4,
+    218.4,
+    219.4
+  ],
+  "sensorFloor": [
+    1.1,
+    3.1,
+    2.1
+  ],
+  "rawSamples": {
+    "srb_white_lit": {
+      "mean": [
+        167.3,
+        157.8,
+        155.5
+      ],
+      "p90": [
+        224.0,
+        224.0,
+        223.0
+      ],
+      "n": 700
+    },
+    "srb_white_lit2": {
+      "mean": [
+        195.9,
+        198.0,
+        198.3
+      ],
+      "p90": [
+        217.0,
+        219.0,
+        220.0
+      ],
+      "n": 360
+    },
+    "et_foam_lit": {
+      "mean": [
+        118.9,
+        62.0,
+        36.4
+      ],
+      "p90": [
+        185.0,
+        109.1,
+        57.0
+      ],
+      "n": 720
+    },
+    "et_foam_lit2": {
+      "mean": [
+        125.0,
+        62.0,
+        37.1
+      ],
+      "p90": [
+        152.1,
+        85.0,
+        50.0
+      ],
+      "n": 400
+    },
+    "orb_white_lit": {
+      "mean": [
+        244.1,
+        235.0,
+        234.9
+      ],
+      "p90": [
+        252.0,
+        241.0,
+        241.0
+      ],
+      "n": 900
+    },
+    "orb_white_wing": {
+      "mean": [
+        206.0,
+        203.8,
+        204.7
+      ],
+      "p90": [
+        229.0,
+        227.0,
+        230.1
+      ],
+      "n": 300
+    },
+    "orb_black_nose": {
+      "mean": [
+        31.3,
+        16.3,
+        13.5
+      ],
+      "p90": [
+        88.5,
+        39.3,
+        27.6
+      ],
+      "n": 48
+    },
+    "orb_dark_aft": {
+      "mean": [
+        48.4,
+        45.4,
+        46.2
+      ],
+      "p90": [
+        144.0,
+        144.2,
+        148.1
+      ],
+      "n": 520
+    },
+    "sky": {
+      "mean": [
+        1.1,
+        3.1,
+        2.1
+      ],
+      "p90": [
+        2.0,
+        4.0,
+        3.0
+      ],
+      "n": 3000
+    }
+  },
+  "delitAlbedo": {
+    "srb_white": [
+      178,
+      166,
+      164
+    ],
+    "et_foam": [
+      126,
+      63,
+      37
+    ],
+    "et_foam2": [
+      133,
+      63,
+      37
+    ],
+    "orb_white": [
+      255,
+      250,
+      249
+    ],
+    "orb_wing": [
+      219,
+      216,
+      217
+    ],
+    "orb_black_nose": [
+      32,
+      14,
+      12
+    ],
+    "orb_dark_aft": [
+      51,
+      46,
+      47
+    ]
+  },
+  "method": "white-patch: booster case assumed near-white (reflectance ~0.92); sky mean used as sensor floor and subtracted; every sample divided by the illuminant estimate.",
+  "confidence": 0.55,
+  "limitations": [
+    "Recovers chromaticity, not absolute reflectance. Values are directionally right, not photometric.",
+    "Every sample is from the lit face only. The unlit face carries no signal and was not sampled.",
+    "JPEG chroma subsampling at 400x492 mixes adjacent materials at every boundary, so the two dark samples are contaminated by the white beside them and read lighter than the real tile."
+  ]
+}

@@ -1,0 +1,3107 @@
+{
+  "schemaVersion": 1,
+  "kind": "img2threejs.material-analysis",
+  "referenceId": "shuttle-pad-sts41d",
+  "manifest": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-regions.json",
+  "registry": "C:\\Users\\rakaa\\Downloads\\files\\.claude\\skills\\img2threejs\\docs\\materials\\material-reference.json",
+  "targetThreshold": 0.7,
+  "notObservedMaterials": [],
+  "unresolvedNotObservedMaterials": [],
+  "regions": [
+    {
+      "componentId": "et-lox-barrel",
+      "regionId": "foam",
+      "materialSpecId": "foam-orange",
+      "hypothesis": {
+        "componentId": "et-lox-barrel",
+        "regionId": "foam",
+        "materialId": null,
+        "family": "plastic",
+        "subtype": "generic-polymer",
+        "finish": "matte",
+        "aliases": [],
+        "confidence": 0.829,
+        "source": "vision"
+      },
+      "assignment": {
+        "materialId": "plastic.matte",
+        "status": "proceed",
+        "source": "vision",
+        "confidence": 0.829,
+        "method": "family-subtype-finish",
+        "alternatives": [],
+        "evidence": {
+          "crop": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\00-foam.png",
+            "bbox": {
+              "x": 220,
+              "y": 170,
+              "width": 28,
+              "height": 50
+            },
+            "sourceWidth": 400,
+            "sourceHeight": 492,
+            "loaderWarnings": [],
+            "coverage": 0.0071
+          },
+          "pbr": {
+            "ok": true,
+            "verdict": "pass",
+            "confidence": 0.829,
+            "estimatedFidelity": 0.829,
+            "targetThreshold": 0.7,
+            "materialId": "foam-orange",
+            "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\00-foam.png",
+            "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam",
+            "palette": [
+              "#853A18",
+              "#5B2215",
+              "#B06525",
+              "#230B0A",
+              "#DFD7D5"
+            ],
+            "maps": {
+              "albedo": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_albedo.png",
+                "url": "foam-orange_albedo.png",
+                "channel": "albedo",
+                "source": "reference-pixel-extraction"
+              },
+              "roughness": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_roughness.png",
+                "url": "foam-orange_roughness.png",
+                "channel": "roughness",
+                "source": "reference-pixel-extraction"
+              },
+              "height": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_height.png",
+                "url": "foam-orange_height.png",
+                "channel": "height",
+                "source": "reference-pixel-extraction"
+              },
+              "normal": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_normal.png",
+                "url": "foam-orange_normal.png",
+                "channel": "normal",
+                "source": "reference-pixel-extraction"
+              },
+              "ao": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_ao.png",
+                "url": "foam-orange_ao.png",
+                "channel": "ao",
+                "source": "reference-pixel-extraction"
+              }
+            },
+            "diagnostics": {
+              "sourceWidth": 28,
+              "sourceHeight": 50,
+              "mapSize": 512,
+              "cropBBoxPixels": {
+                "x": 0,
+                "y": 0,
+                "width": 28,
+                "height": 50
+              },
+              "mask": {
+                "backgroundColor": "#92441D",
+                "backgroundNoise": 66.88,
+                "transparentPixelFraction": 0.0,
+                "foregroundCoverage": 0.9821
+              },
+              "mapStats": {
+                "valueRange": 0.803,
+                "heightP90Gradient": 0.03542,
+                "roughnessBase": 0.698,
+                "roughnessVariation": 0.06,
+                "normalStrength": 0.198,
+                "blurRadius": 10
+              },
+              "palette": [
+                "#853A18",
+                "#5B2215",
+                "#B06525",
+                "#230B0A",
+                "#DFD7D5"
+              ]
+            },
+            "warnings": [
+              "image is not clearly isolated from background; using most pixels as material evidence",
+              "object/background separation is weak",
+              "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+            ],
+            "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+          },
+          "texture": {
+            "finishClass": "painted-metal",
+            "recipe": {
+              "metalness": 0.0,
+              "roughness": 0.5,
+              "clearcoat": 1.0,
+              "clearcoatRoughness": 0.05,
+              "transmission": 0.0,
+              "ior": 1.5,
+              "envMapIntensity": 1.0,
+              "anisotropy": 0.0,
+              "procedural": "flat-clearcoat"
+            },
+            "palette": [
+              "#8B3F18",
+              "#93461B",
+              "#5F2515",
+              "#4B241A",
+              "#AB8575"
+            ],
+            "paletteHueRisk": [],
+            "gradientAxis": "vertical",
+            "stats": {
+              "meanLum": 82.3,
+              "meanSaturation": 0.714,
+              "gradientStrength": 0.423,
+              "mottle": 0.019,
+              "streakRatio": 0.58,
+              "hueSpread": 0.018,
+              "specularFraction": 0.002
+            }
+          }
+        },
+        "profileId": "plastic.matte",
+        "family": "plastic",
+        "subtype": "generic-polymer",
+        "finish": "matte",
+        "renderPrior": {
+          "metalness": 0.0,
+          "roughness": 0.68,
+          "ior": 1.5
+        },
+        "requiredMaps": [
+          "map",
+          "roughnessMap"
+        ],
+        "optionalMaps": [
+          "normalMap",
+          "aoMap"
+        ],
+        "validationViews": [
+          "albedo-unlit",
+          "neutral-studio",
+          "grazing"
+        ],
+        "sourceRefs": [
+          "three.mesh-standard",
+          "adobe.pbr-guide-1",
+          "google.filament-pbr",
+          "mit.material-recognition"
+        ],
+        "visualCues": [
+          "coloured diffuse body",
+          "broad neutral highlight",
+          "mold seams or fine stipple"
+        ]
+      },
+      "observations": [
+        "chromatic base-colour response",
+        "strong image-space gradient; verify it is material pattern, not lighting",
+        "single-image PBR inference requires controlled render validation"
+      ],
+      "crop": {
+        "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\00-foam.png",
+        "bbox": {
+          "x": 220,
+          "y": 170,
+          "width": 28,
+          "height": 50
+        },
+        "sourceWidth": 400,
+        "sourceHeight": 492,
+        "loaderWarnings": [],
+        "coverage": 0.0071
+      },
+      "textureAnalysis": {
+        "finishClass": "painted-metal",
+        "recipe": {
+          "metalness": 0.0,
+          "roughness": 0.5,
+          "clearcoat": 1.0,
+          "clearcoatRoughness": 0.05,
+          "transmission": 0.0,
+          "ior": 1.5,
+          "envMapIntensity": 1.0,
+          "anisotropy": 0.0,
+          "procedural": "flat-clearcoat"
+        },
+        "palette": [
+          "#8B3F18",
+          "#93461B",
+          "#5F2515",
+          "#4B241A",
+          "#AB8575"
+        ],
+        "paletteHueRisk": [],
+        "gradientAxis": "vertical",
+        "stats": {
+          "meanLum": 82.3,
+          "meanSaturation": 0.714,
+          "gradientStrength": 0.423,
+          "mottle": 0.019,
+          "streakRatio": 0.58,
+          "hueSpread": 0.018,
+          "specularFraction": 0.002
+        }
+      },
+      "pbrReport": {
+        "ok": true,
+        "verdict": "pass",
+        "confidence": 0.829,
+        "estimatedFidelity": 0.829,
+        "targetThreshold": 0.7,
+        "materialId": "foam-orange",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\00-foam.png",
+        "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam",
+        "palette": [
+          "#853A18",
+          "#5B2215",
+          "#B06525",
+          "#230B0A",
+          "#DFD7D5"
+        ],
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_albedo.png",
+            "url": "foam-orange_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_roughness.png",
+            "url": "foam-orange_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_height.png",
+            "url": "foam-orange_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_normal.png",
+            "url": "foam-orange_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_ao.png",
+            "url": "foam-orange_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 28,
+          "sourceHeight": 50,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 28,
+            "height": 50
+          },
+          "mask": {
+            "backgroundColor": "#92441D",
+            "backgroundNoise": 66.88,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.9821
+          },
+          "mapStats": {
+            "valueRange": 0.803,
+            "heightP90Gradient": 0.03542,
+            "roughnessBase": 0.698,
+            "roughnessVariation": 0.06,
+            "normalStrength": 0.198,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#853A18",
+            "#5B2215",
+            "#B06525",
+            "#230B0A",
+            "#DFD7D5"
+          ]
+        },
+        "warnings": [
+          "image is not clearly isolated from background; using most pixels as material evidence",
+          "object/background separation is weak",
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ],
+        "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+      },
+      "referencePbr": {
+        "version": "1.0",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\00-foam.png",
+        "extractor": "stage1_intake/extract_pbr_evidence.py",
+        "method": "single-image pixel evidence with de-lighting estimate; not photogrammetry",
+        "usable": true,
+        "verdict": "pass",
+        "confidence": 0.829,
+        "estimatedFidelity": 0.829,
+        "targetThreshold": 0.7,
+        "hardLimit": "A single image cannot uniquely recover true albedo/roughness/normal/AO; maps are reference-derived estimates.",
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_albedo.png",
+            "url": "foam-orange_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_roughness.png",
+            "url": "foam-orange_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_height.png",
+            "url": "foam-orange_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_normal.png",
+            "url": "foam-orange_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_ao.png",
+            "url": "foam-orange_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 28,
+          "sourceHeight": 50,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 28,
+            "height": 50
+          },
+          "mask": {
+            "backgroundColor": "#92441D",
+            "backgroundNoise": 66.88,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.9821
+          },
+          "mapStats": {
+            "valueRange": 0.803,
+            "heightP90Gradient": 0.03542,
+            "roughnessBase": 0.698,
+            "roughnessVariation": 0.06,
+            "normalStrength": 0.198,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#853A18",
+            "#5B2215",
+            "#B06525",
+            "#230B0A",
+            "#DFD7D5"
+          ]
+        },
+        "warnings": [
+          "image is not clearly isolated from background; using most pixels as material evidence",
+          "object/background separation is weak",
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ]
+      },
+      "maps": {
+        "albedo": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_albedo.png",
+          "url": "foam-orange_albedo.png",
+          "channel": "albedo",
+          "source": "reference-pixel-extraction"
+        },
+        "roughness": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_roughness.png",
+          "url": "foam-orange_roughness.png",
+          "channel": "roughness",
+          "source": "reference-pixel-extraction"
+        },
+        "height": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_height.png",
+          "url": "foam-orange_height.png",
+          "channel": "height",
+          "source": "reference-pixel-extraction"
+        },
+        "normal": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_normal.png",
+          "url": "foam-orange_normal.png",
+          "channel": "normal",
+          "source": "reference-pixel-extraction"
+        },
+        "ao": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-00-foam\\foam-orange_ao.png",
+          "url": "foam-orange_ao.png",
+          "channel": "ao",
+          "source": "reference-pixel-extraction"
+        }
+      }
+    },
+    {
+      "componentId": "srb-port-case",
+      "regionId": "paint",
+      "materialSpecId": "paint-white",
+      "hypothesis": {
+        "componentId": "srb-port-case",
+        "regionId": "paint",
+        "materialId": null,
+        "family": "coating",
+        "subtype": "paint-over-metal",
+        "finish": "gloss-or-satin",
+        "aliases": [],
+        "confidence": 0.804,
+        "source": "vision"
+      },
+      "assignment": {
+        "materialId": "coating.painted-metal",
+        "status": "proceed",
+        "source": "vision",
+        "confidence": 0.804,
+        "method": "family-subtype-finish",
+        "alternatives": [],
+        "evidence": {
+          "crop": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\01-paint.png",
+            "bbox": {
+              "x": 166,
+              "y": 296,
+              "width": 18,
+              "height": 38
+            },
+            "sourceWidth": 400,
+            "sourceHeight": 492,
+            "loaderWarnings": [],
+            "coverage": 0.0035
+          },
+          "pbr": {
+            "ok": true,
+            "verdict": "pass",
+            "confidence": 0.804,
+            "estimatedFidelity": 0.804,
+            "targetThreshold": 0.7,
+            "materialId": "paint-white",
+            "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\01-paint.png",
+            "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint",
+            "palette": [
+              "#D8D9DB",
+              "#DBDDDE",
+              "#D6DBDC",
+              "#E0E1E3",
+              "#6B6769"
+            ],
+            "maps": {
+              "albedo": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_albedo.png",
+                "url": "paint-white_albedo.png",
+                "channel": "albedo",
+                "source": "reference-pixel-extraction"
+              },
+              "roughness": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_roughness.png",
+                "url": "paint-white_roughness.png",
+                "channel": "roughness",
+                "source": "reference-pixel-extraction"
+              },
+              "height": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_height.png",
+                "url": "paint-white_height.png",
+                "channel": "height",
+                "source": "reference-pixel-extraction"
+              },
+              "normal": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_normal.png",
+                "url": "paint-white_normal.png",
+                "channel": "normal",
+                "source": "reference-pixel-extraction"
+              },
+              "ao": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_ao.png",
+                "url": "paint-white_ao.png",
+                "channel": "ao",
+                "source": "reference-pixel-extraction"
+              }
+            },
+            "diagnostics": {
+              "sourceWidth": 18,
+              "sourceHeight": 38,
+              "mapSize": 512,
+              "cropBBoxPixels": {
+                "x": 0,
+                "y": 0,
+                "width": 18,
+                "height": 38
+              },
+              "mask": {
+                "backgroundColor": "#B4B5B3",
+                "backgroundNoise": 24.617,
+                "transparentPixelFraction": 0.0,
+                "foregroundCoverage": 0.2018
+              },
+              "mapStats": {
+                "valueRange": 0.4765,
+                "heightP90Gradient": 0.00481,
+                "roughnessBase": 0.68,
+                "roughnessVariation": 0.05,
+                "normalStrength": 0.162,
+                "blurRadius": 10
+              },
+              "palette": [
+                "#D8D9DB",
+                "#DBDDDE",
+                "#D6DBDC",
+                "#E0E1E3",
+                "#6B6769"
+              ]
+            },
+            "warnings": [
+              "single-image inverse rendering cannot prove true physical PBR; confidence is capped",
+              "low high-frequency detail weakens normal/roughness inference"
+            ],
+            "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+          },
+          "texture": {
+            "finishClass": "brushed-steel",
+            "recipe": {
+              "metalness": 1.0,
+              "roughness": 0.35,
+              "clearcoat": 0.0,
+              "clearcoatRoughness": 0.0,
+              "transmission": 0.0,
+              "ior": 1.5,
+              "envMapIntensity": 1.0,
+              "anisotropy": 1.0,
+              "procedural": "brushed"
+            },
+            "palette": [
+              "#CBCDCE",
+              "#9D9C9C",
+              "#BFC1C0",
+              "#BDC0BF",
+              "#BCBCBA"
+            ],
+            "paletteHueRisk": [],
+            "gradientAxis": "vertical",
+            "stats": {
+              "meanLum": 191.2,
+              "meanSaturation": 0.023,
+              "gradientStrength": 0.265,
+              "mottle": 0.007,
+              "streakRatio": 0.45,
+              "hueSpread": 0.0,
+              "specularFraction": 0.0
+            }
+          }
+        },
+        "profileId": "coating.painted-metal",
+        "family": "coating",
+        "subtype": "paint-over-metal",
+        "finish": "gloss-or-satin",
+        "renderPrior": {
+          "metalness": 0.0,
+          "roughness": 0.45,
+          "clearcoat": 0.75,
+          "clearcoatRoughness": 0.12,
+          "ior": 1.5
+        },
+        "requiredMaps": [
+          "map",
+          "roughnessMap"
+        ],
+        "optionalMaps": [
+          "normalMap",
+          "clearcoatMap",
+          "clearcoatRoughnessMap",
+          "metalnessMap"
+        ],
+        "validationViews": [
+          "albedo-unlit",
+          "neutral-studio",
+          "grazing",
+          "environment-reflection",
+          "reference-beauty"
+        ],
+        "sourceRefs": [
+          "three.mesh-physical",
+          "gltf.2",
+          "khronos.gltf-pbr",
+          "adobe.pbr-guide-1",
+          "adobe.pbr-guide-2"
+        ],
+        "visualCues": [
+          "diffuse paint colour under a separate glossy coat",
+          "chips may expose metallic substrate"
+        ]
+      },
+      "observations": [
+        "near-neutral colour response",
+        "directional surface frequency",
+        "strong image-space gradient; verify it is material pattern, not lighting",
+        "single-image PBR inference requires controlled render validation"
+      ],
+      "crop": {
+        "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\01-paint.png",
+        "bbox": {
+          "x": 166,
+          "y": 296,
+          "width": 18,
+          "height": 38
+        },
+        "sourceWidth": 400,
+        "sourceHeight": 492,
+        "loaderWarnings": [],
+        "coverage": 0.0035
+      },
+      "textureAnalysis": {
+        "finishClass": "brushed-steel",
+        "recipe": {
+          "metalness": 1.0,
+          "roughness": 0.35,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.0,
+          "transmission": 0.0,
+          "ior": 1.5,
+          "envMapIntensity": 1.0,
+          "anisotropy": 1.0,
+          "procedural": "brushed"
+        },
+        "palette": [
+          "#CBCDCE",
+          "#9D9C9C",
+          "#BFC1C0",
+          "#BDC0BF",
+          "#BCBCBA"
+        ],
+        "paletteHueRisk": [],
+        "gradientAxis": "vertical",
+        "stats": {
+          "meanLum": 191.2,
+          "meanSaturation": 0.023,
+          "gradientStrength": 0.265,
+          "mottle": 0.007,
+          "streakRatio": 0.45,
+          "hueSpread": 0.0,
+          "specularFraction": 0.0
+        }
+      },
+      "pbrReport": {
+        "ok": true,
+        "verdict": "pass",
+        "confidence": 0.804,
+        "estimatedFidelity": 0.804,
+        "targetThreshold": 0.7,
+        "materialId": "paint-white",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\01-paint.png",
+        "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint",
+        "palette": [
+          "#D8D9DB",
+          "#DBDDDE",
+          "#D6DBDC",
+          "#E0E1E3",
+          "#6B6769"
+        ],
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_albedo.png",
+            "url": "paint-white_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_roughness.png",
+            "url": "paint-white_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_height.png",
+            "url": "paint-white_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_normal.png",
+            "url": "paint-white_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_ao.png",
+            "url": "paint-white_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 18,
+          "sourceHeight": 38,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 18,
+            "height": 38
+          },
+          "mask": {
+            "backgroundColor": "#B4B5B3",
+            "backgroundNoise": 24.617,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.2018
+          },
+          "mapStats": {
+            "valueRange": 0.4765,
+            "heightP90Gradient": 0.00481,
+            "roughnessBase": 0.68,
+            "roughnessVariation": 0.05,
+            "normalStrength": 0.162,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#D8D9DB",
+            "#DBDDDE",
+            "#D6DBDC",
+            "#E0E1E3",
+            "#6B6769"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped",
+          "low high-frequency detail weakens normal/roughness inference"
+        ],
+        "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+      },
+      "referencePbr": {
+        "version": "1.0",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\01-paint.png",
+        "extractor": "stage1_intake/extract_pbr_evidence.py",
+        "method": "single-image pixel evidence with de-lighting estimate; not photogrammetry",
+        "usable": true,
+        "verdict": "pass",
+        "confidence": 0.804,
+        "estimatedFidelity": 0.804,
+        "targetThreshold": 0.7,
+        "hardLimit": "A single image cannot uniquely recover true albedo/roughness/normal/AO; maps are reference-derived estimates.",
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_albedo.png",
+            "url": "paint-white_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_roughness.png",
+            "url": "paint-white_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_height.png",
+            "url": "paint-white_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_normal.png",
+            "url": "paint-white_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_ao.png",
+            "url": "paint-white_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 18,
+          "sourceHeight": 38,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 18,
+            "height": 38
+          },
+          "mask": {
+            "backgroundColor": "#B4B5B3",
+            "backgroundNoise": 24.617,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.2018
+          },
+          "mapStats": {
+            "valueRange": 0.4765,
+            "heightP90Gradient": 0.00481,
+            "roughnessBase": 0.68,
+            "roughnessVariation": 0.05,
+            "normalStrength": 0.162,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#D8D9DB",
+            "#DBDDDE",
+            "#D6DBDC",
+            "#E0E1E3",
+            "#6B6769"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped",
+          "low high-frequency detail weakens normal/roughness inference"
+        ]
+      },
+      "maps": {
+        "albedo": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_albedo.png",
+          "url": "paint-white_albedo.png",
+          "channel": "albedo",
+          "source": "reference-pixel-extraction"
+        },
+        "roughness": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_roughness.png",
+          "url": "paint-white_roughness.png",
+          "channel": "roughness",
+          "source": "reference-pixel-extraction"
+        },
+        "height": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_height.png",
+          "url": "paint-white_height.png",
+          "channel": "height",
+          "source": "reference-pixel-extraction"
+        },
+        "normal": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_normal.png",
+          "url": "paint-white_normal.png",
+          "channel": "normal",
+          "source": "reference-pixel-extraction"
+        },
+        "ao": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-01-paint\\paint-white_ao.png",
+          "url": "paint-white_ao.png",
+          "channel": "ao",
+          "source": "reference-pixel-extraction"
+        }
+      }
+    },
+    {
+      "componentId": "orb-mid-fuselage",
+      "regionId": "light-insulation",
+      "materialSpecId": "tile-white",
+      "hypothesis": {
+        "componentId": "orb-mid-fuselage",
+        "regionId": "light-insulation",
+        "materialId": null,
+        "family": "ceramic",
+        "subtype": "glazed",
+        "finish": "glossy",
+        "aliases": [],
+        "confidence": 0.768,
+        "source": "vision"
+      },
+      "assignment": {
+        "materialId": "ceramic.glazed",
+        "status": "proceed",
+        "source": "vision",
+        "confidence": 0.768,
+        "method": "family-subtype-finish",
+        "alternatives": [],
+        "evidence": {
+          "crop": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\02-light-insulation.png",
+            "bbox": {
+              "x": 200,
+              "y": 330,
+              "width": 30,
+              "height": 30
+            },
+            "sourceWidth": 400,
+            "sourceHeight": 492,
+            "loaderWarnings": [],
+            "coverage": 0.0046
+          },
+          "pbr": {
+            "ok": true,
+            "verdict": "pass",
+            "confidence": 0.768,
+            "estimatedFidelity": 0.768,
+            "targetThreshold": 0.7,
+            "materialId": "tile-white",
+            "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\02-light-insulation.png",
+            "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation",
+            "palette": [
+              "#CFCDCE",
+              "#C6C5C5",
+              "#D6D5D5",
+              "#BAB9B9",
+              "#DDDCDD"
+            ],
+            "maps": {
+              "albedo": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_albedo.png",
+                "url": "tile-white_albedo.png",
+                "channel": "albedo",
+                "source": "reference-pixel-extraction"
+              },
+              "roughness": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_roughness.png",
+                "url": "tile-white_roughness.png",
+                "channel": "roughness",
+                "source": "reference-pixel-extraction"
+              },
+              "height": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_height.png",
+                "url": "tile-white_height.png",
+                "channel": "height",
+                "source": "reference-pixel-extraction"
+              },
+              "normal": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_normal.png",
+                "url": "tile-white_normal.png",
+                "channel": "normal",
+                "source": "reference-pixel-extraction"
+              },
+              "ao": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_ao.png",
+                "url": "tile-white_ao.png",
+                "channel": "ao",
+                "source": "reference-pixel-extraction"
+              }
+            },
+            "diagnostics": {
+              "sourceWidth": 30,
+              "sourceHeight": 30,
+              "mapSize": 512,
+              "cropBBoxPixels": {
+                "x": 0,
+                "y": 4,
+                "width": 9,
+                "height": 18
+              },
+              "mask": {
+                "backgroundColor": "#F8EEEE",
+                "backgroundNoise": 13.153,
+                "transparentPixelFraction": 0.0,
+                "foregroundCoverage": 0.07
+              },
+              "mapStats": {
+                "valueRange": 0.1454,
+                "heightP90Gradient": 0.04931,
+                "roughnessBase": 0.68,
+                "roughnessVariation": 0.096,
+                "normalStrength": 0.214,
+                "blurRadius": 10
+              },
+              "palette": [
+                "#CFCDCE",
+                "#C6C5C5",
+                "#D6D5D5",
+                "#BAB9B9",
+                "#DDDCDD"
+              ]
+            },
+            "warnings": [
+              "foreground mask is very small",
+              "single-image inverse rendering cannot prove true physical PBR; confidence is capped",
+              "low value range weakens height/roughness inference"
+            ],
+            "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+          },
+          "texture": {
+            "finishClass": "brushed-steel",
+            "recipe": {
+              "metalness": 1.0,
+              "roughness": 0.35,
+              "clearcoat": 0.0,
+              "clearcoatRoughness": 0.0,
+              "transmission": 0.0,
+              "ior": 1.5,
+              "envMapIntensity": 1.0,
+              "anisotropy": 1.0,
+              "procedural": "brushed"
+            },
+            "palette": [
+              "#E1DFE0",
+              "#C8C6C7",
+              "#DEDCDD",
+              "#C0C0C0",
+              "#E5E0DF"
+            ],
+            "paletteHueRisk": [],
+            "gradientAxis": "vertical",
+            "stats": {
+              "meanLum": 213.4,
+              "meanSaturation": 0.014,
+              "gradientStrength": 0.138,
+              "mottle": 0.003,
+              "streakRatio": 0.35,
+              "hueSpread": 0.0,
+              "specularFraction": 0.04
+            }
+          }
+        },
+        "profileId": "ceramic.glazed",
+        "family": "ceramic",
+        "subtype": "glazed",
+        "finish": "glossy",
+        "renderPrior": {
+          "metalness": 0.0,
+          "roughness": 0.26,
+          "clearcoat": 0.7,
+          "clearcoatRoughness": 0.12,
+          "ior": 1.5
+        },
+        "requiredMaps": [
+          "map",
+          "roughnessMap"
+        ],
+        "optionalMaps": [
+          "normalMap",
+          "clearcoatMap",
+          "clearcoatRoughnessMap"
+        ],
+        "validationViews": [
+          "neutral-studio",
+          "grazing",
+          "environment-reflection",
+          "reference-beauty"
+        ],
+        "sourceRefs": [
+          "three.mesh-physical",
+          "adobe.pbr-guide-1",
+          "google.filament-pbr"
+        ],
+        "visualCues": [
+          "hard dielectric body",
+          "smooth glaze reflection",
+          "small chips reveal matte body"
+        ]
+      },
+      "observations": [
+        "near-neutral colour response",
+        "directional surface frequency",
+        "single-image PBR inference requires controlled render validation"
+      ],
+      "crop": {
+        "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\02-light-insulation.png",
+        "bbox": {
+          "x": 200,
+          "y": 330,
+          "width": 30,
+          "height": 30
+        },
+        "sourceWidth": 400,
+        "sourceHeight": 492,
+        "loaderWarnings": [],
+        "coverage": 0.0046
+      },
+      "textureAnalysis": {
+        "finishClass": "brushed-steel",
+        "recipe": {
+          "metalness": 1.0,
+          "roughness": 0.35,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.0,
+          "transmission": 0.0,
+          "ior": 1.5,
+          "envMapIntensity": 1.0,
+          "anisotropy": 1.0,
+          "procedural": "brushed"
+        },
+        "palette": [
+          "#E1DFE0",
+          "#C8C6C7",
+          "#DEDCDD",
+          "#C0C0C0",
+          "#E5E0DF"
+        ],
+        "paletteHueRisk": [],
+        "gradientAxis": "vertical",
+        "stats": {
+          "meanLum": 213.4,
+          "meanSaturation": 0.014,
+          "gradientStrength": 0.138,
+          "mottle": 0.003,
+          "streakRatio": 0.35,
+          "hueSpread": 0.0,
+          "specularFraction": 0.04
+        }
+      },
+      "pbrReport": {
+        "ok": true,
+        "verdict": "pass",
+        "confidence": 0.768,
+        "estimatedFidelity": 0.768,
+        "targetThreshold": 0.7,
+        "materialId": "tile-white",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\02-light-insulation.png",
+        "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation",
+        "palette": [
+          "#CFCDCE",
+          "#C6C5C5",
+          "#D6D5D5",
+          "#BAB9B9",
+          "#DDDCDD"
+        ],
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_albedo.png",
+            "url": "tile-white_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_roughness.png",
+            "url": "tile-white_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_height.png",
+            "url": "tile-white_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_normal.png",
+            "url": "tile-white_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_ao.png",
+            "url": "tile-white_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 30,
+          "sourceHeight": 30,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 4,
+            "width": 9,
+            "height": 18
+          },
+          "mask": {
+            "backgroundColor": "#F8EEEE",
+            "backgroundNoise": 13.153,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.07
+          },
+          "mapStats": {
+            "valueRange": 0.1454,
+            "heightP90Gradient": 0.04931,
+            "roughnessBase": 0.68,
+            "roughnessVariation": 0.096,
+            "normalStrength": 0.214,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#CFCDCE",
+            "#C6C5C5",
+            "#D6D5D5",
+            "#BAB9B9",
+            "#DDDCDD"
+          ]
+        },
+        "warnings": [
+          "foreground mask is very small",
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped",
+          "low value range weakens height/roughness inference"
+        ],
+        "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+      },
+      "referencePbr": {
+        "version": "1.0",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\02-light-insulation.png",
+        "extractor": "stage1_intake/extract_pbr_evidence.py",
+        "method": "single-image pixel evidence with de-lighting estimate; not photogrammetry",
+        "usable": true,
+        "verdict": "pass",
+        "confidence": 0.768,
+        "estimatedFidelity": 0.768,
+        "targetThreshold": 0.7,
+        "hardLimit": "A single image cannot uniquely recover true albedo/roughness/normal/AO; maps are reference-derived estimates.",
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_albedo.png",
+            "url": "tile-white_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_roughness.png",
+            "url": "tile-white_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_height.png",
+            "url": "tile-white_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_normal.png",
+            "url": "tile-white_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_ao.png",
+            "url": "tile-white_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 30,
+          "sourceHeight": 30,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 4,
+            "width": 9,
+            "height": 18
+          },
+          "mask": {
+            "backgroundColor": "#F8EEEE",
+            "backgroundNoise": 13.153,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.07
+          },
+          "mapStats": {
+            "valueRange": 0.1454,
+            "heightP90Gradient": 0.04931,
+            "roughnessBase": 0.68,
+            "roughnessVariation": 0.096,
+            "normalStrength": 0.214,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#CFCDCE",
+            "#C6C5C5",
+            "#D6D5D5",
+            "#BAB9B9",
+            "#DDDCDD"
+          ]
+        },
+        "warnings": [
+          "foreground mask is very small",
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped",
+          "low value range weakens height/roughness inference"
+        ]
+      },
+      "maps": {
+        "albedo": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_albedo.png",
+          "url": "tile-white_albedo.png",
+          "channel": "albedo",
+          "source": "reference-pixel-extraction"
+        },
+        "roughness": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_roughness.png",
+          "url": "tile-white_roughness.png",
+          "channel": "roughness",
+          "source": "reference-pixel-extraction"
+        },
+        "height": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_height.png",
+          "url": "tile-white_height.png",
+          "channel": "height",
+          "source": "reference-pixel-extraction"
+        },
+        "normal": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_normal.png",
+          "url": "tile-white_normal.png",
+          "channel": "normal",
+          "source": "reference-pixel-extraction"
+        },
+        "ao": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-02-light-insulation\\tile-white_ao.png",
+          "url": "tile-white_ao.png",
+          "channel": "ao",
+          "source": "reference-pixel-extraction"
+        }
+      }
+    },
+    {
+      "componentId": "orb-fwd-fuselage",
+      "regionId": "dark-insulation",
+      "materialSpecId": "tile-black",
+      "hypothesis": {
+        "componentId": "orb-fwd-fuselage",
+        "regionId": "dark-insulation",
+        "materialId": null,
+        "family": "ceramic",
+        "subtype": "glazed",
+        "finish": "glossy",
+        "aliases": [],
+        "confidence": 0.824,
+        "source": "vision"
+      },
+      "assignment": {
+        "materialId": "ceramic.glazed",
+        "status": "proceed",
+        "source": "vision",
+        "confidence": 0.824,
+        "method": "family-subtype-finish",
+        "alternatives": [],
+        "evidence": {
+          "crop": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\03-dark-insulation.png",
+            "bbox": {
+              "x": 209,
+              "y": 194,
+              "width": 12,
+              "height": 10
+            },
+            "sourceWidth": 400,
+            "sourceHeight": 492,
+            "loaderWarnings": [],
+            "coverage": 0.0006
+          },
+          "pbr": {
+            "ok": true,
+            "verdict": "pass",
+            "confidence": 0.824,
+            "estimatedFidelity": 0.824,
+            "targetThreshold": 0.7,
+            "materialId": "tile-black",
+            "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\03-dark-insulation.png",
+            "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation",
+            "palette": [
+              "#61281A",
+              "#080404",
+              "#180908",
+              "#291E1C",
+              "#CEC8C4"
+            ],
+            "maps": {
+              "albedo": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_albedo.png",
+                "url": "tile-black_albedo.png",
+                "channel": "albedo",
+                "source": "reference-pixel-extraction"
+              },
+              "roughness": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_roughness.png",
+                "url": "tile-black_roughness.png",
+                "channel": "roughness",
+                "source": "reference-pixel-extraction"
+              },
+              "height": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_height.png",
+                "url": "tile-black_height.png",
+                "channel": "height",
+                "source": "reference-pixel-extraction"
+              },
+              "normal": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_normal.png",
+                "url": "tile-black_normal.png",
+                "channel": "normal",
+                "source": "reference-pixel-extraction"
+              },
+              "ao": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_ao.png",
+                "url": "tile-black_ao.png",
+                "channel": "ao",
+                "source": "reference-pixel-extraction"
+              }
+            },
+            "diagnostics": {
+              "sourceWidth": 12,
+              "sourceHeight": 10,
+              "mapSize": 512,
+              "cropBBoxPixels": {
+                "x": 0,
+                "y": 0,
+                "width": 12,
+                "height": 10
+              },
+              "mask": {
+                "backgroundColor": "#5C221B",
+                "backgroundNoise": 99.925,
+                "transparentPixelFraction": 0.0,
+                "foregroundCoverage": 0.8417
+              },
+              "mapStats": {
+                "valueRange": 0.2623,
+                "heightP90Gradient": 0.05121,
+                "roughnessBase": 0.692,
+                "roughnessVariation": 0.083,
+                "normalStrength": 0.216,
+                "blurRadius": 10
+              },
+              "palette": [
+                "#61281A",
+                "#080404",
+                "#180908",
+                "#291E1C",
+                "#CEC8C4"
+              ]
+            },
+            "warnings": [
+              "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+            ],
+            "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+          },
+          "texture": {
+            "finishClass": "painted-metal",
+            "recipe": {
+              "metalness": 0.0,
+              "roughness": 0.5,
+              "clearcoat": 1.0,
+              "clearcoatRoughness": 0.05,
+              "transmission": 0.0,
+              "ior": 1.5,
+              "envMapIntensity": 1.0,
+              "anisotropy": 0.0,
+              "procedural": "flat-clearcoat"
+            },
+            "palette": [
+              "#60352B",
+              "#2A100B",
+              "#28110A",
+              "#392B27",
+              "#756966"
+            ],
+            "paletteHueRisk": [],
+            "gradientAxis": "vertical",
+            "stats": {
+              "meanLum": 46.6,
+              "meanSaturation": 0.58,
+              "gradientStrength": 0.361,
+              "mottle": 0.012,
+              "streakRatio": 1.07,
+              "hueSpread": 0.257,
+              "specularFraction": 0.0
+            }
+          }
+        },
+        "profileId": "ceramic.glazed",
+        "family": "ceramic",
+        "subtype": "glazed",
+        "finish": "glossy",
+        "renderPrior": {
+          "metalness": 0.0,
+          "roughness": 0.26,
+          "clearcoat": 0.7,
+          "clearcoatRoughness": 0.12,
+          "ior": 1.5
+        },
+        "requiredMaps": [
+          "map",
+          "roughnessMap"
+        ],
+        "optionalMaps": [
+          "normalMap",
+          "clearcoatMap",
+          "clearcoatRoughnessMap"
+        ],
+        "validationViews": [
+          "neutral-studio",
+          "grazing",
+          "environment-reflection",
+          "reference-beauty"
+        ],
+        "sourceRefs": [
+          "three.mesh-physical",
+          "adobe.pbr-guide-1",
+          "google.filament-pbr"
+        ],
+        "visualCues": [
+          "hard dielectric body",
+          "smooth glaze reflection",
+          "small chips reveal matte body"
+        ]
+      },
+      "observations": [
+        "chromatic base-colour response",
+        "strong image-space gradient; verify it is material pattern, not lighting",
+        "single-image PBR inference requires controlled render validation"
+      ],
+      "crop": {
+        "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\03-dark-insulation.png",
+        "bbox": {
+          "x": 209,
+          "y": 194,
+          "width": 12,
+          "height": 10
+        },
+        "sourceWidth": 400,
+        "sourceHeight": 492,
+        "loaderWarnings": [],
+        "coverage": 0.0006
+      },
+      "textureAnalysis": {
+        "finishClass": "painted-metal",
+        "recipe": {
+          "metalness": 0.0,
+          "roughness": 0.5,
+          "clearcoat": 1.0,
+          "clearcoatRoughness": 0.05,
+          "transmission": 0.0,
+          "ior": 1.5,
+          "envMapIntensity": 1.0,
+          "anisotropy": 0.0,
+          "procedural": "flat-clearcoat"
+        },
+        "palette": [
+          "#60352B",
+          "#2A100B",
+          "#28110A",
+          "#392B27",
+          "#756966"
+        ],
+        "paletteHueRisk": [],
+        "gradientAxis": "vertical",
+        "stats": {
+          "meanLum": 46.6,
+          "meanSaturation": 0.58,
+          "gradientStrength": 0.361,
+          "mottle": 0.012,
+          "streakRatio": 1.07,
+          "hueSpread": 0.257,
+          "specularFraction": 0.0
+        }
+      },
+      "pbrReport": {
+        "ok": true,
+        "verdict": "pass",
+        "confidence": 0.824,
+        "estimatedFidelity": 0.824,
+        "targetThreshold": 0.7,
+        "materialId": "tile-black",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\03-dark-insulation.png",
+        "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation",
+        "palette": [
+          "#61281A",
+          "#080404",
+          "#180908",
+          "#291E1C",
+          "#CEC8C4"
+        ],
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_albedo.png",
+            "url": "tile-black_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_roughness.png",
+            "url": "tile-black_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_height.png",
+            "url": "tile-black_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_normal.png",
+            "url": "tile-black_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_ao.png",
+            "url": "tile-black_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 12,
+          "sourceHeight": 10,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 10
+          },
+          "mask": {
+            "backgroundColor": "#5C221B",
+            "backgroundNoise": 99.925,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.8417
+          },
+          "mapStats": {
+            "valueRange": 0.2623,
+            "heightP90Gradient": 0.05121,
+            "roughnessBase": 0.692,
+            "roughnessVariation": 0.083,
+            "normalStrength": 0.216,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#61281A",
+            "#080404",
+            "#180908",
+            "#291E1C",
+            "#CEC8C4"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ],
+        "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+      },
+      "referencePbr": {
+        "version": "1.0",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\03-dark-insulation.png",
+        "extractor": "stage1_intake/extract_pbr_evidence.py",
+        "method": "single-image pixel evidence with de-lighting estimate; not photogrammetry",
+        "usable": true,
+        "verdict": "pass",
+        "confidence": 0.824,
+        "estimatedFidelity": 0.824,
+        "targetThreshold": 0.7,
+        "hardLimit": "A single image cannot uniquely recover true albedo/roughness/normal/AO; maps are reference-derived estimates.",
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_albedo.png",
+            "url": "tile-black_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_roughness.png",
+            "url": "tile-black_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_height.png",
+            "url": "tile-black_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_normal.png",
+            "url": "tile-black_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_ao.png",
+            "url": "tile-black_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 12,
+          "sourceHeight": 10,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 10
+          },
+          "mask": {
+            "backgroundColor": "#5C221B",
+            "backgroundNoise": 99.925,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.8417
+          },
+          "mapStats": {
+            "valueRange": 0.2623,
+            "heightP90Gradient": 0.05121,
+            "roughnessBase": 0.692,
+            "roughnessVariation": 0.083,
+            "normalStrength": 0.216,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#61281A",
+            "#080404",
+            "#180908",
+            "#291E1C",
+            "#CEC8C4"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ]
+      },
+      "maps": {
+        "albedo": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_albedo.png",
+          "url": "tile-black_albedo.png",
+          "channel": "albedo",
+          "source": "reference-pixel-extraction"
+        },
+        "roughness": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_roughness.png",
+          "url": "tile-black_roughness.png",
+          "channel": "roughness",
+          "source": "reference-pixel-extraction"
+        },
+        "height": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_height.png",
+          "url": "tile-black_height.png",
+          "channel": "height",
+          "source": "reference-pixel-extraction"
+        },
+        "normal": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_normal.png",
+          "url": "tile-black_normal.png",
+          "channel": "normal",
+          "source": "reference-pixel-extraction"
+        },
+        "ao": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-03-dark-insulation\\tile-black_ao.png",
+          "url": "tile-black_ao.png",
+          "channel": "ao",
+          "source": "reference-pixel-extraction"
+        }
+      }
+    },
+    {
+      "componentId": "orb-engine-mount",
+      "regionId": "nozzle-metal",
+      "materialSpecId": "metal-nozzle",
+      "hypothesis": {
+        "componentId": "orb-engine-mount",
+        "regionId": "nozzle-metal",
+        "materialId": null,
+        "family": "metal",
+        "subtype": "steel",
+        "finish": "brushed",
+        "aliases": [],
+        "confidence": 0.86,
+        "source": "vision"
+      },
+      "assignment": {
+        "materialId": "metal.steel-brushed",
+        "status": "proceed",
+        "source": "vision",
+        "confidence": 0.86,
+        "method": "family-subtype-finish",
+        "alternatives": [],
+        "evidence": {
+          "crop": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\04-nozzle-metal.png",
+            "bbox": {
+              "x": 206,
+              "y": 426,
+              "width": 26,
+              "height": 22
+            },
+            "sourceWidth": 400,
+            "sourceHeight": 492,
+            "loaderWarnings": [],
+            "coverage": 0.0029
+          },
+          "pbr": {
+            "ok": true,
+            "verdict": "pass",
+            "confidence": 0.86,
+            "estimatedFidelity": 0.86,
+            "targetThreshold": 0.7,
+            "materialId": "metal-nozzle",
+            "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\04-nozzle-metal.png",
+            "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal",
+            "palette": [
+              "#030302",
+              "#120D0E",
+              "#291F21",
+              "#B6BBBE",
+              "#524343"
+            ],
+            "maps": {
+              "albedo": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_albedo.png",
+                "url": "metal-nozzle_albedo.png",
+                "channel": "albedo",
+                "source": "reference-pixel-extraction"
+              },
+              "roughness": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_roughness.png",
+                "url": "metal-nozzle_roughness.png",
+                "channel": "roughness",
+                "source": "reference-pixel-extraction"
+              },
+              "height": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_height.png",
+                "url": "metal-nozzle_height.png",
+                "channel": "height",
+                "source": "reference-pixel-extraction"
+              },
+              "normal": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_normal.png",
+                "url": "metal-nozzle_normal.png",
+                "channel": "normal",
+                "source": "reference-pixel-extraction"
+              },
+              "ao": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_ao.png",
+                "url": "metal-nozzle_ao.png",
+                "channel": "ao",
+                "source": "reference-pixel-extraction"
+              }
+            },
+            "diagnostics": {
+              "sourceWidth": 26,
+              "sourceHeight": 22,
+              "mapSize": 512,
+              "cropBBoxPixels": {
+                "x": 0,
+                "y": 0,
+                "width": 26,
+                "height": 22
+              },
+              "mask": {
+                "backgroundColor": "#1C1516",
+                "backgroundNoise": 90.835,
+                "transparentPixelFraction": 0.0,
+                "foregroundCoverage": 0.6031
+              },
+              "mapStats": {
+                "valueRange": 0.7964,
+                "heightP90Gradient": 0.06737,
+                "roughnessBase": 0.695,
+                "roughnessVariation": 0.098,
+                "normalStrength": 0.235,
+                "blurRadius": 10
+              },
+              "palette": [
+                "#030302",
+                "#120D0E",
+                "#291F21",
+                "#B6BBBE",
+                "#524343"
+              ]
+            },
+            "warnings": [
+              "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+            ],
+            "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+          },
+          "texture": {
+            "finishClass": "painted-metal",
+            "recipe": {
+              "metalness": 0.0,
+              "roughness": 0.5,
+              "clearcoat": 1.0,
+              "clearcoatRoughness": 0.05,
+              "transmission": 0.0,
+              "ior": 1.5,
+              "envMapIntensity": 1.0,
+              "anisotropy": 0.0,
+              "procedural": "flat-clearcoat"
+            },
+            "palette": [
+              "#100D0D",
+              "#040202",
+              "#5C575A",
+              "#181415",
+              "#121010"
+            ],
+            "paletteHueRisk": [],
+            "gradientAxis": "horizontal",
+            "stats": {
+              "meanLum": 45.2,
+              "meanSaturation": 0.285,
+              "gradientStrength": 0.667,
+              "mottle": 0.035,
+              "streakRatio": 2.37,
+              "hueSpread": 0.509,
+              "specularFraction": 0.0
+            }
+          }
+        },
+        "profileId": "metal.steel-brushed",
+        "family": "metal",
+        "subtype": "steel",
+        "finish": "brushed",
+        "renderPrior": {
+          "metalness": 1.0,
+          "roughness": 0.35,
+          "anisotropy": 0.85
+        },
+        "requiredMaps": [
+          "map",
+          "roughnessMap",
+          "normalMap",
+          "anisotropyMap"
+        ],
+        "optionalMaps": [
+          "metalnessMap"
+        ],
+        "validationViews": [
+          "neutral-studio",
+          "grazing",
+          "environment-reflection",
+          "reference-beauty"
+        ],
+        "sourceRefs": [
+          "three.mesh-physical",
+          "three.pmrem",
+          "gltf.2",
+          "khronos.gltf-pbr",
+          "adobe.pbr-guide-2",
+          "google.filament-pbr"
+        ],
+        "visualCues": [
+          "elongated highlight aligned to brushing",
+          "neutral conductor reflection",
+          "parallel micro-scratches"
+        ]
+      },
+      "observations": [
+        "chromatic base-colour response",
+        "directional surface frequency",
+        "strong image-space gradient; verify it is material pattern, not lighting",
+        "single-image PBR inference requires controlled render validation"
+      ],
+      "crop": {
+        "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\04-nozzle-metal.png",
+        "bbox": {
+          "x": 206,
+          "y": 426,
+          "width": 26,
+          "height": 22
+        },
+        "sourceWidth": 400,
+        "sourceHeight": 492,
+        "loaderWarnings": [],
+        "coverage": 0.0029
+      },
+      "textureAnalysis": {
+        "finishClass": "painted-metal",
+        "recipe": {
+          "metalness": 0.0,
+          "roughness": 0.5,
+          "clearcoat": 1.0,
+          "clearcoatRoughness": 0.05,
+          "transmission": 0.0,
+          "ior": 1.5,
+          "envMapIntensity": 1.0,
+          "anisotropy": 0.0,
+          "procedural": "flat-clearcoat"
+        },
+        "palette": [
+          "#100D0D",
+          "#040202",
+          "#5C575A",
+          "#181415",
+          "#121010"
+        ],
+        "paletteHueRisk": [],
+        "gradientAxis": "horizontal",
+        "stats": {
+          "meanLum": 45.2,
+          "meanSaturation": 0.285,
+          "gradientStrength": 0.667,
+          "mottle": 0.035,
+          "streakRatio": 2.37,
+          "hueSpread": 0.509,
+          "specularFraction": 0.0
+        }
+      },
+      "pbrReport": {
+        "ok": true,
+        "verdict": "pass",
+        "confidence": 0.86,
+        "estimatedFidelity": 0.86,
+        "targetThreshold": 0.7,
+        "materialId": "metal-nozzle",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\04-nozzle-metal.png",
+        "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal",
+        "palette": [
+          "#030302",
+          "#120D0E",
+          "#291F21",
+          "#B6BBBE",
+          "#524343"
+        ],
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_albedo.png",
+            "url": "metal-nozzle_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_roughness.png",
+            "url": "metal-nozzle_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_height.png",
+            "url": "metal-nozzle_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_normal.png",
+            "url": "metal-nozzle_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_ao.png",
+            "url": "metal-nozzle_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 26,
+          "sourceHeight": 22,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 26,
+            "height": 22
+          },
+          "mask": {
+            "backgroundColor": "#1C1516",
+            "backgroundNoise": 90.835,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.6031
+          },
+          "mapStats": {
+            "valueRange": 0.7964,
+            "heightP90Gradient": 0.06737,
+            "roughnessBase": 0.695,
+            "roughnessVariation": 0.098,
+            "normalStrength": 0.235,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#030302",
+            "#120D0E",
+            "#291F21",
+            "#B6BBBE",
+            "#524343"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ],
+        "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+      },
+      "referencePbr": {
+        "version": "1.0",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\04-nozzle-metal.png",
+        "extractor": "stage1_intake/extract_pbr_evidence.py",
+        "method": "single-image pixel evidence with de-lighting estimate; not photogrammetry",
+        "usable": true,
+        "verdict": "pass",
+        "confidence": 0.86,
+        "estimatedFidelity": 0.86,
+        "targetThreshold": 0.7,
+        "hardLimit": "A single image cannot uniquely recover true albedo/roughness/normal/AO; maps are reference-derived estimates.",
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_albedo.png",
+            "url": "metal-nozzle_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_roughness.png",
+            "url": "metal-nozzle_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_height.png",
+            "url": "metal-nozzle_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_normal.png",
+            "url": "metal-nozzle_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_ao.png",
+            "url": "metal-nozzle_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 26,
+          "sourceHeight": 22,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 26,
+            "height": 22
+          },
+          "mask": {
+            "backgroundColor": "#1C1516",
+            "backgroundNoise": 90.835,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.6031
+          },
+          "mapStats": {
+            "valueRange": 0.7964,
+            "heightP90Gradient": 0.06737,
+            "roughnessBase": 0.695,
+            "roughnessVariation": 0.098,
+            "normalStrength": 0.235,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#030302",
+            "#120D0E",
+            "#291F21",
+            "#B6BBBE",
+            "#524343"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ]
+      },
+      "maps": {
+        "albedo": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_albedo.png",
+          "url": "metal-nozzle_albedo.png",
+          "channel": "albedo",
+          "source": "reference-pixel-extraction"
+        },
+        "roughness": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_roughness.png",
+          "url": "metal-nozzle_roughness.png",
+          "channel": "roughness",
+          "source": "reference-pixel-extraction"
+        },
+        "height": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_height.png",
+          "url": "metal-nozzle_height.png",
+          "channel": "height",
+          "source": "reference-pixel-extraction"
+        },
+        "normal": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_normal.png",
+          "url": "metal-nozzle_normal.png",
+          "channel": "normal",
+          "source": "reference-pixel-extraction"
+        },
+        "ao": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-04-nozzle-metal\\metal-nozzle_ao.png",
+          "url": "metal-nozzle_ao.png",
+          "channel": "ao",
+          "source": "reference-pixel-extraction"
+        }
+      }
+    },
+    {
+      "componentId": "micro-orb-windows",
+      "regionId": "glazing",
+      "materialSpecId": "glass-window",
+      "hypothesis": {
+        "componentId": "micro-orb-windows",
+        "regionId": "glazing",
+        "materialId": null,
+        "family": "glass",
+        "subtype": "clear",
+        "finish": "polished",
+        "aliases": [],
+        "confidence": 0.86,
+        "source": "vision"
+      },
+      "assignment": {
+        "materialId": "glass.clear",
+        "status": "proceed",
+        "source": "vision",
+        "confidence": 0.86,
+        "method": "family-subtype-finish",
+        "alternatives": [],
+        "evidence": {
+          "crop": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\05-glazing.png",
+            "bbox": {
+              "x": 207,
+              "y": 204,
+              "width": 16,
+              "height": 9
+            },
+            "sourceWidth": 400,
+            "sourceHeight": 492,
+            "loaderWarnings": [],
+            "coverage": 0.0007
+          },
+          "pbr": {
+            "ok": true,
+            "verdict": "pass",
+            "confidence": 0.86,
+            "estimatedFidelity": 0.86,
+            "targetThreshold": 0.7,
+            "materialId": "glass-window",
+            "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\05-glazing.png",
+            "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing",
+            "palette": [
+              "#493A3B",
+              "#1A1011",
+              "#090301",
+              "#5A2519",
+              "#907574"
+            ],
+            "maps": {
+              "albedo": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_albedo.png",
+                "url": "glass-window_albedo.png",
+                "channel": "albedo",
+                "source": "reference-pixel-extraction"
+              },
+              "roughness": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_roughness.png",
+                "url": "glass-window_roughness.png",
+                "channel": "roughness",
+                "source": "reference-pixel-extraction"
+              },
+              "height": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_height.png",
+                "url": "glass-window_height.png",
+                "channel": "height",
+                "source": "reference-pixel-extraction"
+              },
+              "normal": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_normal.png",
+                "url": "glass-window_normal.png",
+                "channel": "normal",
+                "source": "reference-pixel-extraction"
+              },
+              "ao": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_ao.png",
+                "url": "glass-window_ao.png",
+                "channel": "ao",
+                "source": "reference-pixel-extraction"
+              }
+            },
+            "diagnostics": {
+              "sourceWidth": 16,
+              "sourceHeight": 9,
+              "mapSize": 512,
+              "cropBBoxPixels": {
+                "x": 0,
+                "y": 0,
+                "width": 16,
+                "height": 9
+              },
+              "mask": {
+                "backgroundColor": "#745C56",
+                "backgroundNoise": 170.543,
+                "transparentPixelFraction": 0.0,
+                "foregroundCoverage": 0.4097
+              },
+              "mapStats": {
+                "valueRange": 0.4587,
+                "heightP90Gradient": 0.03366,
+                "roughnessBase": 0.68,
+                "roughnessVariation": 0.064,
+                "normalStrength": 0.196,
+                "blurRadius": 10
+              },
+              "palette": [
+                "#493A3B",
+                "#1A1011",
+                "#090301",
+                "#5A2519",
+                "#907574"
+              ]
+            },
+            "warnings": [
+              "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+            ],
+            "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+          },
+          "texture": {
+            "finishClass": "painted-metal",
+            "recipe": {
+              "metalness": 0.0,
+              "roughness": 0.5,
+              "clearcoat": 1.0,
+              "clearcoatRoughness": 0.05,
+              "transmission": 0.0,
+              "ior": 1.5,
+              "envMapIntensity": 1.0,
+              "anisotropy": 0.0,
+              "procedural": "flat-clearcoat"
+            },
+            "palette": [
+              "#6B5B58",
+              "#180B09",
+              "#D0C2C2",
+              "#8F8180",
+              "#AE9F9E"
+            ],
+            "paletteHueRisk": [],
+            "gradientAxis": "vertical",
+            "stats": {
+              "meanLum": 120.3,
+              "meanSaturation": 0.251,
+              "gradientStrength": 0.718,
+              "mottle": 0.034,
+              "streakRatio": 1.27,
+              "hueSpread": 0.099,
+              "specularFraction": 0.014
+            }
+          }
+        },
+        "profileId": "glass.clear",
+        "family": "glass",
+        "subtype": "clear",
+        "finish": "polished",
+        "renderPrior": {
+          "metalness": 0.0,
+          "roughness": 0.05,
+          "transmission": 1.0,
+          "ior": 1.5
+        },
+        "requiredMaps": [
+          "roughnessMap",
+          "thicknessMap"
+        ],
+        "optionalMaps": [
+          "map",
+          "normalMap",
+          "transmissionMap"
+        ],
+        "validationViews": [
+          "neutral-studio",
+          "environment-reflection",
+          "backlight-transmission",
+          "reference-beauty"
+        ],
+        "sourceRefs": [
+          "three.mesh-physical",
+          "three.pmrem",
+          "gltf.2",
+          "khronos.transmission",
+          "khronos.volume",
+          "google.filament-pbr"
+        ],
+        "visualCues": [
+          "background distortion",
+          "bright interface reflection",
+          "visible thickness or absorption"
+        ]
+      },
+      "observations": [
+        "chromatic base-colour response",
+        "strong image-space gradient; verify it is material pattern, not lighting",
+        "single-image PBR inference requires controlled render validation"
+      ],
+      "crop": {
+        "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\05-glazing.png",
+        "bbox": {
+          "x": 207,
+          "y": 204,
+          "width": 16,
+          "height": 9
+        },
+        "sourceWidth": 400,
+        "sourceHeight": 492,
+        "loaderWarnings": [],
+        "coverage": 0.0007
+      },
+      "textureAnalysis": {
+        "finishClass": "painted-metal",
+        "recipe": {
+          "metalness": 0.0,
+          "roughness": 0.5,
+          "clearcoat": 1.0,
+          "clearcoatRoughness": 0.05,
+          "transmission": 0.0,
+          "ior": 1.5,
+          "envMapIntensity": 1.0,
+          "anisotropy": 0.0,
+          "procedural": "flat-clearcoat"
+        },
+        "palette": [
+          "#6B5B58",
+          "#180B09",
+          "#D0C2C2",
+          "#8F8180",
+          "#AE9F9E"
+        ],
+        "paletteHueRisk": [],
+        "gradientAxis": "vertical",
+        "stats": {
+          "meanLum": 120.3,
+          "meanSaturation": 0.251,
+          "gradientStrength": 0.718,
+          "mottle": 0.034,
+          "streakRatio": 1.27,
+          "hueSpread": 0.099,
+          "specularFraction": 0.014
+        }
+      },
+      "pbrReport": {
+        "ok": true,
+        "verdict": "pass",
+        "confidence": 0.86,
+        "estimatedFidelity": 0.86,
+        "targetThreshold": 0.7,
+        "materialId": "glass-window",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\05-glazing.png",
+        "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing",
+        "palette": [
+          "#493A3B",
+          "#1A1011",
+          "#090301",
+          "#5A2519",
+          "#907574"
+        ],
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_albedo.png",
+            "url": "glass-window_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_roughness.png",
+            "url": "glass-window_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_height.png",
+            "url": "glass-window_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_normal.png",
+            "url": "glass-window_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_ao.png",
+            "url": "glass-window_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 16,
+          "sourceHeight": 9,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 9
+          },
+          "mask": {
+            "backgroundColor": "#745C56",
+            "backgroundNoise": 170.543,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.4097
+          },
+          "mapStats": {
+            "valueRange": 0.4587,
+            "heightP90Gradient": 0.03366,
+            "roughnessBase": 0.68,
+            "roughnessVariation": 0.064,
+            "normalStrength": 0.196,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#493A3B",
+            "#1A1011",
+            "#090301",
+            "#5A2519",
+            "#907574"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ],
+        "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+      },
+      "referencePbr": {
+        "version": "1.0",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\05-glazing.png",
+        "extractor": "stage1_intake/extract_pbr_evidence.py",
+        "method": "single-image pixel evidence with de-lighting estimate; not photogrammetry",
+        "usable": true,
+        "verdict": "pass",
+        "confidence": 0.86,
+        "estimatedFidelity": 0.86,
+        "targetThreshold": 0.7,
+        "hardLimit": "A single image cannot uniquely recover true albedo/roughness/normal/AO; maps are reference-derived estimates.",
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_albedo.png",
+            "url": "glass-window_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_roughness.png",
+            "url": "glass-window_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_height.png",
+            "url": "glass-window_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_normal.png",
+            "url": "glass-window_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_ao.png",
+            "url": "glass-window_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 16,
+          "sourceHeight": 9,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 9
+          },
+          "mask": {
+            "backgroundColor": "#745C56",
+            "backgroundNoise": 170.543,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.4097
+          },
+          "mapStats": {
+            "valueRange": 0.4587,
+            "heightP90Gradient": 0.03366,
+            "roughnessBase": 0.68,
+            "roughnessVariation": 0.064,
+            "normalStrength": 0.196,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#493A3B",
+            "#1A1011",
+            "#090301",
+            "#5A2519",
+            "#907574"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ]
+      },
+      "maps": {
+        "albedo": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_albedo.png",
+          "url": "glass-window_albedo.png",
+          "channel": "albedo",
+          "source": "reference-pixel-extraction"
+        },
+        "roughness": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_roughness.png",
+          "url": "glass-window_roughness.png",
+          "channel": "roughness",
+          "source": "reference-pixel-extraction"
+        },
+        "height": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_height.png",
+          "url": "glass-window_height.png",
+          "channel": "height",
+          "source": "reference-pixel-extraction"
+        },
+        "normal": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_normal.png",
+          "url": "glass-window_normal.png",
+          "channel": "normal",
+          "source": "reference-pixel-extraction"
+        },
+        "ao": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-05-glazing\\glass-window_ao.png",
+          "url": "glass-window_ao.png",
+          "channel": "ao",
+          "source": "reference-pixel-extraction"
+        }
+      }
+    },
+    {
+      "componentId": "micro-orb-markings",
+      "regionId": "decal",
+      "materialSpecId": "marking-decal",
+      "hypothesis": {
+        "componentId": "micro-orb-markings",
+        "regionId": "decal",
+        "materialId": null,
+        "family": "coating",
+        "subtype": "paint-over-metal",
+        "finish": "gloss-or-satin",
+        "aliases": [],
+        "confidence": 0.86,
+        "source": "vision"
+      },
+      "assignment": {
+        "materialId": "coating.painted-metal",
+        "status": "proceed",
+        "source": "vision",
+        "confidence": 0.86,
+        "method": "family-subtype-finish",
+        "alternatives": [],
+        "evidence": {
+          "crop": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\06-decal.png",
+            "bbox": {
+              "x": 170,
+              "y": 368,
+              "width": 22,
+              "height": 22
+            },
+            "sourceWidth": 400,
+            "sourceHeight": 492,
+            "loaderWarnings": [],
+            "coverage": 0.0025
+          },
+          "pbr": {
+            "ok": true,
+            "verdict": "pass",
+            "confidence": 0.86,
+            "estimatedFidelity": 0.86,
+            "targetThreshold": 0.7,
+            "materialId": "marking-decal",
+            "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\06-decal.png",
+            "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal",
+            "palette": [
+              "#D1A5A2",
+              "#7A7C94",
+              "#635757",
+              "#C1ADB3",
+              "#A29699"
+            ],
+            "maps": {
+              "albedo": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_albedo.png",
+                "url": "marking-decal_albedo.png",
+                "channel": "albedo",
+                "source": "reference-pixel-extraction"
+              },
+              "roughness": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_roughness.png",
+                "url": "marking-decal_roughness.png",
+                "channel": "roughness",
+                "source": "reference-pixel-extraction"
+              },
+              "height": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_height.png",
+                "url": "marking-decal_height.png",
+                "channel": "height",
+                "source": "reference-pixel-extraction"
+              },
+              "normal": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_normal.png",
+                "url": "marking-decal_normal.png",
+                "channel": "normal",
+                "source": "reference-pixel-extraction"
+              },
+              "ao": {
+                "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_ao.png",
+                "url": "marking-decal_ao.png",
+                "channel": "ao",
+                "source": "reference-pixel-extraction"
+              }
+            },
+            "diagnostics": {
+              "sourceWidth": 22,
+              "sourceHeight": 22,
+              "mapSize": 512,
+              "cropBBoxPixels": {
+                "x": 0,
+                "y": 4,
+                "width": 20,
+                "height": 18
+              },
+              "mask": {
+                "backgroundColor": "#E8E0E0",
+                "backgroundNoise": 23.854,
+                "transparentPixelFraction": 0.0,
+                "foregroundCoverage": 0.3822
+              },
+              "mapStats": {
+                "valueRange": 0.3776,
+                "heightP90Gradient": 0.06591,
+                "roughnessBase": 0.694,
+                "roughnessVariation": 0.129,
+                "normalStrength": 0.233,
+                "blurRadius": 10
+              },
+              "palette": [
+                "#D1A5A2",
+                "#7A7C94",
+                "#635757",
+                "#C1ADB3",
+                "#A29699"
+              ]
+            },
+            "warnings": [
+              "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+            ],
+            "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+          },
+          "texture": {
+            "finishClass": "brushed-steel",
+            "recipe": {
+              "metalness": 1.0,
+              "roughness": 0.35,
+              "clearcoat": 0.0,
+              "clearcoatRoughness": 0.0,
+              "transmission": 0.0,
+              "ior": 1.5,
+              "envMapIntensity": 1.0,
+              "anisotropy": 1.0,
+              "procedural": "brushed"
+            },
+            "palette": [
+              "#CCC5CA",
+              "#B8AEBB",
+              "#BFA5A3",
+              "#BEA1A3",
+              "#F0E1E2"
+            ],
+            "paletteHueRisk": [],
+            "gradientAxis": "horizontal",
+            "stats": {
+              "meanLum": 177.7,
+              "meanSaturation": 0.136,
+              "gradientStrength": 0.349,
+              "mottle": 0.031,
+              "streakRatio": 1.15,
+              "hueSpread": 0.415,
+              "specularFraction": 0.116
+            }
+          }
+        },
+        "profileId": "coating.painted-metal",
+        "family": "coating",
+        "subtype": "paint-over-metal",
+        "finish": "gloss-or-satin",
+        "renderPrior": {
+          "metalness": 0.0,
+          "roughness": 0.45,
+          "clearcoat": 0.75,
+          "clearcoatRoughness": 0.12,
+          "ior": 1.5
+        },
+        "requiredMaps": [
+          "map",
+          "roughnessMap"
+        ],
+        "optionalMaps": [
+          "normalMap",
+          "clearcoatMap",
+          "clearcoatRoughnessMap",
+          "metalnessMap"
+        ],
+        "validationViews": [
+          "albedo-unlit",
+          "neutral-studio",
+          "grazing",
+          "environment-reflection",
+          "reference-beauty"
+        ],
+        "sourceRefs": [
+          "three.mesh-physical",
+          "gltf.2",
+          "khronos.gltf-pbr",
+          "adobe.pbr-guide-1",
+          "adobe.pbr-guide-2"
+        ],
+        "visualCues": [
+          "diffuse paint colour under a separate glossy coat",
+          "chips may expose metallic substrate"
+        ]
+      },
+      "observations": [
+        "near-neutral colour response",
+        "strong image-space gradient; verify it is material pattern, not lighting",
+        "single-image PBR inference requires controlled render validation"
+      ],
+      "crop": {
+        "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\06-decal.png",
+        "bbox": {
+          "x": 170,
+          "y": 368,
+          "width": 22,
+          "height": 22
+        },
+        "sourceWidth": 400,
+        "sourceHeight": 492,
+        "loaderWarnings": [],
+        "coverage": 0.0025
+      },
+      "textureAnalysis": {
+        "finishClass": "brushed-steel",
+        "recipe": {
+          "metalness": 1.0,
+          "roughness": 0.35,
+          "clearcoat": 0.0,
+          "clearcoatRoughness": 0.0,
+          "transmission": 0.0,
+          "ior": 1.5,
+          "envMapIntensity": 1.0,
+          "anisotropy": 1.0,
+          "procedural": "brushed"
+        },
+        "palette": [
+          "#CCC5CA",
+          "#B8AEBB",
+          "#BFA5A3",
+          "#BEA1A3",
+          "#F0E1E2"
+        ],
+        "paletteHueRisk": [],
+        "gradientAxis": "horizontal",
+        "stats": {
+          "meanLum": 177.7,
+          "meanSaturation": 0.136,
+          "gradientStrength": 0.349,
+          "mottle": 0.031,
+          "streakRatio": 1.15,
+          "hueSpread": 0.415,
+          "specularFraction": 0.116
+        }
+      },
+      "pbrReport": {
+        "ok": true,
+        "verdict": "pass",
+        "confidence": 0.86,
+        "estimatedFidelity": 0.86,
+        "targetThreshold": 0.7,
+        "materialId": "marking-decal",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\06-decal.png",
+        "outDir": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal",
+        "palette": [
+          "#D1A5A2",
+          "#7A7C94",
+          "#635757",
+          "#C1ADB3",
+          "#A29699"
+        ],
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_albedo.png",
+            "url": "marking-decal_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_roughness.png",
+            "url": "marking-decal_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_height.png",
+            "url": "marking-decal_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_normal.png",
+            "url": "marking-decal_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_ao.png",
+            "url": "marking-decal_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 22,
+          "sourceHeight": 22,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 4,
+            "width": 20,
+            "height": 18
+          },
+          "mask": {
+            "backgroundColor": "#E8E0E0",
+            "backgroundNoise": 23.854,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.3822
+          },
+          "mapStats": {
+            "valueRange": 0.3776,
+            "heightP90Gradient": 0.06591,
+            "roughnessBase": 0.694,
+            "roughnessVariation": 0.129,
+            "normalStrength": 0.233,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#D1A5A2",
+            "#7A7C94",
+            "#635757",
+            "#C1ADB3",
+            "#A29699"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ],
+        "limitation": "single-image PBR extraction is an estimate; 70%+ extraction confidence still needs render screenshot review"
+      },
+      "referencePbr": {
+        "version": "1.0",
+        "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\06-decal.png",
+        "extractor": "stage1_intake/extract_pbr_evidence.py",
+        "method": "single-image pixel evidence with de-lighting estimate; not photogrammetry",
+        "usable": true,
+        "verdict": "pass",
+        "confidence": 0.86,
+        "estimatedFidelity": 0.86,
+        "targetThreshold": 0.7,
+        "hardLimit": "A single image cannot uniquely recover true albedo/roughness/normal/AO; maps are reference-derived estimates.",
+        "maps": {
+          "albedo": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_albedo.png",
+            "url": "marking-decal_albedo.png",
+            "channel": "albedo",
+            "source": "reference-pixel-extraction"
+          },
+          "roughness": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_roughness.png",
+            "url": "marking-decal_roughness.png",
+            "channel": "roughness",
+            "source": "reference-pixel-extraction"
+          },
+          "height": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_height.png",
+            "url": "marking-decal_height.png",
+            "channel": "height",
+            "source": "reference-pixel-extraction"
+          },
+          "normal": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_normal.png",
+            "url": "marking-decal_normal.png",
+            "channel": "normal",
+            "source": "reference-pixel-extraction"
+          },
+          "ao": {
+            "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_ao.png",
+            "url": "marking-decal_ao.png",
+            "channel": "ao",
+            "source": "reference-pixel-extraction"
+          }
+        },
+        "diagnostics": {
+          "sourceWidth": 22,
+          "sourceHeight": 22,
+          "mapSize": 512,
+          "cropBBoxPixels": {
+            "x": 0,
+            "y": 4,
+            "width": 20,
+            "height": 18
+          },
+          "mask": {
+            "backgroundColor": "#E8E0E0",
+            "backgroundNoise": 23.854,
+            "transparentPixelFraction": 0.0,
+            "foregroundCoverage": 0.3822
+          },
+          "mapStats": {
+            "valueRange": 0.3776,
+            "heightP90Gradient": 0.06591,
+            "roughnessBase": 0.694,
+            "roughnessVariation": 0.129,
+            "normalStrength": 0.233,
+            "blurRadius": 10
+          },
+          "palette": [
+            "#D1A5A2",
+            "#7A7C94",
+            "#635757",
+            "#C1ADB3",
+            "#A29699"
+          ]
+        },
+        "warnings": [
+          "single-image inverse rendering cannot prove true physical PBR; confidence is capped"
+        ]
+      },
+      "maps": {
+        "albedo": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_albedo.png",
+          "url": "marking-decal_albedo.png",
+          "channel": "albedo",
+          "source": "reference-pixel-extraction"
+        },
+        "roughness": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_roughness.png",
+          "url": "marking-decal_roughness.png",
+          "channel": "roughness",
+          "source": "reference-pixel-extraction"
+        },
+        "height": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_height.png",
+          "url": "marking-decal_height.png",
+          "channel": "height",
+          "source": "reference-pixel-extraction"
+        },
+        "normal": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_normal.png",
+          "url": "marking-decal_normal.png",
+          "channel": "normal",
+          "source": "reference-pixel-extraction"
+        },
+        "ao": {
+          "path": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-evidence\\pbr-06-decal\\marking-decal_ao.png",
+          "url": "marking-decal_ao.png",
+          "channel": "ao",
+          "source": "reference-pixel-extraction"
+        }
+      }
+    }
+  ],
+  "status": "proceed",
+  "limitations": [
+    "PBR extraction is reference-derived inference, not inverse rendering.",
+    "A crop must be checked against the component visible footprint before accepting material scores."
+  ],
+  "artifact": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\material-analysis.json"
+}

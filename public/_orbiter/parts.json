@@ -1,0 +1,1088 @@
+{
+ "model": "space-shuttle-stack",
+ "parts": [
+  {
+   "name": "root",
+   "kind": "assembly",
+   "module": "root",
+   "triangles": 0
+  },
+  {
+   "name": "et",
+   "kind": "assembly",
+   "module": "et",
+   "triangles": 0
+  },
+  {
+   "name": "et-tip-cap",
+   "kind": "part",
+   "module": "etLOX",
+   "triangles": 112
+  },
+  {
+   "name": "et-lox-ogive",
+   "kind": "part",
+   "module": "etLOX",
+   "triangles": 1536
+  },
+  {
+   "name": "et-lox-barrel",
+   "kind": "part",
+   "module": "etLOX",
+   "triangles": 192
+  },
+  {
+   "name": "micro-et-decal",
+   "kind": "part",
+   "module": "etLOX",
+   "triangles": 2
+  },
+  {
+   "name": "et-intertank",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 192
+  },
+  {
+   "name": "et-stringer-0",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-1",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-2",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-3",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-4",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-5",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-6",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-7",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-8",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-9",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-10",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-11",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-12",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-13",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-14",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-15",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-16",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-17",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-18",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-19",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-20",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-21",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-22",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-23",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-24",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-25",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-26",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-27",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-28",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-29",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-30",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-31",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-32",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-33",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-34",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-35",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-36",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-37",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-38",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-39",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-40",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-41",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-42",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-43",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-44",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-45",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-46",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-47",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-48",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-49",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-50",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-51",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-52",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-53",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-54",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-55",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-56",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-57",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-58",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-59",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-60",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-61",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-62",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-63",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-64",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-65",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-66",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-67",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-68",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-69",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-70",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-stringer-71",
+   "kind": "part",
+   "module": "etInter",
+   "triangles": 12
+  },
+  {
+   "name": "et-lh2-barrel",
+   "kind": "part",
+   "module": "etLH2",
+   "triangles": 192
+  },
+  {
+   "name": "et-aft-dome",
+   "kind": "part",
+   "module": "etLH2",
+   "triangles": 960
+  },
+  {
+   "name": "micro-et-tray",
+   "kind": "part",
+   "module": "etLH2",
+   "triangles": 40
+  },
+  {
+   "name": "srb-stbd",
+   "kind": "assembly",
+   "module": "srb-stbd",
+   "triangles": 0
+  },
+  {
+   "name": "srb-stbd-nose",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 896
+  },
+  {
+   "name": "micro-srb-ports-stbd-0",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-1",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-2",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-3",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-4",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-5",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-6",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-7",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-8",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-9",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-10",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-stbd-11",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "srb-stbd-frustum",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 128
+  },
+  {
+   "name": "micro-srb-bands-stbd-0",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 64
+  },
+  {
+   "name": "micro-srb-bands-stbd-1",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 64
+  },
+  {
+   "name": "micro-srb-patch-stbd",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 2
+  },
+  {
+   "name": "srb-stbd-case",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 128
+  },
+  {
+   "name": "srb-stbd-skirt",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 192
+  },
+  {
+   "name": "srb-stbd-nozzle",
+   "kind": "part",
+   "module": "srbNozzle",
+   "triangles": 192
+  },
+  {
+   "name": "srb-stbd-nozzle-inner",
+   "kind": "part",
+   "module": "srbNozzle",
+   "triangles": 56
+  },
+  {
+   "name": "srb-port",
+   "kind": "assembly",
+   "module": "srb-port",
+   "triangles": 0
+  },
+  {
+   "name": "srb-port-nose",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 896
+  },
+  {
+   "name": "micro-srb-ports-port-0",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-1",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-2",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-3",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-4",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-5",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-6",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-7",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-8",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-9",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-10",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "micro-srb-ports-port-11",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 32
+  },
+  {
+   "name": "srb-port-frustum",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 128
+  },
+  {
+   "name": "micro-srb-bands-port-0",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 64
+  },
+  {
+   "name": "micro-srb-bands-port-1",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 64
+  },
+  {
+   "name": "micro-srb-patch-port",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 2
+  },
+  {
+   "name": "srb-port-case",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 128
+  },
+  {
+   "name": "srb-port-skirt",
+   "kind": "part",
+   "module": "srb",
+   "triangles": 192
+  },
+  {
+   "name": "srb-port-nozzle",
+   "kind": "part",
+   "module": "srbNozzle",
+   "triangles": 192
+  },
+  {
+   "name": "srb-port-nozzle-inner",
+   "kind": "part",
+   "module": "srbNozzle",
+   "triangles": 56
+  },
+  {
+   "name": "orb",
+   "kind": "assembly",
+   "module": "orb",
+   "triangles": 0
+  },
+  {
+   "name": "orb-fwd-fuselage",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 224
+  },
+  {
+   "name": "orb-mid-fuselage",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 168
+  },
+  {
+   "name": "orb-aft-fuselage",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 224
+  },
+  {
+   "name": "orb-tail-cap",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 28
+  },
+  {
+   "name": "orb-nose-cap",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 168
+  },
+  {
+   "name": "orb-bay-door-stbd",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 28
+  },
+  {
+   "name": "orb-bay-door-port",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 28
+  },
+  {
+   "name": "micro-orb-windows-fwd-0",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-windows-fwd-1",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-windows-fwd-2",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-windows-fwd-3",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-windows-fwd-4",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-windows-fwd-5",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-windows-top-0",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-windows-top-1",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-fwd-marks",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 2
+  },
+  {
+   "name": "orb-wing-stbd",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 56
+  },
+  {
+   "name": "micro-orb-le-band-stbd-0",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-le-band-stbd-1",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-elevons-stbd-0",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-elevons-stbd-1",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-insignia-stbd",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 2
+  },
+  {
+   "name": "orb-wing-port",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 56
+  },
+  {
+   "name": "micro-orb-le-band-port-0",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-le-band-port-1",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-elevons-port-0",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-elevons-port-1",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "micro-orb-insignia-port",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 2
+  },
+  {
+   "name": "orb-fin",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 44
+  },
+  {
+   "name": "orb-rudder",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "orb-pod-port",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 176
+  },
+  {
+   "name": "orb-pod-stbd",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 176
+  },
+  {
+   "name": "orb-bodyflap",
+   "kind": "part",
+   "module": "orb",
+   "triangles": 12
+  },
+  {
+   "name": "orb-engine-mount",
+   "kind": "part",
+   "module": "orbEngine",
+   "triangles": 12
+  },
+  {
+   "name": "orb-engine-upper",
+   "kind": "part",
+   "module": "orbEngine",
+   "triangles": 144
+  },
+  {
+   "name": "orb-engine-upper-inner",
+   "kind": "part",
+   "module": "orbEngine",
+   "triangles": 40
+  },
+  {
+   "name": "orb-engine-lower-port",
+   "kind": "part",
+   "module": "orbEngine",
+   "triangles": 144
+  },
+  {
+   "name": "orb-engine-lower-port-inner",
+   "kind": "part",
+   "module": "orbEngine",
+   "triangles": 40
+  },
+  {
+   "name": "orb-engine-lower-stbd",
+   "kind": "part",
+   "module": "orbEngine",
+   "triangles": 144
+  },
+  {
+   "name": "orb-engine-lower-stbd-inner",
+   "kind": "part",
+   "module": "orbEngine",
+   "triangles": 40
+  },
+  {
+   "name": "strut",
+   "kind": "assembly",
+   "module": "strut",
+   "triangles": 0
+  },
+  {
+   "name": "strut-fwd",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 48
+  },
+  {
+   "name": "strut-fwd-leg-1",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 48
+  },
+  {
+   "name": "strut-fwd-fitting",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 12
+  },
+  {
+   "name": "strut-aft",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 48
+  },
+  {
+   "name": "strut-aft-leg-1",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 48
+  },
+  {
+   "name": "strut-aft-beam",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 12
+  },
+  {
+   "name": "strut-srb-port",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 448
+  },
+  {
+   "name": "strut-srb-link-0",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 12
+  },
+  {
+   "name": "strut-srb-aft-ring-0",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 448
+  },
+  {
+   "name": "strut-srb-stbd",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 448
+  },
+  {
+   "name": "strut-srb-link-1",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 12
+  },
+  {
+   "name": "strut-srb-aft-ring-1",
+   "kind": "part",
+   "module": "strut",
+   "triangles": 448
+  }
+ ],
+ "unnamedMeshes": 0,
+ "integralMeshes": 180,
+ "note": "Runtime dump of the built part tree from the live model. Groups are the explodable assemblies; meshes are the selectable parts."
+}

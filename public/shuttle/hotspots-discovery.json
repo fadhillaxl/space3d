@@ -1,0 +1,252 @@
+[
+ {
+  "n": 1,
+  "pos": [
+   17.6,
+   0.4,
+   0.0
+  ],
+  "layer": "wing",
+  "kat": "tps",
+  "label": "Kerucut hidung"
+ },
+ {
+  "n": 2,
+  "pos": [
+   13.2,
+   4.4,
+   0.0
+  ],
+  "layer": "canopy",
+  "kat": "awak",
+  "label": "Dek penerbangan"
+ },
+ {
+  "n": 3,
+  "pos": [
+   14.0,
+   2.9,
+   0.0
+  ],
+  "layer": "body",
+  "kat": "awak",
+  "label": "Kabin kru"
+ },
+ {
+  "n": 4,
+  "pos": [
+   13.0,
+   1.5,
+   2.0
+  ],
+  "layer": "body",
+  "kat": "awak",
+  "label": "Palka kru"
+ },
+ {
+  "n": 5,
+  "pos": [
+   16.5,
+   2.0,
+   1.2
+  ],
+  "layer": "body",
+  "kat": "navigasi",
+  "label": "Pendorong RCS hidung"
+ },
+ {
+  "n": 6,
+  "pos": [
+   15.0,
+   3.4,
+   0.9
+  ],
+  "layer": "body",
+  "kat": "navigasi",
+  "label": "Pelacak bintang"
+ },
+ {
+  "n": 7,
+  "pos": [
+   14.5,
+   -2.6,
+   0.0
+  ],
+  "layer": "body",
+  "kat": "struktur",
+  "label": "Roda pendarat depan"
+ },
+ {
+  "n": 8,
+  "pos": [
+   0.0,
+   2.9,
+   0.0
+  ],
+  "layer": "bay",
+  "kat": "muatan",
+  "label": "Ruang muatan"
+ },
+ {
+  "n": 9,
+  "pos": [
+   -6.0,
+   4.2,
+   1.6
+  ],
+  "layer": "bay",
+  "kat": "muatan",
+  "label": "Pintu ruang muatan",
+  "oldPos": [
+   -8.2,
+   3.8,
+   1.5
+  ]
+ },
+ {
+  "n": 10,
+  "pos": [
+   2.0,
+   3.2,
+   1.2
+  ],
+  "layer": "bay",
+  "kat": "muatan",
+  "label": "Lengan robot"
+ },
+ {
+  "n": 11,
+  "pos": [
+   5.0,
+   1.6,
+   2.6
+  ],
+  "layer": "body",
+  "kat": "tps",
+  "label": "Selimut AFRSI"
+ },
+ {
+  "n": 12,
+  "pos": [
+   8.0,
+   -1.2,
+   3.2
+  ],
+  "layer": "wing",
+  "kat": "tps",
+  "label": "Ubin hitam HRSI"
+ },
+ {
+  "n": 13,
+  "pos": [
+   9.0,
+   3.6,
+   1.6
+  ],
+  "layer": "body",
+  "kat": "tps",
+  "label": "Ubin putih LRSI"
+ },
+ {
+  "n": 14,
+  "pos": [
+   -9.5,
+   -0.8,
+   12.0
+  ],
+  "layer": "wing",
+  "kat": "struktur",
+  "label": "Sayap delta ganda"
+ },
+ {
+  "n": 15,
+  "pos": [
+   -10.8,
+   -1.8,
+   8.1
+  ],
+  "layer": "wing",
+  "kat": "struktur",
+  "label": "Elevon",
+  "oldPos": [
+   -10.8,
+   -1.8,
+   8.1
+  ]
+ },
+ {
+  "n": 16,
+  "pos": [
+   -17.5,
+   10.9,
+   0.0
+  ],
+  "layer": "fin",
+  "kat": "struktur",
+  "label": "Sirip vertikal"
+ },
+ {
+  "n": 17,
+  "pos": [
+   -14.2,
+   3.6,
+   2.3
+  ],
+  "layer": "pod",
+  "kat": "mesin",
+  "label": "Polong OMS",
+  "oldPos": [
+   -14.2,
+   3.6,
+   2.3
+  ]
+ },
+ {
+  "n": 18,
+  "pos": [
+   -15.5,
+   1.9,
+   0.0
+  ],
+  "layer": "engine",
+  "kat": "mesin",
+  "label": "Tiga mesin utama",
+  "oldPos": [
+   -15.5,
+   1.9,
+   0.0
+  ]
+ },
+ {
+  "n": 19,
+  "pos": [
+   -15.7,
+   -0.7,
+   0.0
+  ],
+  "layer": "body",
+  "kat": "struktur",
+  "label": "Body flap",
+  "oldPos": [
+   -15.7,
+   -0.7,
+   0.0
+  ]
+ },
+ {
+  "n": 20,
+  "pos": [
+   -16.0,
+   7.2,
+   0.0
+  ],
+  "layer": "fin",
+  "kat": "struktur",
+  "label": "Pintu parasut",
+  "oldPos": [
+   -16.0,
+   7.2,
+   0.0
+  ]
+ }
+]

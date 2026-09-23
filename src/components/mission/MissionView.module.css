@@ -1,0 +1,264 @@
+.missionContainer {
+  padding-bottom: 4rem;
+}
+
+.heroSection {
+  padding: 3rem 0 1.75rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.heroContent {
+  max-width: 58rem;
+}
+
+.heroKicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.countryBadge {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.agencyText {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.65rem;
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+.variantTabs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.variantLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.tabsList {
+  display: flex;
+  gap: 0.4rem;
+  background: var(--deep);
+  padding: 0.3rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+
+.tabBtn {
+  background: transparent;
+  border: none;
+  padding: 0.45rem 0.95rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabBtn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tabBtnActive {
+  background: var(--panel-2);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* 3D Stage Section */
+.stageSection {
+  padding: 2rem 0 3rem;
+}
+
+/* Specifications & Overview */
+.specsSection {
+  padding: 2rem 0;
+}
+
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.sectionHeading {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+.leadText {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+  margin-bottom: 2rem;
+}
+
+.factsCard {
+  background: rgba(16, 24, 35, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.factsTitle {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.factsList {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Specs Matrix */
+.specsMatrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.specCard {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.specCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.specLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.specValueGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.specValue {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.specUnit {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Quick Launch Bar */
+.quickLaunchSection {
+  margin-top: 4rem;
+}
+
+.quickLaunchBox {
+  background: linear-gradient(135deg, rgba(16, 24, 35, 0.9), rgba(22, 32, 45, 0.6));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.qlTitle {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.qlDesc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.qlLinks {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+  .twoColGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .specsMatrix {
+    grid-template-columns: 1fr;
+  }
+  .quickLaunchBox {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .qlLinks {
+    flex-direction: column;
+  }
+}

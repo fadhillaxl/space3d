@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Review harness — Space Shuttle launch stack</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #05070b; }
+  #stage { position: fixed; inset: 0; }
+  #err {
+    position: fixed; left: 12px; bottom: 12px; z-index: 3; max-width: 80ch;
+    font: 12px ui-monospace, Consolas, monospace; color: #ffd7d0;
+    background: rgba(90,0,0,.8); padding: 8px 10px; border-radius: 4px;
+  }
+  #err:empty { display: none; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="err"></div>
+
+<script src="../vendor/three.min.js"></script>
+<script src="./model.js"></script>
+<script>
+/* Panggung pemeriksaan.
+
+   Bedanya dengan harness.html: di sini tumpukan DIDIRIKAN persis seperti
+   di discovery.html (pivot.rotation.z = pi/2), sehingga tampak "depan"
+   pada yaw -pi/2 bisa langsung dibandingkan dengan foto rujukan yang
+   juga tegak. Latar dibuat hitam supaya siluetnya bisa diukur.
+
+   Dipanggil dari luar lewat window.setView(yawRad, pitchRad, distFactor). */
+(function () {
+  'use strict';
+  var err = document.getElementById('err');
+  function fail(m) { err.textContent = m; throw new Error(m); }
+  if (typeof THREE === 'undefined') fail('three.min.js tidak termuat');
+  if (typeof window.createSpaceShuttleModel !== 'function') fail('model.js tidak menyediakan factory');
+
+  var stage = document.getElementById('stage');
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color('#05070b');
+
+  var camera = new THREE.PerspectiveCamera(34, 1, 0.5, 4000);
+  var renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  stage.appendChild(renderer.domElement);
+
+  scene.add(new THREE.HemisphereLight('#eef4fb', '#243040', 1.00));
+  var key = new THREE.DirectionalLight('#ffffff', 1.05);
+  key.position.set(-5, 8, 10);
+  scene.add(key);
+  var fill = new THREE.DirectionalLight('#cfe0f2', 0.45);
+  fill.position.set(8, 1, -6);
+  scene.add(fill);
+
+  var pivot = new THREE.Group();
+  pivot.rotation.z = Math.PI / 2;          // sama seperti situs: +X model jadi tegak
+  scene.add(pivot);
+
+  var model;
+  try { model = window.createSpaceShuttleModel(); }
+  catch (e) { fail('createSpaceShuttleModel() gagal: ' + e.message + '\n' + e.stack); }
+  pivot.add(model);
+  pivot.updateMatrixWorld(true);
+
+  var box = new THREE.Box3().setFromObject(pivot);
+  var size = box.getSize(new THREE.Vector3());
+  var mid = box.getCenter(new THREE.Vector3());
+  var span = Math.max(size.x, size.y, size.z) || 1;
+
+  var yaw = -Math.PI / 2, pitch = 0.05, radius = span * 1.35;
+  function place() {
+    camera.position.set(
+      mid.x + radius * Math.cos(pitch) * Math.sin(yaw),
+      mid.y + radius * Math.sin(pitch),
+      mid.z + radius * Math.cos(pitch) * Math.cos(yaw));
+    camera.lookAt(mid);
+  }
+  function resize() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize(); place();
+
+  window.setView = function (y, p, f) {
+    yaw = y; pitch = p; if (f) radius = span * f;
+    place(); renderer.render(scene, camera);
+    return { yaw: yaw, pitch: pitch, radius: radius };
+  };
+  window.modelInfo = function () {
+    var meshes = 0, tris = 0, groups = {};
+    model.traverse(function (o) {
+      if (!o.isMesh) return;
+      meshes++;
+      var g = o.geometry;
+      var n = g.index ? g.index.count / 3 : (g.attributes.position.count / 3);
+      tris += n;
+      var k = o.userData.group || '(none)';
+      groups[k] = (groups[k] || 0) + 1;
+    });
+    return {
+      worldSize: size.toArray().map(function (n) { return +n.toFixed(2); }),
+      meshes: meshes, triangles: Math.round(tris), groups: groups,
+      declaredGroups: model.userData.groups
+    };
+  };
+  /* Titik komponen situs, dipetakan ke layar. Dipakai untuk membuktikan
+     kesembilannya masih jatuh di komponen yang benar. */
+  window.hotspotCheck = function (spots) {
+    var raycaster = new THREE.Raycaster();
+    return spots.map(function (s) {
+      var v = new THREE.Vector3(s.pos[0], s.pos[1], s.pos[2]);
+      model.localToWorld(v);
+      var dir = v.clone().sub(camera.position).normalize();
+      raycaster.set(camera.position, dir);
+      var hits = raycaster.intersectObject(pivot, true);
+      var want = v.distanceTo(camera.position);
+      var inside = null, hitName = null, hitGroup = null;
+      for (var i = 0; i < hits.length; i++) {
+        if (hits[i].distance >= want - 0.001) break;
+        hitName = hits[i].object.name; hitGroup = hits[i].object.userData.group;
+      }
+      // Titik dianggap "di dalam" komponen jika ada permukaan di depannya
+      // dan ada permukaan di belakangnya pada grup yang sama.
+      var behind = null;
+      for (var j = 0; j < hits.length; j++) {
+        if (hits[j].distance >= want) { behind = hits[j]; break; }
+      }
+      return {
+        n: s.n, label: s.label, layer: s.layer,
+        frontMesh: hitName, frontGroup: hitGroup,
+        behindMesh: behind ? behind.object.name : null,
+        behindGroup: behind ? behind.object.userData.group : null,
+        depthToPoint: +want.toFixed(2)
+      };
+    });
+  };
+  renderer.render(scene, camera);
+})();
+</script>
+</body>
+</html>

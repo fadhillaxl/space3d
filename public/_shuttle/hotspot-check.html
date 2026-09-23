@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Hotspot check — Space Shuttle launch stack</title>
+<style>
+  body { margin: 0; background: #0b0e13; color: #dfe8f2;
+         font: 13px ui-monospace, Consolas, monospace; padding: 16px; }
+  table { border-collapse: collapse; margin-top: 10px; }
+  td, th { border: 1px solid #2a3340; padding: 4px 9px; text-align: left; }
+  .ok { color: #7fe0a0; } .bad { color: #ff9a8a; }
+</style>
+</head>
+<body>
+<div id="out">memuat…</div>
+<script src="../vendor/three.min.js"></script>
+<script src="./scan-orbiter.js"></script>
+<script src="./model.js"></script>
+<script>
+/* Pembuktian bahwa kesembilan titik komponen situs masih jatuh di
+   komponen yang benar setelah modelnya diganti.
+
+   Cara ujinya BUKAN memproyeksikan titik ke layar lalu melihatnya —
+   itu hanya membuktikan letaknya di layar, bukan di dalam benda. Yang
+   dipakai di sini uji keberadaan di dalam volume: dari tiap titik
+   ditembakkan sinar ke enam arah sumbu terhadap satu grup, lalu
+   dihitung jumlah perpotongannya. Ganjil di sebagian besar arah
+   berarti titik itu berada DI DALAM salah satu mesh grup tersebut.
+
+   Kalau sebuah titik tidak berada di dalam grup mana pun, dilaporkan
+   pula mesh terdekat beserta jaraknya, supaya kegagalannya bisa
+   ditelusuri, bukan sekadar dinyatakan gagal. */
+(function () {
+  'use strict';
+  var out = document.getElementById('out');
+
+  // Lapisan situs -> nama grup pada model (STACK_LAYERS milik SpaceViewer)
+  var LAYER_GROUPS = {
+    orbiter: ['orb', 'orbEngine'],
+    et:      ['etLOX', 'etInter', 'etLH2'],
+    srb:     ['srb', 'srbNozzle'],
+    strut:   ['strut']
+  };
+
+  var DIRS = [
+    new THREE.Vector3(1, 0, 0), new THREE.Vector3(-1, 0, 0),
+    new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, -1, 0),
+    new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, -1)
+  ];
+
+  function whenScanSwapped(model) {
+    /* Pindaian datang lewat XHR. Kalau uji dijalankan sebelum mesh-nya
+       masuk, yang diuji masih orbiter prosedural dan hasilnya menyesatkan. */
+    return new Promise(function (resolve) {
+      if (!window.ScanOrbiter) return resolve('prosedural (loader tidak dimuat)');
+      var t0 = Date.now();
+      (function poll() {
+        var ok = false;
+        model.traverse(function (o) { if (o.name === 'orb-scan') ok = true; });
+        if (ok) return resolve('pindaian');
+        if (Date.now() - t0 > 20000) return resolve('prosedural (pindaian gagal/timeout)');
+        setTimeout(poll, 300);
+      })();
+    });
+  }
+
+  fetch('./hotspots-stack.json').then(function (r) { return r.json(); }).then(function (spots) {
+    var model = window.createSpaceShuttleModel({ scanBase: './scan/' });
+    return whenScanSwapped(model).then(function (src) {
+      window.ORBITER_SOURCE = src;
+      model.updateMatrixWorld(true);
+      return runChecks(model, spots);
+    });
+  }).catch(function (e) { out.textContent = 'gagal: ' + e.message; });
+
+  function runChecks(model, spots) {
+    model.updateMatrixWorld(true);
+
+    /* Uji parity HARUS memakai DoubleSide.
+
+       Three.js hanya melaporkan perpotongan pada muka yang menghadap
+       sinar. Dari dalam sebuah mesh tertutup, sinar keluar lewat muka
+       belakang dan tidak terhitung sama sekali, jadi jumlah potongannya
+       nol — genap — dan titik yang jelas-jelas di dalam malah dilaporkan
+       di luar. Enam dari sembilan titik sempat gagal karena ini, bukan
+       karena modelnya. Bahannya diklon supaya model aslinya tidak ikut
+       berubah. */
+    model.traverse(function (o) {
+      if (!o.isMesh) return;
+      var wasArray = Array.isArray(o.material);
+      var ms = (wasArray ? o.material : [o.material]).map(function (m) {
+        var c = m.clone(); c.side = THREE.DoubleSide; return c;
+      });
+      o.material = wasArray ? ms : ms[0];
+    });
+
+    var byGroup = {};
+    model.traverse(function (o) {
+      if (!o.isMesh) return;
+      var g = o.userData.group || '(none)';
+      (byGroup[g] = byGroup[g] || []).push(o);
+    });
+
+    var ray = new THREE.Raycaster();
+    ray.firstHitOnly = false;
+
+    /* Saringan kotak batas lebih dulu. Tanpa ini, tiap titik diuji
+       terhadap seluruh 93 mesh dari enam arah dan halamannya membeku.
+       Kotak batas menyingkirkan hampir semuanya dengan biaya nyaris nol. */
+    var boxes = new WeakMap();
+    function worldBox(mesh) {
+      var b = boxes.get(mesh);
+      if (!b) {
+        b = new THREE.Box3().setFromObject(mesh);
+        b.expandByScalar(0.05);          // toleransi untuk titik tepat di permukaan
+        boxes.set(mesh, b);
+      }
+      return b;
+    }
+
+    function insideMesh(pt, mesh) {
+      if (!worldBox(mesh).containsPoint(pt)) return false;
+      var odd = 0;
+      for (var d = 0; d < DIRS.length; d++) {
+        ray.set(pt, DIRS[d]);
+        if (ray.intersectObject(mesh, false).length % 2 === 1) odd++;
+      }
+      return odd >= 4;          // mayoritas arah: tahan terhadap tepi dan permukaan tipis
+    }
+
+    /* Titik yang jatuh PERSIS di permukaan (jari-jari tangki 4.6, dan titik
+       nomor 2 dan 3 memang ditaruh di y = +-4.6) tidak punya parity yang
+       bisa dipercaya. Untuk titik seperti itu, berada di dalam kotak batas
+       mesh yang benar sudah cukup, dan dicatat sebagai "di permukaan". */
+    function onSurface(pt, mesh) {
+      return worldBox(mesh).containsPoint(pt);
+    }
+
+    function nearest(pt) {
+      var best = null;
+      model.traverse(function (o) {
+        if (!o.isMesh) return;
+        if (!o.geometry.boundingSphere) o.geometry.computeBoundingSphere();
+        var c = o.geometry.boundingSphere.center.clone();
+        o.localToWorld(c);
+        var dist = c.distanceTo(pt) - o.geometry.boundingSphere.radius;
+        if (!best || dist < best.dist) best = { name: o.name, group: o.userData.group, dist: dist };
+      });
+      return best;
+    }
+
+    var rows = [], allOk = true;
+    spots.forEach(function (s) {
+      var pt = new THREE.Vector3(s.pos[0], s.pos[1], s.pos[2]);
+      var want = LAYER_GROUPS[s.layer] || [];
+      var hitName = null, hitGroup = null, how = null;
+      for (var gi = 0; gi < want.length && !hitName; gi++) {
+        var meshes = byGroup[want[gi]] || [];
+        for (var mi = 0; mi < meshes.length; mi++) {
+          if (insideMesh(pt, meshes[mi])) {
+            hitName = meshes[mi].name; hitGroup = want[gi]; how = 'volume'; break;
+          }
+        }
+      }
+      if (!hitName) {                       // titik tepat di permukaan
+        for (var gj = 0; gj < want.length && !hitName; gj++) {
+          var ms2 = byGroup[want[gj]] || [];
+          for (var mj = 0; mj < ms2.length; mj++) {
+            if (onSurface(pt, ms2[mj])) {
+              hitName = ms2[mj].name; hitGroup = want[gj]; how = 'permukaan'; break;
+            }
+          }
+        }
+      }
+      var strayGroup = null;
+      if (!hitName) {
+        Object.keys(byGroup).some(function (g) {
+          return byGroup[g].some(function (m) {
+            if (insideMesh(pt, m)) { strayGroup = g + ' / ' + m.name; return true; }
+            return false;
+          });
+        });
+      }
+      var ok = !!hitName;
+      if (!ok) allOk = false;
+      rows.push({ n: s.n, label: s.label, layer: s.layer, ok: ok, how: how,
+                  mesh: hitName, group: hitGroup, stray: strayGroup,
+                  near: ok ? null : nearest(pt) });
+    });
+
+    window.HOTSPOT_RESULT = { allOk: allOk, rows: rows };
+    var html = '<b>Uji keberadaan titik komponen di dalam volume</b><br>' +
+      (allOk ? '<span class="ok">SEMUA 9 TITIK LOLOS</span>' : '<span class="bad">ADA YANG GAGAL</span>') +
+      '<table><tr><th>#</th><th>Label</th><th>Lapisan</th><th>Hasil</th><th>Mesh</th></tr>';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + r.n + '</td><td>' + r.label + '</td><td>' + r.layer + '</td>' +
+        '<td class="' + (r.ok ? 'ok">' + r.how : 'bad">DI LUAR') + '</td><td>' +
+        (r.mesh || (r.stray ? 'malah di: ' + r.stray : 'terdekat: ' +
+          (r.near ? r.near.name + ' (' + r.near.dist.toFixed(2) + ')' : '-'))) + '</td></tr>';
+    });
+    out.innerHTML = '<p>orbiter: <b>' + (window.ORBITER_SOURCE || '?') + '</b></p>' + html + '</table>';
+  }
+})();
+</script>
+</body>
+</html>

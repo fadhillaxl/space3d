@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Capture — Space Shuttle launch stack</title>
+<style>
+  html, body { margin: 0; background: #05070b; color: #cfe0f2;
+               font: 13px ui-monospace, Consolas, monospace; }
+  #log { position: fixed; right: 8px; top: 8px; z-index: 5; white-space: pre;
+         background: rgba(0,0,0,.6); padding: 8px; border-radius: 4px; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="log">siap</div>
+<script src="../vendor/three.min.js"></script>
+<script src="./scan-orbiter.js"></script>
+<script src="./model.js"></script>
+<script>
+/* Pengambil gambar untuk tahap tinjauan.
+
+   Tumpukan didirikan persis seperti di discovery.html, lalu tiap sudut
+   pandang dirender ke kanvas berukuran tetap dan dikirim ke server
+   penangkap. Rasio kanvas disamakan dengan foto rujukan (400 x 492)
+   supaya perbandingan siluetnya tidak terganggu beda rasio.
+
+   Latar dibiarkan hitam: foto rujukan juga berlatar langit malam, jadi
+   ambang siluet bekerja sama untuk keduanya. */
+(function () {
+  'use strict';
+  var log = document.getElementById('log');
+  var W = 605, H = 896;   // rasio foto rujukan siang
+
+  /* Mode ?alpha=1 merender dengan latar tembus pandang.
+
+     Gerbang turntable memakai build_foreground_mask, dan pemisah itu
+     butuh saluran alfa: dengan latar hitam pekat sekalipun ia melapor
+     "image is not clearly isolated from background" lalu menandai
+     SELURUH bingkai sebagai objek, sehingga siluetnya jadi tak berarti
+     dan gerbangnya gagal bukan karena bentuknya salah. Dengan alfa,
+     pemisahannya pasti. */
+  var ALPHA = /(\?|&)alpha=1/.test(location.search);
+  var scene = new THREE.Scene();
+  if (!ALPHA) scene.background = new THREE.Color('#7f96a8');
+  var camera = new THREE.PerspectiveCamera(34, W / H, 0.5, 4000);
+  var renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: true });
+  if (ALPHA) renderer.setClearColor(0x000000, 0);
+  renderer.setPixelRatio(1);
+  renderer.setSize(W, H, false);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  document.body.appendChild(renderer.domElement);
+
+  /* Cahaya diambil dari lightingFromPhoto pada spec: siang terang agak
+     mendung, kunci dari atas-samping, isian langit kuat. Berbeda dari
+     foto malam sebelumnya, sisi bayangan di sini masih menyimpan detail,
+     jadi isiannya memang tinggi. */
+  scene.add(new THREE.HemisphereLight('#dceaf7', '#5a5f5a', 0.55));
+  scene.add(new THREE.AmbientLight('#ffffff', 0.22));
+  var key = new THREE.DirectionalLight('#fff6e8', 1.00);
+  key.position.set(-6, 11, 9);
+  scene.add(key);
+  var rim = new THREE.DirectionalLight('#dceaf7', 0.30);
+  rim.position.set(9, 3, -8);
+  scene.add(rim);
+
+  var pivot = new THREE.Group();
+  pivot.rotation.z = Math.PI / 2;
+  scene.add(pivot);
+  var model = window.createSpaceShuttleModel({ scanBase: './scan/' });
+  pivot.add(model);
+  pivot.updateMatrixWorld(true);
+
+  /* Mode ?strip=1 mengganti seluruh bahan dengan satu abu-abu polos.
+     Gerbang tahap blockout memang menuntut render tanpa tekstur: yang
+     diuji di tahap itu bentuk, bukan warna. */
+  var STRIP = /(\?|&)strip=1/.test(location.search);
+  if (STRIP) {
+    var plain = new THREE.MeshStandardMaterial({ color: '#B8B8B8', roughness: 0.85, metalness: 0.0 });
+    model.traverse(function (o) { if (o.isMesh) o.material = plain; });
+  }
+
+  var box = new THREE.Box3().setFromObject(pivot);
+  var size = box.getSize(new THREE.Vector3());
+  var mid = box.getCenter(new THREE.Vector3());
+  var span = Math.max(size.x, size.y, size.z);
+
+  /* Bidang pandang ikut diatur per bidikan.
+
+     Foto rujukan jelas diambil dengan lensa panjang dari jauh: tumpukan
+     nyaris tanpa perspektif. Kalau render dibuat dengan 34 derajat,
+     orbiter yang 6.9 satuan lebih dekat ke kamera ikut membesar, dan
+     bentangnya terukur 1.620 kali selubung booster padahal geometrinya
+     1.441. Untuk bidikan pembanding dipakai 9 derajat dengan jarak
+     dinaikkan sepadan, sehingga yang dibandingkan bentuk, bukan lensa. */
+  function view(yaw, pitch, f, fov) {
+    if (fov && camera.fov !== fov) { camera.fov = fov; camera.updateProjectionMatrix(); }
+    var r = span * (f || 1.78);
+    camera.position.set(
+      mid.x + r * Math.cos(pitch) * Math.sin(yaw),
+      mid.y + r * Math.sin(pitch),
+      mid.z + r * Math.cos(pitch) * Math.cos(yaw));
+    camera.lookAt(mid);
+    renderer.render(scene, camera);
+  }
+
+  /* Empat azimut penuh plus atas: gerbang turntable menuntut lebih dari
+     satu bidikan, dan dua di antaranya memang sudut yang tidak pernah
+     diperlihatkan foto rujukan. */
+  var SHOTS = [
+    { name: 'front.png',  yaw: -Math.PI / 2, pitch: 0.05, f: 6.92, fov: 9 },   // sisi orbiter = sudut foto
+    { name: 'right.png',  yaw: 0.0001,       pitch: 0.05, f: 6.92, fov: 9 },
+    { name: 'rear.png',   yaw: Math.PI / 2,  pitch: 0.05, f: 6.92, fov: 9 },   // sisi tangki, tak terlihat di foto
+    { name: 'left.png',   yaw: Math.PI,      pitch: 0.05, f: 6.92, fov: 9 },
+    { name: 'top.png',    yaw: -Math.PI / 2, pitch: 1.20, f: 6.92, fov: 9 },   // tak terlihat di foto
+    { name: 'hero.png',   yaw: -1.12,        pitch: 0.16, f: 1.78, fov: 34 }    // sudut awal situs
+  ];
+
+  function post(name, png) {
+    return fetch('/capture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: (ALPHA ? 'alpha-' : '') + (STRIP ? 'strip-' : '') + name, png: png })
+    }).then(function (r) { return r.json(); });
+  }
+
+  var done = [];
+  /* Pindaian datang lewat XHR, jadi pengambilan gambar ditahan sampai
+     mesh-nya benar-benar masuk. Tanpa ini yang terekam masih orbiter
+     prosedural. */
+  function whenScanReady(cb) {
+    var t0 = Date.now();
+    (function poll() {
+      var ok = false;
+      model.traverse(function (o) { if (o.name === 'orb-scan') ok = true; });
+      if (ok || Date.now() - t0 > 15000) {
+        box = new THREE.Box3().setFromObject(pivot);
+        size = box.getSize(new THREE.Vector3());
+        mid = box.getCenter(new THREE.Vector3());
+        span = Math.max(size.x, size.y, size.z);
+        log.textContent = ok ? 'pindaian siap' : 'pindaian gagal, memakai prosedural';
+        cb();
+      } else setTimeout(poll, 300);
+    })();
+  }
+  whenScanReady(function () {
+  (function next(i) {
+    if (i >= SHOTS.length) {
+      window.CAPTURE_DONE = done;
+      log.textContent = 'selesai\n' + done.join('\n');
+      return;
+    }
+    var s = SHOTS[i];
+    view(s.yaw, s.pitch, s.f, s.fov);
+    post(s.name, renderer.domElement.toDataURL('image/png')).then(function (res) {
+      done.push(s.name + ' -> ' + res.bytes + ' B');
+      log.textContent = 'mengambil ' + (i + 1) + '/' + SHOTS.length;
+      next(i + 1);
+    }).catch(function (e) {
+      done.push(s.name + ' GAGAL ' + e.message);
+      next(i + 1);
+    });
+  })(0);
+  });
+})();
+</script>
+</body>
+</html>

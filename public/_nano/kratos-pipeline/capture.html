@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Pengambil gambar — Kratos Bus 1B</title>
+<style>html,body{margin:0;background:#fff}canvas{display:block}</style>
+</head>
+<body>
+<!-- =====================================================================
+     Panggung pengambil gambar untuk tahap tinjauan pipeline.
+     Latarnya PUTIH dan pencahayaannya rata, meniru foto studio EXA,
+     supaya render dan foto bisa diadu tanpa terganggu beda latar.
+     Bukan bagian dari situs: index.html tidak memuat berkas ini.
+     ===================================================================== -->
+<canvas id="c" width="600" height="400"></canvas>
+<script src="../../vendor/three.min.js"></script>
+<script src="../kratos-model.js"></script>
+<script>
+(function () {
+  var c = document.getElementById('c');
+  var scene = new THREE.Scene();
+  /* Latar abu netral, bukan putih: bingkai panel wahana ini PUTIH, dan di
+     atas latar putih maskernya pecah jadi pulau-pulau sehingga gerbang
+     hanya mengukur badannya. Abu memberi kontras pada bingkai putih
+     sekaligus pada sel yang gelap. */
+  scene.background = new THREE.Color('#8b9097');
+  var camera = new THREE.PerspectiveCamera(32, 600 / 400, 0.1, 2000);
+  var renderer = new THREE.WebGLRenderer({ canvas: c, antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1);
+
+  scene.add(new THREE.HemisphereLight('#ffffff', '#c8ccd2', 1.05));
+  var k = new THREE.DirectionalLight('#ffffff', 0.95); k.position.set(-6, 9, 12); scene.add(k);
+  var f = new THREE.DirectionalLight('#eef2f8', 0.6); f.position.set(9, 3, -7); scene.add(f);
+  var b = new THREE.DirectionalLight('#ffffff', 0.4); b.position.set(0, -7, -9); scene.add(b);
+
+  var model = window.createKratosModel();
+  scene.add(model);
+
+  /* Sudut bakunya meniru bingkai foto main-600x400.jpg: terbentang penuh,
+     dilihat dari depan-kanan sedikit di atas garis tengah. */
+  window.ambil = function (opsi) {
+    opsi = opsi || {};
+    model.userData.setDeploy(opsi.deploy === undefined ? 1 : opsi.deploy);
+    model.updateMatrixWorld(true);
+    var box = new THREE.Box3().setFromObject(model);
+    var pusat = box.getCenter(new THREE.Vector3());
+    var s = box.getSize(new THREE.Vector3());
+    var tegak = Math.tan(THREE.MathUtils.degToRad(32) / 2);
+    /* Faktor bingkai dibuat bisa diatur: nisbah siluet boleh sudah cocok
+       sementara subjeknya masih terlalu kecil di dalam bingkai, dan gerbang
+       menilai keduanya secara terpisah. */
+    var muat = opsi.muat === undefined ? 1.05 : opsi.muat;
+    var jarak = Math.max((s.y / 2) / tegak, (Math.max(s.x, s.z) / 2) / (tegak * 1.5)) * muat;
+    var yaw = opsi.yaw === undefined ? -0.62 : opsi.yaw;
+    var pitch = opsi.pitch === undefined ? 0.20 : opsi.pitch;
+    camera.position.set(
+      pusat.x + jarak * Math.cos(pitch) * Math.sin(yaw),
+      pusat.y + jarak * Math.sin(pitch),
+      pusat.z + jarak * Math.cos(pitch) * Math.cos(yaw));
+    camera.lookAt(pusat);
+    renderer.render(scene, camera);
+    return c.toDataURL('image/png');
+  };
+  window.ambil();
+})();
+</script>
+</body>
+</html>

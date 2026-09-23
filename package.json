@@ -6,12 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "docker:build": "docker build -t space3d:latest .",
+    "docker:run": "docker run -p 3000:3000 --name space3d-web space3d:latest",
+    "docker:compose": "docker compose up -d --build",
+    "docker:stop": "docker compose down"
   },
   "dependencies": {
+    "@types/three": "^0.186.0",
     "next": "16.3.5",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "three": "^0.186.0"
   },
   "devDependencies": {
     "@types/node": "^20",

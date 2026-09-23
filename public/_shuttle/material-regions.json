@@ -1,0 +1,81 @@
+{
+  "referenceId": "shuttle-pad-sts41d",
+  "regions": [
+    {
+      "componentId": "et-lox-barrel",
+      "regionId": "foam",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+      "bbox": { "x": 220, "y": 170, "width": 28, "height": 50 },
+      "family": "plastic",
+      "subtype": "generic-polymer",
+      "finish": "matte",
+      "materialSpecId": "foam-orange",
+      "note": "Sprayed insulation foam. Nearest registry family is a matte polymer; recorded as an approximation, not an exact match."
+    },
+    {
+      "componentId": "srb-port-case",
+      "regionId": "paint",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+      "bbox": { "x": 166, "y": 296, "width": 18, "height": 38 },
+      "family": "coating",
+      "subtype": "paint-over-metal",
+      "finish": "gloss-or-satin",
+      "materialSpecId": "paint-white"
+    },
+    {
+      "componentId": "orb-mid-fuselage",
+      "regionId": "light-insulation",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+      "bbox": { "x": 200, "y": 330, "width": 30, "height": 30 },
+      "family": "ceramic",
+      "subtype": "glazed",
+      "finish": "glossy",
+      "materialSpecId": "tile-white",
+      "note": "Coated silica insulation. Registry finish label reads glossy; the observed response is matte, and the spec keeps the observed value."
+    },
+    {
+      "componentId": "orb-fwd-fuselage",
+      "regionId": "dark-insulation",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+      "bbox": { "x": 209, "y": 194, "width": 12, "height": 10 },
+      "family": "ceramic",
+      "subtype": "glazed",
+      "finish": "glossy",
+      "materialSpecId": "tile-black",
+      "note": "Nose cap. The only clean dark-material sample in the frame and only about 120 px of it."
+    },
+    {
+      "componentId": "orb-engine-mount",
+      "regionId": "nozzle-metal",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+      "bbox": { "x": 206, "y": 426, "width": 26, "height": 22 },
+      "family": "metal",
+      "subtype": "steel",
+      "finish": "brushed",
+      "materialSpecId": "metal-nozzle",
+      "note": "Aft engine bay. This region is in shadow, so the sample conflates shadow with albedo. Expected to score low."
+    },
+    {
+      "componentId": "micro-orb-windows",
+      "regionId": "glazing",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+      "bbox": { "x": 207, "y": 204, "width": 16, "height": 9 },
+      "family": "glass",
+      "subtype": "clear",
+      "finish": "polished",
+      "materialSpecId": "glass-window",
+      "note": "Cabin window band. Below the resolution floor; expected to score low."
+    },
+    {
+      "componentId": "micro-orb-markings",
+      "regionId": "decal",
+      "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_shuttle\\reference\\shuttle-pad-sts41d.jpg",
+      "bbox": { "x": 170, "y": 368, "width": 22, "height": 22 },
+      "family": "coating",
+      "subtype": "paint-over-metal",
+      "finish": "gloss-or-satin",
+      "materialSpecId": "marking-decal",
+      "note": "USA lettering and flag. Placement is observed; glyph forms are not resolvable."
+    }
+  ]
+}

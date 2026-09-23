@@ -1,0 +1,320 @@
+{
+  "scale": 1.0,
+  "dx": 0.0,
+  "dy": 3.0,
+  "newAnchors": {
+    "9": [
+      -6.0,
+      4.2,
+      1.6
+    ],
+    "15": [
+      -10.8,
+      -1.8,
+      8.1
+    ],
+    "17": [
+      -14.2,
+      3.6,
+      2.3
+    ],
+    "18": [
+      -15.5,
+      1.9,
+      0.0
+    ],
+    "19": [
+      -15.7,
+      -0.7,
+      0.0
+    ],
+    "20": [
+      -16.0,
+      7.2,
+      0.0
+    ]
+  },
+  "verification": [
+    {
+      "n": 1,
+      "pos": [
+        17.6,
+        0.4,
+        0.0
+      ],
+      "layer": "wing",
+      "region": "body",
+      "dist": 0.2,
+      "match": false,
+      "label": "Kerucut hidung",
+      "moved": false
+    },
+    {
+      "n": 2,
+      "pos": [
+        13.2,
+        4.4,
+        0.0
+      ],
+      "layer": "canopy",
+      "region": "canopy",
+      "dist": 0.62,
+      "match": true,
+      "label": "Dek penerbangan",
+      "moved": false
+    },
+    {
+      "n": 3,
+      "pos": [
+        14.0,
+        2.9,
+        0.0
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.15,
+      "match": true,
+      "label": "Kabin kru",
+      "moved": false
+    },
+    {
+      "n": 4,
+      "pos": [
+        13.0,
+        1.5,
+        2.0
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.49,
+      "match": true,
+      "label": "Palka kru",
+      "moved": false
+    },
+    {
+      "n": 5,
+      "pos": [
+        16.5,
+        2.0,
+        1.2
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.14,
+      "match": true,
+      "label": "Pendorong RCS hidung",
+      "moved": false
+    },
+    {
+      "n": 6,
+      "pos": [
+        15.0,
+        3.4,
+        0.9
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.76,
+      "match": true,
+      "label": "Pelacak bintang",
+      "moved": false
+    },
+    {
+      "n": 7,
+      "pos": [
+        14.5,
+        -2.6,
+        0.0
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.68,
+      "match": true,
+      "label": "Roda pendarat depan",
+      "moved": false
+    },
+    {
+      "n": 8,
+      "pos": [
+        0.0,
+        2.9,
+        0.0
+      ],
+      "layer": "bay",
+      "region": "bay",
+      "dist": 0.88,
+      "match": true,
+      "label": "Ruang muatan",
+      "moved": false
+    },
+    {
+      "n": 9,
+      "pos": [
+        -6.0,
+        4.2,
+        1.6
+      ],
+      "layer": "bay",
+      "region": "body",
+      "dist": 1.0,
+      "match": false,
+      "label": "Pintu ruang muatan",
+      "moved": true
+    },
+    {
+      "n": 10,
+      "pos": [
+        2.0,
+        3.2,
+        1.2
+      ],
+      "layer": "bay",
+      "region": "bay",
+      "dist": 0.48,
+      "match": true,
+      "label": "Lengan robot",
+      "moved": false
+    },
+    {
+      "n": 11,
+      "pos": [
+        5.0,
+        1.6,
+        2.6
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.16,
+      "match": true,
+      "label": "Selimut AFRSI",
+      "moved": false
+    },
+    {
+      "n": 12,
+      "pos": [
+        8.0,
+        -1.2,
+        3.2
+      ],
+      "layer": "wing",
+      "region": "wing",
+      "dist": 0.28,
+      "match": true,
+      "label": "Ubin hitam HRSI",
+      "moved": false
+    },
+    {
+      "n": 13,
+      "pos": [
+        9.0,
+        3.6,
+        1.6
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.3,
+      "match": true,
+      "label": "Ubin putih LRSI",
+      "moved": false
+    },
+    {
+      "n": 14,
+      "pos": [
+        -9.5,
+        -0.8,
+        12.0
+      ],
+      "layer": "wing",
+      "region": "wing",
+      "dist": 0.54,
+      "match": true,
+      "label": "Sayap delta ganda",
+      "moved": false
+    },
+    {
+      "n": 15,
+      "pos": [
+        -10.8,
+        -1.8,
+        8.1
+      ],
+      "layer": "wing",
+      "region": "wing",
+      "dist": 0.12,
+      "match": true,
+      "label": "Elevon",
+      "moved": true
+    },
+    {
+      "n": 16,
+      "pos": [
+        -17.5,
+        10.9,
+        0.0
+      ],
+      "layer": "fin",
+      "region": "fin",
+      "dist": 0.11,
+      "match": true,
+      "label": "Sirip vertikal",
+      "moved": false
+    },
+    {
+      "n": 17,
+      "pos": [
+        -14.2,
+        3.6,
+        2.3
+      ],
+      "layer": "pod",
+      "region": "pod",
+      "dist": 0.34,
+      "match": true,
+      "label": "Polong OMS",
+      "moved": true
+    },
+    {
+      "n": 18,
+      "pos": [
+        -15.5,
+        1.9,
+        0.0
+      ],
+      "layer": "engine",
+      "region": "engine",
+      "dist": 0.52,
+      "match": true,
+      "label": "Tiga mesin utama",
+      "moved": true
+    },
+    {
+      "n": 19,
+      "pos": [
+        -15.7,
+        -0.7,
+        0.0
+      ],
+      "layer": "body",
+      "region": "body",
+      "dist": 0.43,
+      "match": true,
+      "label": "Body flap",
+      "moved": true
+    },
+    {
+      "n": 20,
+      "pos": [
+        -16.0,
+        7.2,
+        0.0
+      ],
+      "layer": "fin",
+      "region": "fin",
+      "dist": 0.07,
+      "match": true,
+      "label": "Pintu parasut",
+      "moved": true
+    }
+  ],
+  "mismatches": 2
+}

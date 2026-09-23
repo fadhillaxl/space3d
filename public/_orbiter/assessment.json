@@ -1,0 +1,626 @@
+{
+  "targetName": "Space Shuttle Discovery launch stack (daylight pad)",
+  "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "multi-body crewed launch vehicle stack (winged orbiter, propellant tank, two solid boosters)",
+      "primaryDomain": "object",
+      "formLanguage": [
+        "geometric",
+        "mechanical",
+        "surface-of-revolution",
+        "extruded-profile",
+        "lofted-fuselage"
+      ],
+      "structureKind": [
+        "multi-body assembly",
+        "bilateral-symmetric about the tank and orbiter plane",
+        "axisymmetric sub-bodies (tank, boosters)",
+        "strut-and-socket inter-body attachment"
+      ],
+      "motionPotential": [
+        "separable stage bodies",
+        "hinged payload bay doors",
+        "deflectable elevons and rudder",
+        "gimballing engine nozzles"
+      ],
+      "materialFamilies": [
+        "sprayed insulation foam (matte dielectric, tan-orange)",
+        "tile thermal protection (matte dielectric, near-black and near-white)",
+        "painted metal skin (matte dielectric, soiled off-white)",
+        "nozzle liner (matte dielectric, red-brown) — observed, not metal",
+        "cabin glazing (dark, low roughness)"
+      ],
+      "notes": "Daylight reference, technicalSuitability pass. See _orbiter/analysis/image-analysis.md. Not a character or hybrid, so no anatomy track applies."
+    },
+    "complexity": {
+      "tier": "complex",
+      "scores": {
+        "silhouetteComplexity": 2,
+        "componentCount": 3,
+        "hierarchyDepth": 2,
+        "repetitionDensity": 2,
+        "materialLayerCount": 2,
+        "localDetailDensity": 2,
+        "occlusionRisk": 2,
+        "actionReadinessNeed": 2
+      },
+      "estimatedCounts": {
+        "macroComponents": 5,
+        "mesoComponents": 30,
+        "microFeatureGroups": 10,
+        "materialLayers": 8,
+        "repetitionSystems": 4
+      },
+      "reasoning": [
+        "Four macro bodies plus a container root. A single-root spec would be shallow by construction.",
+        "Occlusion risk drops from the night frame: daylight, and only the base and the far side are hidden.",
+        "Every sub-form is a primitive: ogive, cone, cylinder, extruded delta, lofted fuselage.",
+        "Repetition is real and now countable: booster ring bands, booster nose thruster ports, cabin windows, elevon panels.",
+        "Action readiness is required by the host page, which explodes the stack and makes each component clickable.",
+        "Tier stays complex rather than ultra-complex: the subject is a machine of simple surfaces, and ultra-complex is reserved for finish-dominated subjects."
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "complex",
+      "minimumComponentLevels": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "needsRepetitionSystems": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "Choose simple/moderate/complex/ultra-complex from observed structure, not from a hardcoded domain."
+    },
+    "unknownsToResolveBeforeImplementation": [],
+    "detailInventory": {
+      "scanMethod": "component-zones + grid-3x3",
+      "targetMinDetails": 10,
+      "note": "Enumerate every identity-defining small detail before authoring the spec. Each detail must map to a component.localFeatures entry or material.localOverrides entry, never prose only. Use forge/stage1_intake/build_detail_inventory.py to scan zones.",
+      "details": [
+        {
+          "id": "et-tip-cap",
+          "zone": "tank-forward",
+          "kind": "contour",
+          "description": "Dark conical cap at the tank apex, distinct from the orange ogive below it.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.9,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "et-ogive-decal",
+          "zone": "tank-forward",
+          "kind": "decal",
+          "description": "White rectangular decal on the ogive, offset from the centreline.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.8,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "et-cable-tray",
+          "zone": "tank-full-length",
+          "kind": "ridge",
+          "description": "Raised conduit running the tank length, with a visible line of fasteners along it.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.85,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "et-intertank-stringers",
+          "zone": "tank-mid",
+          "kind": "groove",
+          "description": "Fine vertical stringer ribbing over the intertank band, clearly resolved in daylight.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.85,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "srb-nose-round",
+          "zone": "booster-forward",
+          "kind": "contour",
+          "description": "Booster nose is a rounded cone. The night frame suggested a two-slope cone with a step; this reference shows a single rounded profile.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.85,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "srb-ring-bands",
+          "zone": "booster-forward",
+          "kind": "linework",
+          "description": "Two black ring bands around each booster, one below the frustum and one lower.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.9,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "srb-frustum-patch",
+          "zone": "booster-forward",
+          "kind": "decal",
+          "description": "Orange square patch on each booster frustum, below the upper black band.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.8,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "srb-nose-ports",
+          "zone": "booster-forward",
+          "kind": "fastener",
+          "description": "Clusters of small dark ports on each booster nose cone.",
+          "observed": true,
+          "scale": "micro",
+          "affects": "silhouette+surface",
+          "confidence": 0.7,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "srb-skirt-flare",
+          "zone": "booster-aft",
+          "kind": "contour",
+          "description": "Aft skirt flares strongly, well beyond the case diameter.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.85,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "srb-nozzle-red",
+          "zone": "booster-aft",
+          "kind": "stain",
+          "description": "Booster nozzle interior is red-brown. Observed colour, not metal.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.8,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "orb-nose-cap",
+          "zone": "orbiter-forward",
+          "kind": "contour",
+          "description": "Near-black nose cap with a hard boundary against the white fuselage.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.9,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "orb-windows",
+          "zone": "orbiter-forward",
+          "kind": "linework",
+          "description": "Cabin window group: three forward panes visible over the nose plus an overhead pair.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.8,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "orb-fwd-marks",
+          "zone": "orbiter-forward",
+          "kind": "decal",
+          "description": "Dark marking cluster on the dorsal forward fuselage, bilaterally symmetric. Present and measurable, but this view cannot settle what it is; modelled as an observed marking group.",
+          "observed": true,
+          "scale": "micro",
+          "affects": "silhouette+surface",
+          "confidence": 0.55,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "orb-le-band",
+          "zone": "orbiter-wing",
+          "kind": "contour",
+          "description": "Thin black band along each wing leading edge, following both sweep angles.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.9,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "orb-elevon-split",
+          "zone": "orbiter-wing",
+          "kind": "groove",
+          "description": "Split lines across each wing trailing edge dividing inboard from outboard elevon.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.8,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "orb-insignia",
+          "zone": "orbiter-wing",
+          "kind": "decal",
+          "description": "NASA insignia on the port wing; US flag above the name Discovery on the starboard wing.",
+          "observed": true,
+          "scale": "meso",
+          "affects": "silhouette+surface",
+          "confidence": 0.9,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "orb-soiling",
+          "zone": "orbiter-body",
+          "kind": "stain",
+          "description": "Grey streaking and staining across the orbiter white. The surface is used, not clean.",
+          "observed": true,
+          "scale": "micro",
+          "affects": "silhouette+surface",
+          "confidence": 0.75,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ]
+    },
+    "anatomy": {
+      "applies": false,
+      "styleHeads": 0.0,
+      "proportions": {
+        "headUnit": 0.0,
+        "torso": 0.0,
+        "legs": 0.0,
+        "shoulderWidth": 0.0,
+        "hipWidth": 0.0
+      },
+      "pose": {
+        "type": "unassessed",
+        "jointAngles": {}
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.0,
+        "eyeSpacing": 0.0,
+        "noseBase": 0.0,
+        "mouthLine": 0.0,
+        "hairline": 0.0
+      },
+      "features": [],
+      "confidence": 0.0,
+      "note": "primaryDomain is object, so no anatomy track applies."
+    },
+    "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png"
+  },
+  "qualityContract": {
+    "qualityBar": "complex",
+    "definitionOfDone": [
+      "Body proportions hold the measured longitudinal landmarks, in particular the 10.45 m offset between the tank apex and the booster apexes.",
+      "All four macro bodies are separate, named, clickable and explodable, and carry the host page group names.",
+      "Each of the seventeen detail-inventory entries is realised as geometry or a material override.",
+      "Marking layout matches the reference: NASA insignia to port, flag and name to starboard.",
+      "The model holds up from at least four viewpoints, including two the reference never shows.",
+      "Every unobserved region is reported as inference rather than presented as measured."
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 3,
+      "mesoComponents": 8,
+      "microFeatureGroups": 5,
+      "materialLayers": 3,
+      "repetitionSystems": 1,
+      "reviewViewpoints": 4
+    },
+    "featureGroups": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "required": true,
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "required": true,
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ]
+      },
+      {
+        "id": "attachment-joint-correctness",
+        "name": "Attachment and joint correctness",
+        "required": true,
+        "qualityCriteria": [
+          "Every visible child appendage, branch, limb, handle, connector, tube, cable, horn, wing, leg, or hinged part has an attachment contract with parent socket, localStart/localEnd, contact type, embed/overlap, and gap tolerance."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "child part root floats away from the parent",
+          "branch/limb/tube is centered in space instead of pivoting from its root",
+          "parent-child transform mixes world and local coordinates"
+        ]
+      },
+      {
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "required": true,
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ]
+      },
+      {
+        "id": "reference-lookdev",
+        "name": "Reference color, material, and lighting response",
+        "required": true,
+        "qualityCriteria": [
+          "Material-pass names the reference-derived albedo palette, roughness variation, tactile normal/bump/displacement response, and local masks.",
+          "When a source image is available, run reference PBR extraction and require confidence >= 0.7 before treating maps as implementation-ready.",
+          "Lighting-pass names key/fill/rim or environment light, exposure, tone mapping, background, and contact shadow behavior.",
+          "Neutral, grazing-angle, and reference-matched renders prove that surface relief survives relighting and is not painted into albedo."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model has acceptable shape but reads as flat shaded or plastic",
+          "colors are a generic average instead of reference-observed local color zones",
+          "lighting is evenly ambient and cannot reproduce the source value range"
+        ]
+      },
+      {
+        "id": "longitudinal-proportions",
+        "name": "Longitudinal landmark placement",
+        "required": true,
+        "qualityCriteria": [
+          "Booster apexes sit 10.45 m below the tank apex.",
+          "Orbiter nose sits 16.54 m below the tank apex.",
+          "The wing first exceeds the booster envelope 41.23 m below the tank apex."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "booster tips drawn level with the tank tip",
+          "orbiter placed too high on the stack",
+          "wing placed forward of its measured station"
+        ]
+      },
+      {
+        "id": "booster-identity",
+        "name": "Booster identity features",
+        "required": true,
+        "qualityCriteria": [
+          "Rounded nose cone, two black ring bands, orange frustum patch, strongly flared aft skirt, red-brown nozzle interior."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "plain white tube with no banding",
+          "grey metal nozzle"
+        ]
+      },
+      {
+        "id": "marking-layout",
+        "name": "Wing insignia layout",
+        "required": true,
+        "qualityCriteria": [
+          "NASA insignia on the port wing, flag above the name on the starboard wing, both reading across the span rather than along the vehicle axis."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "insignia mirrored between wings",
+          "text rotated to read along the axis"
+        ]
+      },
+      {
+        "id": "observed-vs-inferred",
+        "name": "Honest reporting of unobserved regions",
+        "required": true,
+        "qualityCriteria": [
+          "Every region the single view cannot show is labelled inference."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "far side presented as measured",
+          "the forward marking cluster given a false identity"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "silhouette and negative-space delta",
+      "component hierarchy depth delta",
+      "repetition density and distribution delta",
+      "material albedo/roughness/normal response delta",
+      "local feature placement and scale delta",
+      "tank-apex to booster-apex offset delta",
+      "wing station delta along the vehicle axis",
+      "booster ring band presence and position delta",
+      "insignia side and orientation delta"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md)."
+    ]
+  },
+  "authoringInstruction": "Filled from direct inspection of the daylight reference. Analysis: _orbiter/analysis/image-analysis.md; suitability: _orbiter/analysis/reference-suitability.md.",
+  "localSpecSearch": {
+    "collection": "core_3d",
+    "query": "Space Shuttle Discovery launch stack (daylight pad) ogive lathe profile revolve surface of revolution double delta wing extrude planform aerofoil matte dielectric roughness albedo painted white soiled surface ring band decal instanced repetition cylinder rocket nozzle bell interior colour",
+    "index": {
+      "status": "hit",
+      "reason": "current",
+      "fingerprint": "ac4f0bc9028e34083dbb5d5531ae3df7699c8e7641d5f8e6d42e7492ea1be1d0"
+    },
+    "matches": [
+      {
+        "record_id": "core.pbr-roughness",
+        "file_path": "grimoire/glossary/3d_vocabulary.md",
+        "heading": "Material And PBR",
+        "key_path": null,
+        "score": 11.471413658685,
+        "snippets": [
+          "Roughness is microfacet scatter: high roughness reads matte and low roughness reads glossy. Recognition cues: low roughness reads as a sharp, mirror-like, tight specular highlight; high roughness reads as a blurry, wide, dim highlight and matte ..."
+        ],
+        "source_refs": [
+          {
+            "path": "grimoire/glossary/3d_vocabulary.md",
+            "heading": "Material And PBR",
+            "key_path": null
+          },
+          {
+            "path": "grimoire/intake/image_analysis.md",
+            "heading": "Layer 5 — Materials & surface (PBR)",
+            "key_path": null
+          },
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[1]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "grimoire/glossary/3d_vocabulary.md"
+          },
+          {
+            "kind": "notebooklm-research",
+            "ref": "notebooklm:4b03c2f9-8393-411f-b5b4-039ab9532843",
+            "note": "Validated generic schema vocabulary; numeric claims remain backed by local source_refs."
+          },
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation — merged recognition cues + Three.js target instead of duplicating this entity."
+          }
+        ]
+      },
+      {
+        "record_id": "core.pbr-metalness",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.material_pbr[0]",
+        "score": 10.040248087303,
+        "snippets": [
+          "Binary or scalar property defining whether a surface is dielectric (0.0) or conductive metal (1.0); intermediate values blend the two. Thuộc tính nhị phân hoặc vô hướng xác định bề mặt là điện môi (0.0) hay kim loại dẫn điện (1.0); giá trị trung ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[0]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      },
+      {
+        "record_id": "core.pbr-color-space-srgb-vs-linearnocolorspace",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.material_pbr[11]",
+        "score": 8.984534955925,
+        "snippets": [
+          "... (cần gamma/sRGB) và các bản đồ dữ liệu toán học (phải giữ tuyến tính/không hiệu chỉnh). Recognition cues: Base color/albedo and emissive textures are the only ones that should look like natural photographic color; Normal, roughness, ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[11]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      }
+    ]
+  }
+}

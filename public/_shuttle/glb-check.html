@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>GLB check — orbiter-usa.glb</title>
+<style>
+  html,body { margin:0; background:#10151c; color:#dfe8f2;
+              font:13px ui-monospace,Consolas,monospace; }
+  model-viewer { width:100vw; height:80vh; background:#10151c; display:block; }
+  #log { padding:8px 12px; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+<model-viewer id="mv" src="../orbiter-usa.glb" loading="eager"
+              camera-controls shadow-intensity="1" exposure="1"
+              environment-image="neutral"
+              alt="Pemeriksaan model detail"></model-viewer>
+<div id="log">memuat…</div>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+<script>
+/* Pemeriksaan terpisah untuk orbiter-usa.glb.
+
+   Di discovery.html penampilnya berada jauh di bawah lipatan halaman, dan
+   model-viewer menunda pengunduhan sampai elemennya mendekati layar.
+   Jadi kegagalan di sana belum tentu kegagalan berkasnya. Halaman ini
+   menaruh penampil di puncak layar dan memakai loading="eager".
+
+   Catatan: yang mengatur penundaan itu atribut `loading`, BUKAN `reveal`.
+   `reveal` hanya memilih kapan poster disingkap ("auto" atau "manual"),
+   dan nilai "eager" di situ tidak dikenali sehingga tidak berefek apa pun
+   pada pengunduhan. */
+(function () {
+  var mv = document.getElementById('mv');
+  var log = document.getElementById('log');
+  function say(s) { log.textContent = s; window.GLB_RESULT = s; }
+  mv.addEventListener('load', function () {
+    var d = mv.getDimensions();
+    say('LOAD OK\nukuran model: ' +
+        [d.x, d.y, d.z].map(function (n) { return n.toFixed(2); }).join(' x ') + ' m');
+  });
+  mv.addEventListener('error', function (e) {
+    say('ERROR: ' + ((e.detail && e.detail.type) || JSON.stringify(e.detail)));
+  });
+  setTimeout(function () {
+    if (!window.GLB_RESULT) say('TIMEOUT — tidak ada peristiwa load maupun error');
+  }, 25000);
+})();
+</script>
+</body>
+</html>

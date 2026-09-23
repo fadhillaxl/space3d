@@ -1,0 +1,64 @@
+{
+  "scale": 1.0,
+  "dx": 0.0,
+  "dy": 3.0,
+  "regionCounts": {
+    "body": 79180,
+    "bay": 2679,
+    "wing": 50844,
+    "fin": 3830,
+    "canopy": 1574,
+    "pod": 1225,
+    "engine": 10668
+  },
+  "groupOf": {
+    "body": "body",
+    "bay": "door",
+    "wing": "wing",
+    "fin": "fin",
+    "canopy": "canopy",
+    "pod": "pod",
+    "engine": "engine"
+  },
+  "newAnchors": {
+    "9": [
+      -8.2,
+      3.8,
+      1.5
+    ],
+    "15": [
+      -10.7,
+      -2.0,
+      0.0
+    ],
+    "17": [
+      -14.2,
+      3.6,
+      2.3
+    ],
+    "18": [
+      -15.5,
+      1.9,
+      -0.1
+    ],
+    "19": [
+      -15.7,
+      -0.7,
+      -0.0
+    ],
+    "20": [
+      -16.0,
+      7.2,
+      -0.2
+    ]
+  },
+  "rules": {
+    "wing": "|z| > 2.9 dan y < 3.2",
+    "canopy": "x > 11.4 dan y > 3.5",
+    "bay": "-13.0 < x < 4.5 dan y > 3.5 dan |z| < 2.9",
+    "pod": "x < -12.0 dan 3.2 < y < 6.4 dan 1.1 < |z| < 4.0",
+    "fin": "x < -11.0 dan y > 6.4 dan |z| < 1.6",
+    "engine": "x < -15.0 dan y < 3.4 dan |z| < 3.2",
+    "body": "sisanya"
+  }
+}

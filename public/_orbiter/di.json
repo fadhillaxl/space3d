@@ -1,0 +1,192 @@
+{
+  "sourceImage": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\reference\\discovery-ov103.png",
+  "zonesDir": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory",
+  "detailInventory": {
+    "scanMethod": "grid-3x3",
+    "targetMinDetails": 6,
+    "details": [
+      {
+        "id": "zone-r0c0",
+        "kind": "out-of-scope-scenery",
+        "description": "Fixed service structure: truss, walkways, floodlights, and the white room. No vehicle surface.",
+        "region": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "scenery-not-modelled"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r0c0.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "zone-r0c1",
+        "kind": "geometry+decal",
+        "description": "Tank ogive with its dark conical tip cap, the white rectangular decal, the cable tray with its fastener line, and the start of the ribbed intertank. Both booster nose cones enter at the bottom with their black ring bands and orange frustum patches.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "silhouette+surface",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "et-tip-cap-boundary"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r0c1.png",
+        "confidence": 0.9
+      },
+      {
+        "id": "zone-r0c2",
+        "kind": "empty",
+        "description": "Sky and sea only. No vehicle, no structure.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "none",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "background"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r0c2.png",
+        "confidence": 0.99
+      },
+      {
+        "id": "zone-r1c0",
+        "kind": "out-of-scope-scenery",
+        "description": "Service structure mid-section, access arms and platforms, with vegetation behind. No vehicle surface.",
+        "region": {
+          "x": 0.0,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "scenery-not-modelled"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r1c0.png",
+        "confidence": 0.92
+      },
+      {
+        "id": "zone-r1c1",
+        "kind": "geometry+material-boundary",
+        "description": "Densest zone. Orbiter black nose cap, the cabin window group, the dark symmetric marking cluster on the dorsal forward fuselage, and the dark line running down each fuselage side where the light upper surface meets the dark lower surface. Both boosters show their case and a black ring band. The tank shows the ribbed intertank.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso+micro",
+        "affects": "silhouette+surface",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "orb-tile-boundary"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r1c1.png",
+        "confidence": 0.8
+      },
+      {
+        "id": "zone-r1c2",
+        "kind": "empty",
+        "description": "Sea, shoreline and vegetation. No vehicle surface.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "none",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "background"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r1c2.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "zone-r2c0",
+        "kind": "out-of-scope-scenery",
+        "description": "Service structure base and platform deck. No vehicle surface.",
+        "region": {
+          "x": 0.0,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "scenery-not-modelled"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r2c0.png",
+        "confidence": 0.93
+      },
+      {
+        "id": "zone-r2c1",
+        "kind": "geometry+markings",
+        "description": "Wing planform with the sweep break, the thin black leading-edge band, elevon splits on the trailing edge, the NASA insignia to port and the flag above the name to starboard. Below, the two flared booster aft skirts with red-brown nozzle interiors, and the platform deck with its tail service masts.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "macro+meso",
+        "affects": "silhouette+surface",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "orb-le-stbd"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r2c1.png",
+        "confidence": 0.85
+      },
+      {
+        "id": "zone-r2c2",
+        "kind": "out-of-scope-scenery",
+        "description": "Platform deck edge, pipework and the perimeter road. The starboard wing tip crosses the top-left corner.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "none",
+        "mapsTo": {
+          "type": "excluded",
+          "ref": "scenery-not-modelled"
+        },
+        "evidenceRef": "C:\\Users\\rakaa\\Downloads\\files\\_orbiter\\detail-inventory\\zone-r2c2.png",
+        "confidence": 0.9
+      }
+    ],
+    "note": "Nine grid zones filled from the contact sheet. Four carry no vehicle surface and are recorded as excluded rather than invented. The seventeen-entry component inventory in _orbiter/assessment.json is the one the spec consumes; this grid pass is the spatial cross-check that nothing on the vehicle was missed."
+  },
+  "authoringInstruction": "Filled from direct inspection of each zone crop."
+}

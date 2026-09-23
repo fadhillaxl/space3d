@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Uji muat pindaian — Discovery OV-103</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #7f96a8; }
+  #stage { position: fixed; inset: 0; }
+  #hud { position: fixed; left: 10px; top: 10px; z-index: 3; white-space: pre;
+         font: 12px ui-monospace, Consolas, monospace; color: #eaf2fa;
+         background: rgba(0,0,0,.55); padding: 9px 11px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="hud">memuat…</div>
+<script src="../vendor/three.min.js"></script>
+<script src="./scan-orbiter.js"></script>
+<script>
+/* Panggung uji: memastikan pindaian termuat, arahnya benar, dan
+   memberi angka kotak batas yang dipakai untuk menempatkannya pada
+   tumpukan. Dipanggil dari luar lewat window.setView(yaw, pitch). */
+(function () {
+  'use strict';
+  var hud = document.getElementById('hud');
+  var stage = document.getElementById('stage');
+
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color('#7f96a8');
+  var camera = new THREE.PerspectiveCamera(34, 1, 0.1, 5000);
+  var renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  stage.appendChild(renderer.domElement);
+
+  scene.add(new THREE.HemisphereLight('#dceaf7', '#5a5f5a', 0.60));
+  scene.add(new THREE.AmbientLight('#ffffff', 0.25));
+  var key = new THREE.DirectionalLight('#fff6e8', 1.00);
+  key.position.set(-6, 11, 9); scene.add(key);
+
+  var target = new THREE.Vector3(), radius = 60, yaw = -Math.PI / 2, pitch = 0.25;
+  function place() {
+    camera.position.set(
+      target.x + radius * Math.cos(pitch) * Math.sin(yaw),
+      target.y + radius * Math.sin(pitch),
+      target.z + radius * Math.cos(pitch) * Math.cos(yaw));
+    camera.lookAt(target);
+  }
+  function resize() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+
+  var GEAR = !/nogearstrip/.test(location.search);
+  ScanOrbiter.load({ base: './scan/', hideGear: GEAR }).then(function (g) {
+    scene.add(g);
+    var b = ScanOrbiter.bounds(g);
+    var box = new THREE.Box3().setFromObject(g);
+    box.getCenter(target);
+    radius = Math.max.apply(null, b.size) * 1.5;
+    resize(); place();
+    var tris = 0;
+    g.traverse(function (o) { if (o.isMesh) tris += o.geometry.index.count / 3; });
+    window.SCAN_INFO = { bounds: b, triangles: tris, removed: g.userData.removedTriangles };
+    hud.textContent =
+      'termuat\n' +
+      'segitiga  : ' + tris.toLocaleString('id-ID') + '\n' +
+      'dibuang   : ' + g.userData.removedTriangles.toLocaleString('id-ID') + ' (roda)\n' +
+      'min       : ' + b.min.join(', ') + '\n' +
+      'max       : ' + b.max.join(', ') + '\n' +
+      'ukuran    : ' + b.size.join(', ');
+    (function loop() { requestAnimationFrame(loop); renderer.render(scene, camera); })();
+  }).catch(function (e) {
+    hud.textContent = 'GAGAL: ' + e.message;
+    window.SCAN_INFO = { error: e.message };
+  });
+
+  window.setView = function (y, p, r) {
+    yaw = y; pitch = p; if (r) radius = r;
+    place(); renderer.render(scene, camera);
+    return { yaw: yaw, pitch: pitch, radius: radius };
+  };
+})();
+</script>
+</body>
+</html>

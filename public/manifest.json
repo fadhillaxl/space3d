@@ -1,0 +1,63 @@
+{
+  "name": "Space Edu 3D — Materi Edukasi Wahana Antariksa",
+  "short_name": "Space3D",
+  "description": "Edukasi interaktif 3D wahana antariksa: Space Shuttle Discovery, Buran, Satelit SATRIA-1, dan Nanosatelit CubeSat.",
+  "start_url": "/space-edu-3d/",
+  "scope": "/space-edu-3d/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#070B12",
+  "background_color": "#070B12",
+  "icons": [
+    {
+      "src": "/space-edu-3d/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/space-edu-3d/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/space-edu-3d/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/space-edu-3d/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Space Shuttle Discovery",
+      "short_name": "Discovery",
+      "url": "/space-edu-3d/discovery",
+      "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Pesawat Ulang-Alik Buran",
+      "short_name": "Buran",
+      "url": "/space-edu-3d/buran",
+      "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Satelit SATRIA-1",
+      "short_name": "SATRIA-1",
+      "url": "/space-edu-3d/satria-1",
+      "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nanosatelit CubeSat",
+      "short_name": "CubeSat",
+      "url": "/space-edu-3d/cubesat",
+      "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

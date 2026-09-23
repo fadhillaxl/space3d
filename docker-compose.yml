@@ -1,0 +1,18 @@
+services:
+  space3d:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BASE_PATH=/space-edu-3d
+        - NEXT_PUBLIC_BASE_PATH=/space-edu-3d
+    container_name: space3d-web
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - BASE_PATH=/space-edu-3d
+      - NEXT_PUBLIC_BASE_PATH=/space-edu-3d

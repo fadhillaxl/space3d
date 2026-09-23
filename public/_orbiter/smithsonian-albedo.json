@@ -1,0 +1,39 @@
+{
+  "source": "orbiter-space-shuttle-ov-103-discovery.zip (paket pindaian fotogrametri Discovery OV-103)",
+  "usedFor": [
+    "albedo ubin orbiter terang",
+    "albedo ubin orbiter gelap"
+  ],
+  "notUsedFor": [
+    "bentuk apa pun — atlas UV bukan pemandangan wahana, tidak ada satu pun sudut yang bisa diukur",
+    "tangki dan booster — pindaian ini orbiter museum saja, tanpa tangki maupun booster",
+    "penanda — lambang NASA, bendera, dan tulisan semuanya terpotong batas pulau UV dan tercermin",
+    "mesh — model 150k segitiga di source/ TIDAK dipakai; model situs dibangun prosedural dari kode"
+  ],
+  "measurement": {
+    "method": "petak 64x64 dengan simpangan baku < 12 dan saturasi rerata < 26, lalu median 40 petak terbersih",
+    "uniformPatchesLight": 113,
+    "uniformPatchesDark": 3,
+    "albedoLight": [
+      199,
+      200,
+      198
+    ],
+    "albedoDark": [
+      43,
+      41,
+      43
+    ],
+    "confidenceLight": 0.9,
+    "confidenceDark": 0.5,
+    "confidenceDarkReason": "hanya 3 petak gelap yang lolos ambang keseragaman; sisanya pulau kecil bercampur"
+  },
+  "previousPhotoValues": {
+    "light": [
+      207,
+      209,
+      203
+    ],
+    "note": "di bawah cahaya langit siang, jadi lebih hangat"
+  }
+}
