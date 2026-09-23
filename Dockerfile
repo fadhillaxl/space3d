@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1
-
 # 1. Base image with Node 22 Alpine
 FROM node:22-alpine AS base
 
