@@ -7,6 +7,7 @@ services:
         - BASE_PATH=/space-edu-3d
         - NEXT_PUBLIC_BASE_PATH=/space-edu-3d
     container_name: space3d-web
+    image: space3d-web:latest
     restart: unless-stopped
     ports:
       - "${HOST_PORT:-3000}:3000"
