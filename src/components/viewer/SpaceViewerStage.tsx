@@ -1,6 +1,13 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 
 export interface VariantOption {
   id: string;
@@ -8,17 +15,86 @@ export interface VariantOption {
   mission?: 'discovery' | 'buran' | 'rascube' | 'kratos' | 'satria' | 'cubesat';
 }
 
+export interface SpaceViewerStageHandle {
+  selectSpotByIndex: (index: number) => void;
+  scrollIntoView: () => void;
+}
+
 interface HotspotSpot {
   n: number;
   label: string;
   note: string;
   kat?: string;
+  layer?: string;
   link?: string;
+}
+
+interface LayerItem {
+  id: string;
+  label: string;
+  note?: string;
+  on: boolean;
 }
 
 interface TourStep {
   title: string;
   text: string;
+  yaw?: number;
+  pitch?: number;
+  dist?: number;
+  layer?: string;
+  lapisanLain?: string[];
+  titik?: number;
+  doors?: boolean;
+  section?: boolean;
+}
+
+interface CategoryMeta {
+  label: string;
+  warna: string;
+}
+
+interface ViewerApi {
+  spots?: HotspotSpot[];
+  layers?: Array<{ id: string; label: string; note?: string }>;
+  kategori?: Record<string, CategoryMeta>;
+  select?: (i: number) => void;
+  focusSpot?: (i: number, letak?: unknown, cara?: { ringan?: boolean }) => void;
+  deselect?: () => void;
+  setLayer?: (id: string, on: boolean) => boolean;
+  isLayerOn?: (id: string) => boolean;
+  highlight?: (id: string | null) => void;
+  toggleSpin?: () => boolean;
+  toggleDoors?: () => boolean;
+  toggleSection?: () => boolean;
+  toggleLabel?: () => boolean;
+  setTourOnly?: (on: boolean) => boolean;
+  setMode?: (m: string) => string;
+  getMode?: () => string;
+  setView?: (view: string) => void;
+  applyStep?: (step: TourStep) => void;
+  zoom?: (dir: number) => void;
+  reset?: () => void;
+  destroy?: () => void;
+}
+
+interface SpaceViewerGlobal {
+  TOURS?: Record<string, TourStep[]>;
+  HOTSPOTS?: Record<string, HotspotSpot[]>;
+  mount: (canvas: HTMLCanvasElement, opts: Record<string, unknown>) => ViewerApi;
+}
+
+interface ThreeModelViewerGlobal {
+  MODELS?: Record<string, unknown>;
+  mount: (canvas: HTMLCanvasElement, opts: Record<string, unknown>) => ViewerApi;
+}
+
+interface ViewerWindow extends Window {
+  THREE?: unknown;
+  SpaceViewer?: SpaceViewerGlobal;
+  ThreeModelViewer?: ThreeModelViewerGlobal;
+  createSatriaModel?: () => unknown;
+  __homeViewer?: ViewerApi;
 }
 
 interface SpaceViewerStageProps {
@@ -27,66 +103,76 @@ interface SpaceViewerStageProps {
   accentColor?: string;
   isHome?: boolean;
   cornerText?: string;
+  initialReadout?: string;
   onVariantChange?: (variant: string) => void;
 }
 
-export default function SpaceViewerStage({
-  initialVariant,
-  availableVariants,
-  accentColor = '#4FA8E0',
-  isHome = false,
-  cornerText,
-  onVariantChange,
-}: SpaceViewerStageProps) {
+const HOME_READOUT_MAP: Record<string, { title: string; text: string }> = {
+  discovery: {
+    title: 'Space Shuttle Discovery (OV-103)',
+    text: 'Orbiter ketiga NASA yang mencatat 39 penerbangan ke orbit rendah Bumi antara 1984 dan 2011.',
+  },
+  buran: {
+    title: 'Buran 1.01 (OK-1K1)',
+    text: 'Pesawat ulang-alik Soviet yang menyelesaikan satu misi orbital penuh secara otonom pada 15 November 1988.',
+  },
+  satria: {
+    title: 'Satelit GEO Satria-1',
+    text: 'Satelit komunikasi geostasioner VHTS 150 Gbps milik Indonesia di slot 146° BT — dengan tujuh titik komponen pada model pindaian 3D.',
+  },
+  rascube: {
+    title: 'RASCube V2 · kit satelit pendidikan',
+    text: 'Kit satelit pendidikan dari Australia Selatan yang dirakit sendiri oleh siswa, dari rangka aluminium sampai antena — dengan enam titik komponen.',
+  },
+  kratos: {
+    title: 'EXA Kratos Bus 1B · CubeSat 1U',
+    text: 'Bus satelit 1U seberat 500 gram dengan perisai emas SEAM/NEMEA dan enam panel surya yang membentang sendiri — dengan dua belas titik komponen.',
+  },
+  cubesat: {
+    title: 'CubeSat 1U — model umum',
+    text: 'Format satelit miniatur 10 cm³ dengan panel surya terpasang di dinding badan dan antena pita monolitik.',
+  },
+};
+
+const MODES: ReadonlyArray<readonly [string, string]> = [
+  ['solid', 'Padat'],
+  ['wire', 'Rangka'],
+  ['layer', 'Warna'],
+];
+
+const SpaceViewerStage = forwardRef<SpaceViewerStageHandle, SpaceViewerStageProps>(function SpaceViewerStage(
+  {
+    initialVariant,
+    availableVariants,
+    accentColor = '#4FA8E0',
+    isHome = false,
+    cornerText,
+    initialReadout,
+    onVariantChange,
+  },
+  ref
+) {
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const apiRef = useRef<any>(null);
+  const apiRef = useRef<ViewerApi | null>(null);
+  const isTourActiveRef = useRef(false);
+
+  const defaultReadoutText =
+    initialReadout ||
+    (isHome
+      ? 'Klik titik bernomor pada model untuk membaca keterangan komponen.'
+      : 'Klik titik bernomor pada model untuk membaca keterangan komponen. Matikan lapisan untuk melihat bagian di baliknya.');
 
   const [currentVariant, setCurrentVariant] = useState(initialVariant);
-  const [layers, setLayers] = useState<{ id: string; label: string; note?: string; on: boolean }[]>([]);
+  const [layers, setLayers] = useState<LayerItem[]>([]);
   const [activeSpot, setActiveSpot] = useState<HotspotSpot | null>(null);
-  const [activeCategory, setActiveCategory] = useState<{ label: string; warna: string } | null>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryMeta | null>(null);
   const [tourSteps, setTourSteps] = useState<TourStep[]>([]);
   const [tourIndex, setTourIndex] = useState<number>(-1);
-
-  const homeReadoutMap: Record<string, { title: string; text: string }> = {
-    discovery: {
-      title: 'Space Shuttle Discovery (OV-103)',
-      text: 'Orbiter ketiga NASA yang mencatat 39 penerbangan ke orbit rendah Bumi antara 1984 dan 2011.',
-    },
-    buran: {
-      title: 'Buran 1.01 (OK-1K1)',
-      text: 'Pesawat ulang-alik Soviet yang menyelesaikan satu misi orbital penuh secara otonom pada 15 November 1988.',
-    },
-    rascube: {
-      title: 'RASCube V2 · kit satelit pendidikan',
-      text: 'Kit satelit pendidikan dari Australia Selatan yang dirakit sendiri oleh siswa, dari rangka aluminium sampai antena — dengan enam titik komponen.',
-    },
-    kratos: {
-      title: 'EXA Kratos Bus 1B · CubeSat 1U',
-      text: 'Bus satelit 1U seberat 500 gram dengan perisai emas SEAM/NEMEA dan enam panel surya yang membentang sendiri — dengan dua belas titik komponen.',
-    },
-    satria: {
-      title: 'Satelit geostasioner — model umum',
-      text: 'Representasi satelit komunikasi dengan bus heksagonal, dua sayap surya bentang lebar, dan piringan antena parabola.',
-    },
-    cubesat: {
-      title: 'CubeSat 1U — model umum',
-      text: 'Format satelit miniatur 10 cm³ dengan panel surya terpasang di dinding badan dan antena pita monolitik.',
-    },
-  };
-
-  const [readout, setReadout] = useState<{ title: string; text: string }>(
-    isHome
-      ? {
-          title: 'Komponen',
-          text: 'Klik titik bernomor pada model untuk membaca keterangan komponen.',
-        }
-      : {
-          title: 'Komponen',
-          text: 'Klik titik bernomor pada model untuk membaca keterangan komponen. Matikan lapisan untuk melihat bagian di baliknya.',
-        }
-  );
+  const [readout, setReadout] = useState<{ title: string; text: string }>({
+    title: 'Komponen',
+    text: defaultReadoutText,
+  });
 
   const [modeLabel, setModeLabel] = useState('Padat');
   const [isSpinning, setIsSpinning] = useState(true);
@@ -99,10 +185,21 @@ export default function SpaceViewerStage({
   // Poll for scripts loaded via layout.tsx
   useEffect(() => {
     let cancelled = false;
+    const startTime = Date.now();
 
     function checkReady() {
-      const win = window as any;
-      if (win.SpaceViewer || (win.ThreeModelViewer && win.THREE)) {
+      const win = window as ViewerWindow;
+      const allModelsReady =
+        Boolean(win.SpaceViewer) &&
+        Boolean(win.ThreeModelViewer) &&
+        Boolean(win.THREE) &&
+        typeof win.createSatriaModel === 'function' &&
+        Boolean(win.ThreeModelViewer?.MODELS?.rascube) &&
+        Boolean(win.ThreeModelViewer?.MODELS?.kratos);
+
+      const fallbackReady = Boolean(win.SpaceViewer) && Date.now() - startTime > 3500;
+
+      if (allModelsReady || fallbackReady) {
         if (!cancelled) setScriptsReady(true);
         return true;
       }
@@ -126,15 +223,15 @@ export default function SpaceViewerStage({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const win = window as any;
+    const win = window as ViewerWindow;
     if (!win.SpaceViewer && !win.ThreeModelViewer) return;
 
     // Cleanup previous API instance
     if (apiRef.current) {
       try {
-        apiRef.current.destroy();
-      } catch (e) {
-        // ignore
+        apiRef.current.destroy?.();
+      } catch {
+        // ignore cleanup error
       }
       apiRef.current = null;
     }
@@ -148,13 +245,14 @@ export default function SpaceViewerStage({
     };
     const dist = distMap[currentVariant] || 64;
 
-    const opts: any = {
+    const opts: Record<string, unknown> = {
       variant: currentVariant,
       accent: accentColor,
-      dist: dist,
-      onSelect: (spot: any) => {
+      dist,
+      onSelect: (spot: HotspotSpot) => {
+        if (isTourActiveRef.current) return;
         setActiveSpot(spot);
-        if (spot && apiRef.current && apiRef.current.kategori && spot.kat) {
+        if (spot && apiRef.current?.kategori && spot.kat) {
           setActiveCategory(apiRef.current.kategori[spot.kat] || null);
         } else {
           setActiveCategory(null);
@@ -165,6 +263,10 @@ export default function SpaceViewerStage({
             text: spot.note || '',
           });
         }
+      },
+      onDeselect: () => {
+        setActiveSpot(null);
+        setActiveCategory(null);
       },
       onSpinChange: (on: boolean) => {
         setIsSpinning(on);
@@ -178,12 +280,12 @@ export default function SpaceViewerStage({
       },
     };
 
-    let api: any = null;
+    let api: ViewerApi | null = null;
     const TV = win.ThreeModelViewer;
     const SV = win.SpaceViewer;
 
     // Try ThreeModelViewer first if model is registered
-    if (TV && TV.MODELS && TV.MODELS[currentVariant] && typeof win.THREE !== 'undefined') {
+    if (TV?.MODELS?.[currentVariant] && typeof win.THREE !== 'undefined') {
       try {
         api = TV.mount(canvas, opts);
       } catch (err) {
@@ -203,16 +305,17 @@ export default function SpaceViewerStage({
     if (api) {
       apiRef.current = api;
       win.__homeViewer = api;
+      isTourActiveRef.current = false;
 
       // Extract layers
       if (api.layers && Array.isArray(api.layers)) {
-        setLayers(api.layers.map((l: any) => ({ ...l, on: true })));
+        setLayers(api.layers.map((l) => ({ ...l, on: true })));
       } else {
         setLayers([]);
       }
 
       // Extract tour steps
-      const allTours = (SV && SV.TOURS) || {};
+      const allTours = SV?.TOURS || {};
       const steps = allTours[currentVariant] || [];
       setTourSteps(steps);
       setTourIndex(-1);
@@ -227,29 +330,76 @@ export default function SpaceViewerStage({
     return () => {
       if (apiRef.current) {
         try {
-          apiRef.current.destroy();
-        } catch (e) {}
+          apiRef.current.destroy?.();
+        } catch {
+          // ignore
+        }
         apiRef.current = null;
       }
     };
   }, [scriptsReady, mountCurrentModel]);
 
+  const stopTourInternal = useCallback(() => {
+    const api = apiRef.current;
+    isTourActiveRef.current = false;
+    setTourIndex(-1);
+    if (!api) return;
+    api.setTourOnly?.(false);
+    api.deselect?.();
+    if (api.layers && api.setLayer) {
+      api.layers.forEach((l) => api.setLayer?.(l.id, true));
+    }
+    setLayers((prev) => prev.map((l) => ({ ...l, on: true })));
+    api.highlight?.(null);
+  }, []);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      selectSpotByIndex(spotIndex: number) {
+        const api = apiRef.current;
+        if (!api?.spots?.[spotIndex]) return;
+        if (isTourActiveRef.current) {
+          stopTourInternal();
+        }
+        api.focusSpot?.(spotIndex, null, { ringan: true });
+        if (api.isLayerOn) {
+          setLayers((prev) =>
+            prev.map((l) => ({
+              ...l,
+              on: api.isLayerOn ? api.isLayerOn(l.id) : l.on,
+            }))
+          );
+        }
+        api.select?.(spotIndex);
+        stageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      },
+      scrollIntoView() {
+        stageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      },
+    }),
+    [stopTourInternal]
+  );
+
   // Actions
   const handleSwitchVariant = (v: string) => {
     if (v === currentVariant) return;
+    isTourActiveRef.current = false;
     setCurrentVariant(v);
     setActiveSpot(null);
+    setActiveCategory(null);
     setTourIndex(-1);
     setModeLabel('Padat');
     setDoorsOpen(false);
     setSectionOpen(false);
+    setLabelsOn(false);
 
     if (isHome) {
-      setReadout(homeReadoutMap[v] || homeReadoutMap.discovery);
+      setReadout(HOME_READOUT_MAP[v] || HOME_READOUT_MAP.discovery);
     } else {
       setReadout({
         title: 'Komponen',
-        text: 'Klik titik bernomor pada model untuk membaca keterangan komponen. Matikan lapisan untuk melihat bagian di baliknya.',
+        text: defaultReadoutText,
       });
     }
 
@@ -271,7 +421,7 @@ export default function SpaceViewerStage({
   };
 
   const handleSetView = (view: string) => {
-    if (apiRef.current?.setView) apiRef.current.setView(view);
+    apiRef.current?.setView?.(view);
   };
 
   const handleToggleSection = () => {
@@ -282,14 +432,17 @@ export default function SpaceViewerStage({
   };
 
   const handleZoom = (delta: number) => {
-    if (apiRef.current?.zoom) apiRef.current.zoom(delta);
+    apiRef.current?.zoom?.(delta);
   };
 
   const handleReset = () => {
     if (apiRef.current?.reset) {
       apiRef.current.reset();
+      isTourActiveRef.current = false;
+      apiRef.current.setTourOnly?.(false);
       setTourIndex(-1);
       setActiveSpot(null);
+      setActiveCategory(null);
       setModeLabel('Padat');
       setIsSpinning(true);
       setDoorsOpen(false);
@@ -297,21 +450,15 @@ export default function SpaceViewerStage({
       setLabelsOn(false);
       setLayers((prev) => prev.map((l) => ({ ...l, on: true })));
       if (isHome) {
-        setReadout(homeReadoutMap[currentVariant] || homeReadoutMap.discovery);
+        setReadout(HOME_READOUT_MAP[currentVariant] || HOME_READOUT_MAP.discovery);
       } else {
         setReadout({
           title: 'Komponen',
-          text: 'Klik titik bernomor pada model untuk membaca keterangan komponen. Matikan lapisan untuk melihat bagian di baliknya.',
+          text: defaultReadoutText,
         });
       }
     }
   };
-
-  const MODES = [
-    ['solid', 'Padat'],
-    ['wire', 'Rangka'],
-    ['layer', 'Warna'],
-  ];
 
   const handleCycleMode = () => {
     if (!apiRef.current) return;
@@ -321,7 +468,7 @@ export default function SpaceViewerStage({
       if (MODES[k][0] === currentMode) idx = k;
     }
     const nextMode = MODES[(idx + 1) % MODES.length];
-    if (apiRef.current.setMode) apiRef.current.setMode(nextMode[0]);
+    apiRef.current.setMode?.(nextMode[0]);
     setModeLabel(nextMode[1]);
   };
 
@@ -351,39 +498,60 @@ export default function SpaceViewerStage({
   };
 
   const handleLayerHover = (id: string | null) => {
-    if (apiRef.current?.highlight) apiRef.current.highlight(id);
+    apiRef.current?.highlight?.(id);
+  };
+
+  const applyTourStep = (step: TourStep) => {
+    const api = apiRef.current;
+    if (!api) return;
+    api.applyStep?.(step);
+    if (step.lapisanLain && api.setLayer) {
+      step.lapisanLain.forEach((id) => api.setLayer?.(id, true));
+    }
+    setLayers((prev) =>
+      prev.map((l) => ({
+        ...l,
+        on: api.isLayerOn
+          ? api.isLayerOn(l.id)
+          : !step.layer || l.id === step.layer || Boolean(step.lapisanLain?.includes(l.id)),
+      }))
+    );
+    if (api.setTourOnly) {
+      const spots = api.spots || [];
+      const idx = typeof step.titik === 'number' ? spots.findIndex((s) => s.n === step.titik) : -1;
+      if (idx >= 0 && api.select) {
+        api.select(idx);
+      } else {
+        api.focusSpot?.(-1);
+      }
+    }
   };
 
   const handleStartTour = () => {
     if (!tourSteps.length) return;
+    isTourActiveRef.current = true;
     setActiveSpot(null);
+    setActiveCategory(null);
+    setIsSpinning(false);
+    apiRef.current?.setTourOnly?.(true);
     setTourIndex(0);
-    if (apiRef.current?.applyStep) {
-      apiRef.current.applyStep(tourSteps[0]);
-    }
+    applyTourStep(tourSteps[0]);
   };
 
   const handleStopTour = () => {
-    setTourIndex(-1);
-    if (apiRef.current?.highlight) {
-      apiRef.current.highlight(null);
-    }
+    stopTourInternal();
   };
 
   const handleTourStep = (newIndex: number) => {
     if (newIndex >= 0 && newIndex < tourSteps.length) {
       setTourIndex(newIndex);
-      if (apiRef.current?.applyStep) {
-        apiRef.current.applyStep(tourSteps[newIndex]);
-      }
+      applyTourStep(tourSteps[newIndex]);
     } else {
-      handleStopTour();
+      stopTourInternal();
     }
   };
 
-  const hasDoors =
-    currentVariant === 'discovery' ||
-    currentVariant === 'buran';
+  const hasDoors = currentVariant === 'discovery' || currentVariant === 'buran';
 
   const doorsLabel =
     currentVariant === 'satria'
@@ -418,7 +586,7 @@ export default function SpaceViewerStage({
       : currentVariant === 'buranStack'
       ? 'Energia Stack · model 3D'
       : currentVariant === 'satria'
-      ? 'Satelit GEO · model umum'
+      ? 'Satria-1 · model pindaian'
       : currentVariant === 'cubesat'
       ? 'CubeSat 1U · model umum'
       : currentVariant === 'flatsat'
@@ -576,12 +744,16 @@ export default function SpaceViewerStage({
           </div>
         )}
 
-        <span className="viewer__hint">
-          {isHome
-            ? 'seret untuk memutar'
-            : 'seret memutar · Shift+seret menggeser · gulir memperbesar'}
-        </span>
+        {isHome && (
+          <span className="viewer__hint">seret untuk memutar</span>
+        )}
       </div>
+
+      {!isHome && (
+        <p className="viewer__hint viewer__hint--bar">
+          seret memutar · Shift+seret menggeser · gulir memperbesar
+        </p>
+      )}
 
       {/* Layer Toggle Chips (Detail pages only) */}
       {!isHome && layers.length > 0 && (
@@ -745,4 +917,6 @@ export default function SpaceViewerStage({
       </div>
     </div>
   );
-}
+});
+
+export default SpaceViewerStage;

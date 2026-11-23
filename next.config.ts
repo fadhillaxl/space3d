@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/(_nano|_shuttle|vendor)/:path*",
+        source: "/(_nano|_shuttle|_satria|vendor)/:path*",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
@@ -31,8 +31,9 @@ const nextConfig: NextConfig = {
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/discovery.html", destination: "/discovery", permanent: true },
       { source: "/buran.html", destination: "/buran", permanent: true },
-      { source: "/satria-1.html", destination: "/rascube", permanent: true },
-      { source: "/satria-1", destination: "/rascube", permanent: true },
+      { source: "/satria-1.html", destination: "/satria-1", permanent: true },
+      { source: "/geo", destination: "/satria-1", permanent: true },
+      { source: "/geo.html", destination: "/satria-1", permanent: true },
       { source: "/cubesat.html", destination: "/kratos", permanent: true },
       { source: "/cubesat", destination: "/kratos", permanent: true },
       { source: "/rascube.html", destination: "/rascube", permanent: true },

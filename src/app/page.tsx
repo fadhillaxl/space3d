@@ -12,6 +12,7 @@ export default function HomePage() {
   const variants: VariantOption[] = [
     { id: 'discovery', label: 'Discovery', mission: 'discovery' },
     { id: 'buran', label: 'Buran', mission: 'buran' },
+    { id: 'satria', label: 'Satria-1', mission: 'satria' },
     { id: 'rascube', label: 'RASCube', mission: 'rascube' },
     { id: 'kratos', label: 'Kratos', mission: 'kratos' },
   ];
@@ -19,6 +20,7 @@ export default function HomePage() {
   const labels: Record<string, { title: string; missionAttr: string }> = {
     discovery: { title: 'Space Shuttle Discovery (OV-103)', missionAttr: 'discovery' },
     buran: { title: 'Buran 1.01 (OK-1K1)', missionAttr: 'buran' },
+    satria: { title: 'Satelit GEO Satria-1', missionAttr: 'satria' },
     rascube: { title: 'RASCube V2 · kit satelit pendidikan', missionAttr: 'rascube' },
     kratos: { title: 'EXA Kratos Bus 1B · CubeSat 1U', missionAttr: 'kratos' },
   };
@@ -33,10 +35,10 @@ export default function HomePage() {
         <section className="hero">
           <div className="wrap hero__grid">
             <div>
-              <p className="hero__kicker">Materi edukasi · empat modul</p>
+              <p className="hero__kicker">Materi edukasi · lima modul</p>
               <h1>Mahakarya Rekayasa Antariksa: Dari Pesawat Ulang-Alik hingga Satelit Nano.</h1>
               <p className="hero__sub">
-                Satu pesawat ulang-alik Amerika yang terbang 39 kali, satu pesawat ulang-alik Soviet yang terbang sekali, satu kit satelit yang dirakit siswa di kelas, dan satu bus satelit seberat 500 gram yang siap diterbangkan.
+                Satu pesawat ulang-alik Amerika yang terbang 39 kali, satu pesawat ulang-alik Soviet yang terbang sekali, satu satelit raksasa yang menggantung diam di atas Indonesia, satu kit satelit yang dirakit siswa di kelas, dan satu bus satelit seberat 500 gram yang siap diterbangkan.
               </p>
               <p className="hero__sub" style={{ marginTop: '1.1rem' }}>
                 <span className="mono" id="model-label">
@@ -79,8 +81,18 @@ export default function HomePage() {
               <span className="module__go">Buka modul →</span>
             </Link>
 
-            <Link className="module module--nano" href="/rascube">
+            <Link className="module module--geo" href="/satria-1">
               <span className="module__i">03</span>
+              <h3>Satelit GEO Satria-1</h3>
+              <span className="module__meta">GEO · Indonesia · 2023</span>
+              <p>
+                Satelit komunikasi geostasioner milik Indonesia, menggantung diam di atas khatulistiwa untuk menjangkau titik layanan publik yang belum tersentuh jaringan darat — dengan tujuh titik komponen dan tabel subsistem.
+              </p>
+              <span className="module__go">Buka modul →</span>
+            </Link>
+
+            <Link className="module module--nano" href="/rascube">
+              <span className="module__i">04</span>
               <h3>RASCube V2</h3>
               <span className="module__meta">Kit latihan · replika 1U</span>
               <p>
@@ -89,8 +101,8 @@ export default function HomePage() {
               <span className="module__go">Buka modul →</span>
             </Link>
 
-            <Link className="module module--geo" href="/kratos">
-              <span className="module__i">04</span>
+            <Link className="module module--kratos" href="/kratos">
+              <span className="module__i">05</span>
               <h3>Kratos Bus 1B</h3>
               <span className="module__meta">EXA · bus CubeSat 1U</span>
               <p>
@@ -151,7 +163,7 @@ export default function HomePage() {
             <div style={{ background: 'var(--deep)', border: '1px solid var(--line)', borderRadius: '4px', padding: '1.4rem' }}>
               <p className="mono" style={{ color: 'var(--accent)', marginBottom: '.4rem' }}>STATUS MATERI</p>
               <p style={{ margin: 0, fontSize: '.92rem' }}>
-                Modul Discovery dan Buran disusun sepenuhnya dari dokumen sumber sejarah peluncuran. Modul RASCube V2 disusun dari keterangan pembuatnya dan Quick Start Guide V2.0; modul Kratos Bus 1B dari lembar dokumentasi resmi EXA dan buku panduan Kratos. Keempat model dapat dipilih langsung di panggung atas, lengkap dengan nama tiap titik komponennya.
+                Modul Discovery dan Buran disusun sepenuhnya dari dokumen sumber sejarah peluncuran. Modul RASCube V2 disusun dari keterangan pembuatnya dan Quick Start Guide V2.0; modul Kratos Bus 1B dari lembar dokumentasi resmi EXA dan buku panduan Kratos. Modul Satria-1 disusun dari informasi yang sudah dipublikasikan luas, dan dokumen teknis pabrikan yang berlabel proprietary sengaja tidak dipakai — hal itu dijelaskan di halamannya. Kelima model dapat dipilih langsung di panggung atas, lengkap dengan nama tiap titik komponennya.
               </p>
             </div>
           </section>

@@ -123,7 +123,7 @@ export default function RasCubePage() {
       <main id="main">
         {/* Hero Section */}
         <div className="wrap hero">
-          <p className="eyebrow"><b>Modul 03 · Kit latihan</b> · replika CubeSat 1U</p>
+          <p className="eyebrow"><b>Modul 04 · Kit latihan</b> · replika CubeSat 1U</p>
           <h1>RASCube <span>V2</span></h1>
           <p className="hero__sub">
             Kit satelit pendidikan buatan Robinson Aerospace Systems, dirancang dan diproduksi sendiri di Australia Selatan. Siswa merakitnya dari rangka aluminium sampai antena — urutan yang sama dengan perakitan satelit sungguhan — lalu membaca datanya langsung di perangkat lunak Mission Control.

@@ -1,7 +1,7 @@
 {
   "name": "Space Edu 3D — Materi Edukasi Wahana Antariksa",
   "short_name": "Space3D",
-  "description": "Edukasi interaktif 3D wahana antariksa: Space Shuttle Discovery, Buran, Satelit SATRIA-1, dan Nanosatelit CubeSat.",
+  "description": "Edukasi interaktif 3D wahana antariksa: Space Shuttle Discovery, Buran, Satelit GEO Satria-1, RASCube V2, dan Kratos Bus 1B.",
   "start_url": "/space-edu-3d/",
   "scope": "/space-edu-3d/",
   "display": "standalone",
@@ -48,15 +48,21 @@
       "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Satelit SATRIA-1",
-      "short_name": "SATRIA-1",
+      "name": "Satelit GEO Satria-1",
+      "short_name": "Satria-1",
       "url": "/space-edu-3d/satria-1",
       "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Nanosatelit CubeSat",
-      "short_name": "CubeSat",
-      "url": "/space-edu-3d/cubesat",
+      "name": "RASCube V2",
+      "short_name": "RASCube",
+      "url": "/space-edu-3d/rascube",
+      "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Kratos Bus 1B",
+      "short_name": "Kratos",
+      "url": "/space-edu-3d/kratos",
       "icons": [{ "src": "/space-edu-3d/icon-192.png", "sizes": "192x192" }]
     }
   ]

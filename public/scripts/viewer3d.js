@@ -1,3 +1,8 @@
+/* =====================================================================
+   viewer3d.js — perender 3D mandiri untuk orbiter Space Shuttle
+   Tanpa library eksternal. Canvas 2D + painter's algorithm.
+   Dipakai oleh discovery.html dan buran.html.
+   ===================================================================== */
 (function (root, factory) {
   var lib = factory();
   if (typeof module !== 'undefined' && module.exports) module.exports = lib;
@@ -830,10 +835,8 @@
         note: 'Dinding luar rangka utama, tempat sebagian besar perangkat dipasang.' },
       { id: 'osr',      label: 'Radiator OSR', groups: ['osr'],
         note: 'Pelat pemantul surya optis pada sisi utara dan selatan, jalan keluar panas satelit.' },
-      { id: 'tower',    label: 'Tabung tengah', groups: ['tower'],
-        note: 'Struktur menara yang memikul beban peluncuran. Matikan lapisan bus untuk melihatnya.' },
-      { id: 'tank',     label: 'Tangki propelan', groups: ['tank'],
-        note: 'Tangki di dalam bus, mengapit tabung tengah.' },
+      { id: 'tank',     label: 'Pipa propelan', groups: ['tank'],
+        note: 'Pipa sistem propelan di dalam bus. Tangkinya sendiri tidak terekam pindaian.' },
       { id: 'solar',    label: 'Panel surya',  groups: ['solar', 'boom'],
         note: 'Sayap surya beserta batang penopangnya.' },
       { id: 'antenna',  label: 'Antena',       groups: ['antenna', 'subdish'],
@@ -990,22 +993,34 @@
         yaw: -0.75, pitch: 0.30, dist: 92 },
       { title: 'Bus satelit',
         text: 'Rangka utama berisi avionik, sistem kendali sikap, baterai, dan tangki propelan.',
-        yaw: -0.45, pitch: 0.20, dist: 58, layer: 'bus' },
+        yaw: -0.45, pitch: 0.20, dist: 58, layer: 'bus', titik: 4 },
       { title: 'Panel surya',
         text: 'Sayap surya dibentangkan setelah satelit mencapai orbit, dan berputar mengikuti Matahari untuk memasok daya.',
-        yaw: 0.0001, pitch: 1.10, dist: 88, layer: 'solar' },
+        /* Dilihat dari sisi hadap Bumi, bukan dari atas. Bidang sayapnya tegak
+           lurus sumbu itu, jadi dari atas yang terlihat cuma dua garis tipis —
+           tepi panelnya. */
+        yaw: 1.5, pitch: 0.18, dist: 86, layer: 'solar', titik: 1 },
       { title: 'Antena',
         text: 'Reflektor diarahkan ke Bumi. Pada satelit komunikasi, bagian inilah yang menentukan wilayah mana yang terlayani. Di depannya terdapat subreflektor kecil: sinyal dari perangkat umpan dipantulkan ke sana lebih dulu, baru ke reflektor besar, sehingga umpannya bisa diletakkan dekat badan satelit.',
-        yaw: 1.45, pitch: 0.10, dist: 62, layer: 'antenna' },
-      { title: 'Melihat ke dalam bus',
-        text: 'Dinding bus dibuka. Di tengahnya berdiri tabung struktural yang memikul beban peluncuran dari adaptor roket ke seluruh rangka, diapit empat tangki propelan. Isi tangki inilah yang menentukan umur satelit: begitu propelan untuk menjaga posisi habis, masa operasi berakhir meski elektroniknya masih sehat.',
-        yaw: -0.85, pitch: 0.32, dist: 58, section: true, layer: 'tower' },
+        yaw: 1.45, pitch: 0.10, dist: 62, layer: 'antenna', titik: 6 },
+      { title: 'Di dalam bus',
+        text: 'Model ini hasil pindaian bagian luar satelit, jadi isi bus tidak ikut terekam. Di dalamnya berdiri tabung struktural yang memikul beban peluncuran dari adaptor roket ke seluruh rangka, diapit tangki propelan — yang ikut tergambar hanya pipanya. Isi tangki itulah yang menentukan umur satelit: begitu propelan untuk menjaga posisi habis, masa operasi berakhir meski elektroniknya masih sehat.',
+        /* Dua lapisan sekaligus, dan ini satu-satunya langkah yang begitu.
+           Menyendirikan lapisan pipa saja membuat panggungnya tampak kosong:
+           pipanya memang terender, tetapi 1,8 satuan di model selebar 44,
+           gelap, dan tanpa apa pun di sekitarnya sebagai pembanding. Dengan
+           bus ikut tampil, pipanya terbaca sebagai benda di punggung badan —
+           yang justru maksud langkah ini. */
+        yaw: -0.85, pitch: 0.32, dist: 26, layer: 'bus', lapisanLain: ['tank'], titik: 2 },
       { title: 'Membuang panas',
         text: 'Pelat terang di sisi utara dan selatan adalah radiator OSR — Optical Solar Reflector. Permukaannya memantulkan cahaya Matahari tetapi meloloskan panas dari dalam satelit ke ruang angkasa. Letaknya bukan kebetulan: kedua sisi itu yang paling jarang tersinari sepanjang tahun.',
-        yaw: 0.0001, pitch: 1.05, dist: 74, layer: 'osr' },
+        yaw: 0.0001, pitch: 0.12, dist: 42, layer: 'osr', titik: 3 },
       { title: 'Pendorong plasma',
         text: 'Empat pendorong plasma stasioner berada di sisi yang membelakangi Bumi. Dorongannya sangat kecil — setara dorongan selembar kertas di telapak tangan — tetapi jauh lebih hemat propelan daripada roket kimia. Karena itu kenaikan orbitnya memakan waktu berbulan-bulan, dan bobot yang dihemat ditukar menjadi muatan atau umur yang lebih panjang.',
-        yaw: -1.75, pitch: 0.22, dist: 56, layer: 'thruster' }
+        /* Bus ikut ditampilkan, alasannya sama seperti langkah pipa propelan:
+           nosel pendorongnya hanya 0,8 satuan, dan sendirian di panggung ia
+           tidak terbaca sebagai apa pun. */
+        yaw: -1.75, pitch: 0.10, dist: 30, layer: 'bus', lapisanLain: ['thruster'], titik: 5 }
     ]
   };
 
@@ -1267,33 +1282,41 @@
         link: '#banding' }
     ],
     satria: [
-      { n: 1, pos: [0, 0.2, 22.0], kat: 'daya', layer: 'solar', off: [46, -58],
+      /* Ketujuh titik ini tetap sama seperti sebelumnya; yang berubah hanya
+         koordinatnya, diarahkan ulang ke bagian mesh pindaian yang benar.
+         Angkanya dibaca dari kotak batas tiap bagian di _satria/pemetaan.md,
+         bukan dikira-kira. Dua titik di dalam bus — tangki dan tabung tengah —
+         tidak punya geometri sendiri pada mesh ini, jadi keduanya diarahkan ke
+         dalam badan bus dan keterangannya ditulis ulang. */
+      /* z 14, bukan di ujung sayap (±22): di ujung, label namanya jatuh di tepi
+         panggung dan ikut terpotong. */
+      { n: 1, pos: [2.6, 0.9, 14.0], kat: 'daya', layer: 'solar', off: [46, -58],
         label: 'Panel surya',
         note: 'Lima panel per sayap, dilipat rapat selama peluncuran lalu dibentangkan di orbit. Sayapnya berputar pelan mengikuti Matahari sepanjang hari sementara badan satelit tetap menghadap Bumi.',
         link: '#teknologi' },
-      { n: 2, pos: [1.6, 0, 2.5],  kat: 'mesin', layer: 'tank', off: [-96, 34],
+      { n: 2, pos: [-1.8, 2.35, 0],  kat: 'mesin', layer: 'tank', off: [-96, 34],
         label: 'Tangki propelan',
-        note: 'Berada di dalam bus, mengapit tabung tengah. Isinya menentukan umur satelit: begitu propelan untuk menjaga posisi habis, masa operasi berakhir meski seluruh elektroniknya masih sehat.',
+        note: 'Tangki propelan berada di dalam badan, di bawah titik ini, mengapit tabung tengah — pindaian 3D ini hanya merekam bagian luar satelit, jadi tangkinya sendiri tidak tergambar; yang ikut terekam hanya pipanya. Isi tangki menentukan umur satelit: begitu propelan untuk menjaga posisi habis, masa operasi berakhir meski seluruh elektroniknya masih sehat.',
         link: '#operasi' },
-      { n: 3, pos: [0, 4.4, 0],    kat: 'termal', layer: 'osr', off: [34, -34],
+      { n: 3, pos: [0, 0, 2.9],    kat: 'termal', layer: 'osr', off: [34, -34],
         label: 'Radiator OSR',
-        note: 'Optical Solar Reflector — pelat yang memantulkan cahaya Matahari tetapi meloloskan panas dari dalam satelit ke ruang angkasa. Dipasang di sisi utara dan selatan, yang paling jarang tersinari.',
+        note: 'Optical Solar Reflector — pelat yang memantulkan cahaya Matahari tetapi meloloskan panas dari dalam satelit ke ruang angkasa. Dipasang di sisi utara dan selatan, yang paling jarang tersinari. Matikan lapisan Radiator OSR untuk melepas kedua pelat itu dari badan.',
         link: '#teknologi' },
-      { n: 4, pos: [0, 0, 0],      kat: 'struktur', layer: 'tower', off: [-104, -16],
+      { n: 4, pos: [1.4, 2.35, 0],    kat: 'struktur', layer: 'bus', off: [-104, -16],
         label: 'Tabung tengah',
-        note: 'Menara struktural yang menyalurkan beban peluncuran dari adaptor roket ke seluruh rangka. Berada di dalam bus — matikan lapisan Bus atau nyalakan mode Potongan untuk melihatnya.',
+        note: 'Menara struktural yang menyalurkan beban peluncuran dari adaptor roket ke seluruh rangka. Tabungnya berdiri di sumbu badan, tepat di bawah titik ini. Sama seperti tangki propelan, bagian dalam bus tidak ikut terekam pindaian, jadi yang terlihat di sini dinding luarnya.',
         link: '#teknologi' },
-      { n: 5, pos: [-5.0, 2.6, 2.6], kat: 'mesin', layer: 'thruster', off: [-88, 60],
+      { n: 5, pos: [-5.3, -1.4, 0], kat: 'mesin', layer: 'thruster', off: [-88, 60],
         label: 'Pendorong plasma',
         note: 'Stationary Plasma Thruster: mendorong dengan mempercepat gas terionisasi. Daya dorongnya sangat kecil, tetapi jauh lebih hemat propelan daripada roket kimia, sehingga bobot yang dihemat bisa ditukar menjadi muatan atau umur yang lebih panjang.',
         link: '#teknologi' },
-      { n: 6, pos: [6.8, 2.6, 3.0], kat: 'antena', layer: 'antenna', off: [56, 18],
+      { n: 6, pos: [4.0, 5.7, 4.6], kat: 'antena', layer: 'antenna', off: [56, 18],
         label: 'Reflektor antena',
-        note: 'Memusatkan gelombang radio seperti cermin cekung memusatkan cahaya. Makin besar reflektornya, makin sempit berkas yang dihasilkan — dan makin banyak kapasitas yang bisa dipakai ulang di wilayah berbeda.',
+        note: 'Memusatkan gelombang radio seperti cermin cekung memusatkan cahaya. Makin besar reflektornya, makin sempit berkas yang dihasilkan — dan makin banyak kapasitas yang bisa dipakai ulang di wilayah berbeda. Satria membawa tiga reflektor: dua di sisi atas badan, satu menggantung di bawah.',
         link: '#teknologi' },
-      { n: 7, pos: [8.6, 2.6, 3.0], kat: 'antena', layer: 'antenna', off: [76, -20],
-        label: 'Subreflektor',
-        note: 'Cermin kecil di depan reflektor utama. Sinyal dari perangkat umpan dipantulkan ke sini lebih dulu, baru ke reflektor besar. Susunan ini memungkinkan perangkat umpan diletakkan dekat badan satelit, bukan menggantung jauh di depan.',
+      { n: 7, pos: [5.0, -5.5, 0.3], kat: 'antena', layer: 'antenna', off: [76, -20],
+        label: 'Reflektor bawah',
+        note: 'Reflektor ketiga, digantung pada menara umpan di bawah badan. Perangkat umpannya duduk di pangkal menara, dekat badan satelit, bukan menggantung jauh di depan reflektor — susunan yang memperpendek jalur gelombang dan menghemat ruang saat satelit masih terlipat di dalam roket.',
         link: '#teknologi' }
     ]
   };
@@ -1920,4 +1943,3 @@
   return { buildModel: buildModel, mount: mount, HOTSPOTS: HOTSPOTS,
            LAYERS: LAYERS, TOURS: TOURS, KATEGORI: KATEGORI };
 });
-

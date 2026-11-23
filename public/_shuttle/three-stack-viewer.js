@@ -86,6 +86,24 @@ window.ThreeModelViewer = (function () {
       views: { depan:   { yaw: Math.PI / 2, pitch: 0.06 },
                samping: { yaw: 0.0001,      pitch: 0.05 },
                atas:    { yaw: 0.0001,      pitch: 1.25 } }
+    },
+    /* Satria dibangun dari pindaian GLB, bukan prosedural. Sumbunya sama
+       seperti orbiter — memanjang pada X, Y ke atas — jadi tidak perlu
+       didirikan. Antenanya menghadap +X, maka tampak depannya ada di yaw
+       +pi/2, dan tampak sampingnya menatap bentang sayap dari ujung.
+       Jaraknya diukur dari bola batas ('fit') karena bentang 44 satuannya
+       jauh lebih lebar daripada badannya yang hanya 10 satuan. */
+    satria: {
+      factory: 'createSatriaModel',
+      tegak: false,
+      layers: null,                      // pakai SpaceViewer.LAYERS.satria
+      jarak: 1.0,
+      fit: 0.78,
+      toleransi: 0.9,
+      awal: { yaw: -0.75, pitch: 0.30 },
+      views: { depan:   { yaw: Math.PI / 2, pitch: 0.06 },
+               samping: { yaw: 0.0001,      pitch: 0.05 },
+               atas:    { yaw: 0.0001,      pitch: 1.25 } }
     }
   };
 
@@ -508,17 +526,33 @@ window.ThreeModelViewer = (function () {
                              : Math.max(4, Math.min(10, Math.floor(w / 80)));
       var kotak = [];
       calonTampil.forEach(function (d) {
-        var sisi = d.ax < pusatX ? 'kiri' : 'kanan';
-        if (d.sisi !== sisi) {
-          d.sisi = sisi;
-          d.tag.style.left = sisi === 'kanan' ? (ukuran + 6) + 'px' : 'auto';
-          d.tag.style.right = sisi === 'kiri' ? (ukuran + 6) + 'px' : 'auto';
-        }
         var r = ukuran / 2 + 3, lebarLabel = 0;
         if (pakaiLabel || d.idx === active) {
           if (!d.lebarLabel) d.lebarLabel = Math.max(40, d.spot.label.length * 7 + 18);
           lebarLabel = d.lebarLabel + 6;
         }
+
+        /* Sisi label: menjauhi tengah panggung, supaya tidak menutupi model.
+
+           Dua hal yang ditambahkan belakangan. Pertama ambang 14 piksel: tanpa
+           itu, titik yang kebetulan berhenti persis di garis tengah menukar
+           sisinya tiap bingkai dan labelnya terlihat berkedip kiri-kanan —
+           persis yang terjadi pada titik radiator di tur Satria. Kedua, kalau
+           sisi pilihan itu membuat labelnya keluar panggung, sisinya dibalik
+           ke dalam: terpotong lebih buruk daripada menutupi sedikit model. */
+        var sisi = d.sisi || (d.ax < pusatX ? 'kiri' : 'kanan');
+        if (d.ax < pusatX - 14) sisi = 'kiri';
+        else if (d.ax > pusatX + 14) sisi = 'kanan';
+        if (lebarLabel) {
+          if (sisi === 'kiri' && d.ax - r - lebarLabel < 0) sisi = 'kanan';
+          else if (sisi === 'kanan' && d.ax + r + lebarLabel > w) sisi = 'kiri';
+        }
+        if (d.sisi !== sisi) {
+          d.sisi = sisi;
+          d.tag.style.left = sisi === 'kanan' ? (ukuran + 6) + 'px' : 'auto';
+          d.tag.style.right = sisi === 'kiri' ? (ukuran + 6) + 'px' : 'auto';
+        }
+
         var k = {
           l: d.ax - r - (sisi === 'kiri' ? lebarLabel : 0),
           r: d.ax + r + (sisi === 'kanan' ? lebarLabel : 0),

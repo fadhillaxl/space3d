@@ -17,6 +17,7 @@ export default function Footer({ moduleName }: FooterProps) {
           <Link href="/">Beranda</Link>
           <Link href="/discovery">Discovery</Link>
           <Link href="/buran">Buran</Link>
+          <Link href="/satria-1">Satria-1</Link>
           <Link href="/rascube">RASCube</Link>
           <Link href="/kratos">Kratos</Link>
         </span>

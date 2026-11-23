@@ -32,6 +32,12 @@ export default function Header({ currentMission = 'home' }: HeaderProps) {
             Uni Soviet
           </Link>
           <Link
+            href="/satria-1"
+            aria-current={currentMission === 'satria' ? 'page' : undefined}
+          >
+            GEO
+          </Link>
+          <Link
             href="/rascube"
             aria-current={currentMission === 'rascube' ? 'page' : undefined}
           >

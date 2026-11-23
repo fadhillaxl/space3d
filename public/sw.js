@@ -2,7 +2,7 @@
    Space Edu 3D — Service Worker (Offline PWA + Update Detection Engine)
    ===================================================================== */
 
-const CACHE_VERSION = 'space3d-v3.0.0';
+const CACHE_VERSION = 'space3d-v3.1.0';
 const STATIC_CACHE = `space3d-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `space3d-runtime-${CACHE_VERSION}`;
 const ASSET_CACHE = `space3d-assets-${CACHE_VERSION}`;
@@ -12,6 +12,7 @@ const PRECACHE_URLS = [
   '/',
   '/discovery',
   '/buran',
+  '/satria-1',
   '/rascube',
   '/kratos',
   '/manifest.json',
@@ -28,6 +29,8 @@ const PRECACHE_URLS = [
   '/_shuttle/orbiter.js',
   '/_shuttle/buran-model.js',
   '/_shuttle/energia.js',
+  '/_satria/satria-data.js',
+  '/_satria/satria-model.js',
   '/_shuttle/three-stack-viewer.js',
   '/_nano/rascube-model.js',
   '/_nano/rascube-poin.js',
@@ -128,6 +131,7 @@ self.addEventListener('fetch', (event) => {
     url.pathname.includes('/models/') ||
     url.pathname.includes('/shuttle/') ||
     url.pathname.includes('/_shuttle/') ||
+    url.pathname.includes('/_satria/') ||
     url.pathname.includes('/_nano/') ||
     url.pathname.includes('/vendor/') ||
     url.pathname.endsWith('.glb') ||

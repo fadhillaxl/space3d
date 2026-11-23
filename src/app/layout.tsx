@@ -5,7 +5,7 @@ import { withBasePath } from '@/utils/basePath';
 
 export const metadata: Metadata = {
   title: 'Space Edu 3D — Materi Edukasi Wahana Antariksa',
-  description: 'Materi edukasi interaktif 3D: Space Shuttle Discovery, Buran, RASCube V2, dan Kratos Bus 1B. Akses offline dengan dukungan PWA.',
+  description: 'Materi edukasi interaktif 3D: Space Shuttle Discovery, Buran, Satelit GEO Satria-1, RASCube V2, dan Kratos Bus 1B. Akses offline dengan dukungan PWA.',
   manifest: withBasePath('/manifest.json'),
   icons: {
     icon: [
@@ -49,6 +49,8 @@ export default function RootLayout({
         <script src={withBasePath('/_shuttle/orbiter.js')} defer></script>
         <script src={withBasePath('/_shuttle/buran-model.js')} defer></script>
         <script src={withBasePath('/_shuttle/energia.js')} defer></script>
+        <script src={withBasePath('/_satria/satria-data.js')} defer></script>
+        <script src={withBasePath('/_satria/satria-model.js')} defer></script>
         <script src={withBasePath('/_shuttle/three-stack-viewer.js')} defer></script>
         <script src={withBasePath('/scripts/viewer3d.js')} defer></script>
         <script src={withBasePath('/_nano/rascube-model.js')} defer></script>
@@ -84,6 +86,7 @@ export default function RootLayout({
     return true;
   }
   if (!registerNanoModels()) {
+    document.addEventListener('DOMContentLoaded', registerNanoModels);
     window.addEventListener('load', registerNanoModels);
   }
 })();

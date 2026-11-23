@@ -181,7 +181,7 @@ export default function KratosPage() {
       <main id="main">
         {/* Hero Section */}
         <div className="wrap hero">
-          <p className="eyebrow"><b>Modul 04 · Kelas CubeSat 1U</b> · bus wahana siap pakai</p>
+          <p className="eyebrow"><b>Modul 05 · Kelas CubeSat 1U</b> · bus wahana siap pakai</p>
           <h1>Kratos <span>Spacecraft Bus 1B</span></h1>
           <p className="hero__sub">
             Bus satelit 1U buatan EXA: rangka aluminium anodisasi, perisai SEAM/NEMEA, satu inti sistem terpadu ICEPS, dan enam panel surya yang membentang sendiri — seluruhnya 500 gram, dengan tiga perempat U masih tersisa untuk muatan.
